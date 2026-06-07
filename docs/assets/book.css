@@ -1,0 +1,122 @@
+/* ============================================================
+   Ser tutor — sistema de diseño compartido (libro)
+   Paleta papel/tinta + acento bermellón, con acentos por capítulo.
+   Tono de libro: serif para leer, mono para etiquetas. Sobrio.
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Roboto+Mono:wght@400;500;700&display=swap");
+
+:root{
+  --paper:#F4F0E6; --paper-raised:#FBF8F0; --ink:#15130E; --ink-soft:#3A372F; --muted:#8A8576;
+  --accent:#C4351C;     /* bermellón (global) */
+  --rule:#15130E; --shadow:#15130E;
+  /* acentos por capítulo (variedad, consistencia) */
+  --c1:#C4351C; --c2:#1E3A8A; --c3:#1F7A4C; --c4:#B8860B; --c5:#7A2E8A; --c6:#0E6B6B; --c7:#A4471C; --c8:#3A372F;
+  /* el acento "activo" de la página; cada capítulo lo redefine */
+  --chap:#C4351C;
+  --font-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --font-body:"Newsreader",Georgia,serif;
+  --font-mono:"Roboto Mono",ui-monospace,Menlo,monospace;
+  --fs-body:1.16rem;
+  --maxw:1080px; --measure:66ch; --gap:24px;
+  --bw:2px; --rad:4px; --sh:6px; --grain:.04; --t:.5s;
+}
+[data-theme="dark"]{
+  --paper:#16140F; --paper-raised:#1E1B15; --ink:#F2EEE2; --ink-soft:#D8D2C2; --muted:#8A8576;
+  --accent:#E8573B; --rule:#F2EEE2; --shadow:#000; --grain:.06;
+  --c1:#E8573B; --c2:#7FA0E8; --c3:#43C97A; --c4:#E3B341; --c5:#C58BD6; --c6:#3FB6B6; --c7:#E07A4B;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:var(--fs-body);
+  line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:var(--grain);mix-blend-mode:multiply}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gap)}
+.wrap--narrow{max-width:720px}
+
+/* ---------- tipografía ---------- */
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0 0 .5em}
+h1{font-size:clamp(2.4rem,6vw,4rem)}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-top:1.4em}
+h3{font-size:1.4rem;margin-top:1.3em}
+h4{font-family:var(--font-mono);font-weight:700;font-size:.95rem;letter-spacing:.01em;margin:1.4em 0 .4em}
+p{max-width:var(--measure)}
+.lead{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(1.3rem,2.6vw,1.7rem);line-height:1.4;color:var(--ink);max-width:36ch}
+a{color:var(--chap);text-decoration:none;border-bottom:var(--bw) solid transparent;transition:border-color .12s}
+a:hover{border-color:var(--chap)}
+strong{font-weight:600}
+em{font-style:italic}
+.eyebrow{font-family:var(--font-mono);font-size:.8125rem;letter-spacing:.02em;color:var(--chap);font-weight:500;margin:0 0 .6rem}
+.kicker{font-family:var(--font-mono);font-size:.8125rem;color:var(--muted);letter-spacing:.02em}
+.meta{font-family:var(--font-mono);font-size:.875rem;color:var(--muted);line-height:1.6}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--paper) 90%,transparent);
+  backdrop-filter:saturate(1.1) blur(6px);border-bottom:var(--bw) solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem}
+.nav__brand{font-family:var(--font-mono);font-weight:700;font-size:.95rem;color:var(--ink);border:0;display:flex;gap:.5rem;align-items:center}
+.nav__brand .sq{width:12px;height:12px;background:var(--chap);display:inline-block}
+.nav__right{display:flex;gap:1rem;align-items:center;font-family:var(--font-mono);font-size:.8125rem}
+.nav__right a{color:var(--ink);border:0}.nav__right a:hover{color:var(--chap)}
+.toggle{font-family:var(--font-mono);font-size:.8125rem;background:var(--paper);color:var(--ink);
+  border:var(--bw) solid var(--ink);border-radius:var(--rad);padding:.28rem .55rem;cursor:pointer;
+  box-shadow:3px 3px 0 var(--shadow);transition:transform .1s,box-shadow .1s}
+.toggle:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--shadow)}
+
+/* ---------- cabecera de capítulo ---------- */
+.chead{padding:calc(var(--gap)*2.6) 0 calc(var(--gap)*1.4);border-bottom:var(--bw) solid var(--ink)}
+.chap-no{font-family:var(--font-mono);font-size:.8125rem;letter-spacing:.06em;color:var(--chap);font-weight:700;display:block;margin-bottom:.5rem}
+.chead h1{margin-bottom:.25em}
+
+/* ---------- secciones / prosa ---------- */
+section{padding:calc(var(--gap)*1.7) 0}
+.prose p{font-size:1.16rem;margin:0 0 1rem}
+.prose p + p{margin-top:0}
+.dropcap::first-letter{font-family:var(--font-display);font-weight:600;float:left;font-size:3.4rem;line-height:.82;padding:.1rem .5rem .1rem 0;color:var(--chap)}
+.section-note{font-family:var(--font-mono);font-size:.9rem;color:var(--ink-soft);max-width:var(--measure);line-height:1.55}
+.rule{border:0;border-top:var(--bw) solid var(--rule);margin:calc(var(--gap)*1.8) 0}
+
+/* ---------- componentes ---------- */
+.quote{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(1.5rem,3.2vw,2.2rem);
+  line-height:1.32;color:var(--ink);border-left:4px solid var(--chap);padding-left:1.1rem;margin:calc(var(--gap)*1.2) 0;max-width:46ch}
+.quote cite{display:block;font-family:var(--font-mono);font-style:normal;font-size:.85rem;color:var(--muted);margin-top:.7rem}
+.box{border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper-raised);
+  box-shadow:var(--sh) var(--sh) 0 var(--shadow);padding:1.2rem 1.3rem;margin:var(--gap) 0}
+.box--accent{border-left:6px solid var(--chap)}
+.tag{font-family:var(--font-mono);font-size:.8125rem;font-weight:700;color:var(--chap);display:block;margin-bottom:.35rem}
+.card{border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper-raised);
+  box-shadow:var(--sh) var(--sh) 0 var(--shadow);padding:1.15rem}
+.grid{display:grid;gap:var(--gap)}
+.grid--2{grid-template-columns:repeat(2,1fr)} .grid--3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.grid--2,.grid--3{grid-template-columns:1fr}}
+figure{margin:var(--gap) 0}
+figure img{display:block;width:100%;height:auto;border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper-raised)}
+figcaption{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);margin-top:.5rem;line-height:1.45}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;border:var(--bw) solid var(--ink);vertical-align:middle}
+
+/* ---------- listas numeradas tipo capítulo ---------- */
+.numlist{list-style:none;counter-reset:n;padding:0;margin:var(--gap) 0;max-width:var(--measure)}
+.numlist li{position:relative;padding:.2rem 0 1rem 2.6rem;counter-increment:n}
+.numlist li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:.05rem;
+  font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:var(--chap)}
+
+/* ---------- referencias ---------- */
+.refs{font-family:var(--font-body);font-size:1rem}
+.refs p{text-indent:-1.4rem;padding-left:1.4rem;margin:0 0 .7rem;max-width:var(--measure)}
+
+/* ---------- pager prev/next ---------- */
+.pager{border-top:var(--bw) solid var(--ink);margin-top:calc(var(--gap)*2)}
+.pager .wrap{display:flex;justify-content:space-between;gap:var(--gap);padding:var(--gap) var(--gap)}
+.pager a{font-family:var(--font-mono);font-size:.9rem;color:var(--ink);border:0;max-width:46%}
+.pager a:hover{color:var(--chap)}
+.pager .dir{display:block;font-size:.75rem;color:var(--muted);letter-spacing:.04em}
+.pager .nx{text-align:right;margin-left:auto}
+
+/* ---------- footer ---------- */
+.foot{border-top:var(--bw) solid var(--ink);padding:var(--gap) 0;font-family:var(--font-mono);font-size:.8125rem;color:var(--muted)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity var(--t) ease,transform var(--t) cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}

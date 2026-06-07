@@ -1,0 +1,5 @@
+# Fuentes con derechos de autor / material de terceros (no publicar)
+refs/
+__pycache__/
+*.pyc
+.DS_Store

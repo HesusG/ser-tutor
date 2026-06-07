@@ -120,3 +120,60 @@ figcaption{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);marg
 .reveal{opacity:0;transform:translateY(20px);transition:opacity var(--t) ease,transform var(--t) cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   Teóricos del capítulo — sub-tabs (debajo de la cabecera)
+   ============================================================ */
+.theorists{padding:calc(var(--gap)*1.9) 0;border-top:var(--bw) solid var(--ink);border-bottom:var(--bw) solid var(--ink);background:var(--paper-raised)}
+.theorists .eyebrow{margin-bottom:.3rem}
+.th__h{margin:0 0 .15em}
+.th__sub{color:var(--ink-soft);max-width:62ch;margin:0 0 calc(var(--gap)*1.1)}
+.th__tabs{display:flex;gap:.55rem;overflow-x:auto;padding:.2rem .2rem .7rem;margin:0 -.2rem var(--gap)}
+.th__tabs::-webkit-scrollbar{height:6px}.th__tabs::-webkit-scrollbar-thumb{background:var(--muted);border-radius:3px}
+.th__tab{flex:0 0 auto;text-align:left;background:var(--paper);border:var(--bw) solid var(--ink);border-radius:var(--rad);
+  padding:.5rem .8rem;cursor:pointer;color:var(--ink);box-shadow:3px 3px 0 var(--shadow);
+  transition:transform .1s,box-shadow .1s,background .15s,color .15s}
+.th__tab:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--shadow)}
+.th__tab[aria-selected="true"]{background:var(--chap);color:#fff;transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+.th__tabname{display:block;font-family:var(--font-display);font-weight:600;font-size:1rem;line-height:1.15;letter-spacing:-.01em}
+.th__tabidea{display:block;font-family:var(--font-mono);font-size:.72rem;margin-top:.12rem;color:var(--muted)}
+.th__tab[aria-selected="true"] .th__tabidea{color:rgba(255,255,255,.85)}
+.th__panel{display:none}
+.th__panel.is-on{display:grid;grid-template-columns:190px 1fr;grid-template-areas:"media content""diagram diagram";
+  gap:var(--gap);align-items:start;animation:thfade .4s ease}
+@keyframes thfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:720px){.th__panel.is-on{grid-template-columns:1fr;grid-template-areas:"media""content""diagram"}}
+.th__media{grid-area:media;position:relative;border:var(--bw) solid var(--ink);border-radius:var(--rad);overflow:hidden;
+  box-shadow:var(--sh) var(--sh) 0 var(--shadow);background:var(--paper);aspect-ratio:1/1}
+.th__media img{width:100%;height:100%;object-fit:cover;object-position:center 16%;filter:grayscale(1) contrast(1.02);transition:filter .45s}
+.th__media::after{content:"";position:absolute;inset:0;background:var(--chap);mix-blend-mode:color;opacity:.5;pointer-events:none;transition:opacity .45s}
+.th__media:hover img,.th__media:focus-within img{filter:none}
+.th__media:hover::after,.th__media:focus-within::after{opacity:0}
+.th__media>svg{width:100%;height:100%;display:block}
+@media(max-width:720px){.th__media{max-width:210px}}
+.th__content{grid-area:content;min-width:0}
+.th__name{font-family:var(--font-display);font-weight:600;font-size:1.5rem;margin:0 0 .05em;line-height:1.1}
+.th__years{font-family:var(--font-mono);font-weight:400;font-size:.82rem;color:var(--muted);margin-left:.4rem;white-space:nowrap}
+.th__role{font-family:var(--font-mono);font-size:.78rem;color:var(--chap);margin:0 0 .8rem;letter-spacing:.01em}
+.th__content p{font-size:1.02rem;line-height:1.55;margin:0 0 .7rem;max-width:64ch}
+.th__lead{font-family:var(--font-mono);font-weight:700;font-size:.78rem;color:var(--chap);text-transform:uppercase;letter-spacing:.03em;margin-right:.35rem}
+.th__diagram{grid-area:diagram;border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper);
+  box-shadow:var(--sh) var(--sh) 0 var(--shadow);padding:1.1rem 1.2rem;margin-top:.1rem}
+.th__diagram>svg{width:100%;height:auto;display:block}
+.th__diagram figcaption{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);margin-top:.7rem;line-height:1.45}
+.th__credit{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);margin:var(--gap) 0 0;line-height:1.5}
+
+/* Helpers para los diagramas SVG (heredan --chap del capítulo) */
+.dg-line{stroke:var(--ink);stroke-width:2;fill:none}
+.dg-acc{stroke:var(--chap);stroke-width:2.5;fill:none}
+.dg-fill{fill:var(--chap)}
+.dg-soft{fill:var(--paper-raised);stroke:var(--ink);stroke-width:2}
+.dg-t{fill:var(--ink);font-size:14px;font-family:var(--font-mono)}
+.dg-tb{fill:var(--ink);font-size:14px;font-weight:700;font-family:var(--font-mono)}
+.dg-tw{fill:#fff;font-size:14px;font-weight:700;font-family:var(--font-mono)}
+.dg-ta{fill:var(--chap);font-size:13px;font-weight:700;font-family:var(--font-mono)}
+.dg-tm{fill:var(--muted);font-size:12px;font-family:var(--font-mono)}
+
+/* Placa SVG cuando no hay foto de licencia libre */
+.th__plate{width:100%;height:100%;display:block;background:var(--paper-raised)}
+.th__plate text{font-family:var(--font-display)}

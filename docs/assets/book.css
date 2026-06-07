@@ -151,6 +151,9 @@ figcaption{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);marg
 .th__media:hover::after,.th__media:focus-within::after{opacity:0}
 .th__media>svg{width:100%;height:100%;display:block}
 @media(max-width:720px){.th__media{max-width:210px}}
+.th__media--duo{display:flex}
+.th__media--duo img{width:50%;height:100%}
+.th__media--duo img+img{border-left:2px solid var(--ink)}
 .th__content{grid-area:content;min-width:0}
 .th__name{font-family:var(--font-display);font-weight:600;font-size:1.5rem;margin:0 0 .05em;line-height:1.1}
 .th__years{font-family:var(--font-mono);font-weight:400;font-size:.82rem;color:var(--muted);margin-left:.4rem;white-space:nowrap}

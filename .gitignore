@@ -3,3 +3,6 @@ refs/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Manuscrito del libro (producto de pago) — NO publicar en repo público
+book/

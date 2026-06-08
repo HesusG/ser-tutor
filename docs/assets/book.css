@@ -10,7 +10,7 @@
   --accent:#C4351C;     /* bermellón (global) */
   --rule:#15130E; --shadow:#15130E;
   /* acentos por capítulo (variedad, consistencia) */
-  --c1:#C4351C; --c2:#1E3A8A; --c3:#1F7A4C; --c4:#B8860B; --c5:#7A2E8A; --c6:#0E6B6B; --c7:#A4471C; --c8:#3A372F;
+  --c1:#C4351C; --c2:#1E3A8A; --c3:#1F7A4C; --c4:#B8860B; --c5:#5A3FC0; --c6:#0E6B6B; --c7:#A4471C; --c8:#3A372F; --c9:#2C6E8F;
   /* el acento "activo" de la página; cada capítulo lo redefine */
   --chap:#C4351C;
   --font-display:"Fraunces",Georgia,"Times New Roman",serif;
@@ -23,7 +23,7 @@
 [data-theme="dark"]{
   --paper:#16140F; --paper-raised:#1E1B15; --ink:#F2EEE2; --ink-soft:#D8D2C2; --muted:#8A8576;
   --accent:#E8573B; --rule:#F2EEE2; --shadow:#000; --grain:.06;
-  --c1:#E8573B; --c2:#7FA0E8; --c3:#43C97A; --c4:#E3B341; --c5:#C58BD6; --c6:#3FB6B6; --c7:#E07A4B;
+  --c1:#E8573B; --c2:#7FA0E8; --c3:#43C97A; --c4:#E3B341; --c5:#9B8BF0; --c6:#3FB6B6; --c7:#E07A4B; --c8:#A8A290; --c9:#6FB0D6;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}

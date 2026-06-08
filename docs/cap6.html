@@ -3,222 +3,263 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Capítulo 6 de Ser tutor: la tutoría como tarea de la institución. Mapa de tres niveles (aula, centro y sistema), la gestión y el liderazgo que habilitan la tutoría, y el tutor como agente de la escuela.">
-<title>Capítulo 6 · Gestión escolar: el tutor en la institución · Ser tutor</title>
+<title>Capítulo 6 · Ética profesional: el límite que cuida · Ser tutor</title>
 <link rel="stylesheet" href="assets/book.css">
+<style>
+/* ---- dilemas: <details> accesibles y estéticos (capítulo interactivo) ---- */
+.dilema{border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper-raised);
+  box-shadow:var(--sh) var(--sh) 0 var(--shadow);padding:1.2rem 1.3rem;margin:var(--gap) 0}
+.dilema h3{margin-top:0}
+.dilema .caso{max-width:var(--measure)}
+.dilema details{border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper);
+  margin:1rem 0 .9rem;overflow:hidden}
+.dilema summary{font-family:var(--font-mono);font-weight:700;font-size:.9rem;letter-spacing:.01em;
+  color:var(--chap);cursor:pointer;list-style:none;padding:.7rem .9rem;display:flex;align-items:center;gap:.55rem;
+  user-select:none}
+.dilema summary::-webkit-details-marker{display:none}
+.dilema summary:hover{background:color-mix(in srgb,var(--chap) 8%,transparent)}
+.dilema summary:focus-visible{outline:3px solid var(--chap);outline-offset:2px}
+.dilema summary .chev{display:inline-block;width:.7rem;height:.7rem;border-right:2px solid var(--chap);
+  border-bottom:2px solid var(--chap);transform:rotate(-45deg);transition:transform .18s ease;flex:0 0 auto}
+.dilema details[open] summary .chev{transform:rotate(45deg)}
+.dilema details[open] summary{border-bottom:var(--bw) solid var(--ink)}
+.dilema .answer{padding:.9rem .95rem 1rem}
+.dilema .answer p{margin:0 0 .7rem}
+.dilema .answer p:last-child{margin-bottom:0}
+.dilema .principio{font-family:var(--font-mono);font-size:.85rem;color:var(--ink-soft);
+  border-left:4px solid var(--chap);padding:.15rem 0 .15rem .8rem;margin-top:.4rem;max-width:var(--measure)}
+.dilema .principio b{color:var(--chap);font-weight:700}
+@media(prefers-reduced-motion:reduce){.dilema summary .chev{transition:none}}
+</style>
 </head>
 <body style="--chap:var(--c6)">
 
 <nav class="nav"><div class="wrap"><a class="nav__brand" href="index.html"><span class="sq"></span> Ser tutor</a><div class="nav__right"><a href="index.html#indice">Índice</a><button class="toggle" id="themeToggle" type="button">Tema</button></div></div></nav>
 
-<header class="chead"><div class="wrap"><span class="chap-no">Capítulo 6</span><h1>Gestión escolar: el tutor en la institución</h1><p class="lead">El acompañamiento individual necesita una escuela que lo sostenga.</p></div></header>
+<header class="chead"><div class="wrap"><span class="chap-no">Capítulo 6</span><h1>Ética profesional: el límite que cuida</h1><p class="lead">La confianza se sostiene en límites claros.</p></div></header>
 
   <section class="theorists" aria-label="Teóricos clave del capítulo"><div class="wrap">
     <p class="eyebrow">Teóricos clave</p>
     <h2 class="th__h">Quiénes sostienen este capítulo</h2>
-    <p class="th__sub">El tutor no acompaña en el vacío: estos autores explican el cambio en la escuela, la organización que aprende y los sistemas que rodean al estudiante.</p>
+    <p class="th__sub">La ética del tutor se apoya en dos grandes voces (el deber y el cuidado), en cómo madura el juicio moral y en la ética de las profesiones.</p>
 
     <div class="th" data-th>
       <div class="th__tabs" role="tablist" aria-label="Teóricos del capítulo 6">
-        <button class="th__tab" role="tab" id="t6-fullan" aria-controls="p6-fullan"><span class="th__tabname">Michael Fullan</span><span class="th__tabidea">Cambio educativo</span></button>
-        <button class="th__tab" role="tab" id="t6-senge" aria-controls="p6-senge"><span class="th__tabname">Peter Senge</span><span class="th__tabidea">Organización que aprende</span></button>
-        <button class="th__tab" role="tab" id="t6-bronfen" aria-controls="p6-bronfen"><span class="th__tabname">Urie Bronfenbrenner</span><span class="th__tabidea">Modelo ecológico</span></button>
+        <button class="th__tab" role="tab" id="t5-kant" aria-controls="p5-kant"><span class="th__tabname">Immanuel Kant</span><span class="th__tabidea">El deber</span></button>
+        <button class="th__tab" role="tab" id="t5-kohlberg" aria-controls="p5-kohlberg"><span class="th__tabname">Lawrence Kohlberg</span><span class="th__tabidea">Desarrollo moral</span></button>
+        <button class="th__tab" role="tab" id="t5-gilligan" aria-controls="p5-gilligan"><span class="th__tabname">Carol Gilligan</span><span class="th__tabidea">Ética del cuidado</span></button>
+        <button class="th__tab" role="tab" id="t5-cortina" aria-controls="p5-cortina"><span class="th__tabname">Adela Cortina</span><span class="th__tabidea">Ética profesional</span></button>
       </div>
 
       <div class="th__panels">
-        <article class="th__panel" role="tabpanel" id="p6-fullan" aria-labelledby="t6-fullan">
-          <div class="th__media"><img src="assets/img/theorists/fullan.jpg" alt="Retrato de Michael Fullan" loading="lazy" width="240" height="300"></div>
+        <article class="th__panel" role="tabpanel" id="p5-kant" aria-labelledby="t5-kant">
+          <div class="th__media"><img src="assets/img/theorists/kant.jpg" alt="Retrato de Immanuel Kant" loading="lazy" width="551" height="720"></div>
           <div class="th__content">
-            <h3 class="th__name">Michael Fullan <span class="th__years">1940–</span></h3>
-            <p class="th__role">Investigador del cambio educativo · Canadá</p>
-            <p><span class="th__lead">Big idea.</span> El cambio educativo es un proceso, no un evento: requiere capacidad colectiva, liderazgo en todos los niveles y coherencia. No se decreta desde arriba; se construye con la gente.</p>
-            <p><span class="th__lead">En la práctica.</span> La acción tutorial perdura si la escuela la asume como cultura, no como tarea de un docente aislado: necesita liderazgo y estructuras que la sostengan.</p>
+            <h3 class="th__name">Immanuel Kant <span class="th__years">1724–1804</span></h3>
+            <p class="th__role">Filósofo · Prusia</p>
+            <p><span class="th__lead">Big idea.</span> La ética del deber: actúa solo según una máxima que pudieras querer como ley universal (imperativo categórico) y trata a las personas siempre como fines, nunca solo como medios.</p>
+            <p><span class="th__lead">En la práctica.</span> Fundamenta el límite que cuida: la confidencialidad y la dignidad del estudiante no se negocian por conveniencia. La persona es un fin, no un recurso.</p>
           </div>
           <figure class="th__diagram">
-            <svg viewBox="0 0 560 200" role="img" aria-label="El cambio educativo como proceso en tres fases">
-              <rect class="dg-soft" x="20" y="74" width="150" height="56" rx="8"/><text class="dg-tb" x="95" y="106" text-anchor="middle">Iniciación</text>
-              <path class="dg-acc" d="M170 102 L200 102"/><path class="dg-fill" d="M206 102 l-12 -5 l0 10 z"/>
-              <rect class="dg-soft" x="206" y="74" width="150" height="56" rx="8"/><text class="dg-tb" x="281" y="106" text-anchor="middle">Implementación</text>
-              <path class="dg-acc" d="M356 102 L386 102"/><path class="dg-fill" d="M392 102 l-12 -5 l0 10 z"/>
-              <rect class="dg-fill" x="392" y="74" width="150" height="56" rx="8"/><text class="dg-tw" x="467" y="100" text-anchor="middle">Institucio-</text><text class="dg-tw" x="467" y="116" text-anchor="middle">nalización</text>
-              <text class="dg-tm" x="280" y="168" text-anchor="middle">cambio sostenido = capacidad colectiva + liderazgo + coherencia</text>
+            <svg viewBox="0 0 560 210" role="img" aria-label="El imperativo categórico de Kant">
+              <text class="dg-tm" x="280" y="22" text-anchor="middle">Fórmula del fin: la persona es un fin, nunca solo un medio</text>
+              <rect class="dg-soft" x="18" y="92" width="140" height="56" rx="8"/><text class="dg-tb" x="88" y="124" text-anchor="middle">Máxima</text>
+              <path class="dg-acc" d="M158 120 L196 120"/><path class="dg-fill" d="M202 120 l-12 -5 l0 10 z"/>
+              <rect class="dg-soft" x="204" y="80" width="166" height="80" rx="8"/><text class="dg-tb" x="287" y="114" text-anchor="middle">¿Podrías quererla</text><text class="dg-tb" x="287" y="132" text-anchor="middle">como ley universal?</text>
+              <path class="dg-acc" d="M370 120 L406 120"/><path class="dg-fill" d="M412 120 l-12 -5 l0 10 z"/>
+              <rect class="dg-fill" x="412" y="92" width="134" height="56" rx="8"/><text class="dg-tw" x="479" y="118" text-anchor="middle">Deber</text><text class="dg-tw" x="479" y="134" text-anchor="middle" font-size="11">(si sí)</text>
             </svg>
-            <figcaption>El cambio dura cuando llega a institucionalizarse, sostenido por la cultura de la escuela.</figcaption>
+            <figcaption>Una acción es deber si su regla podría valer para todos; y siempre tratando a la persona como fin.</figcaption>
           </figure>
         </article>
 
-        <article class="th__panel" role="tabpanel" id="p6-senge" aria-labelledby="t6-senge">
-          <div class="th__media"><img src="assets/img/theorists/senge.jpg" alt="Retrato de Peter Senge" loading="lazy" width="306" height="405"></div>
-          <div class="th__content">
-            <h3 class="th__name">Peter Senge <span class="th__years">1947–</span></h3>
-            <p class="th__role">Teórico organizacional · EE. UU.</p>
-            <p><span class="th__lead">Big idea.</span> La organización que aprende se apoya en cinco disciplinas: dominio personal, modelos mentales, visión compartida, aprendizaje en equipo y pensamiento sistémico (la quinta, que integra a las demás).</p>
-            <p><span class="th__lead">En la práctica.</span> Una escuela que acompaña bien es una que aprende de sí misma: el tutor forma parte de un equipo con visión compartida que revisa sus propios supuestos.</p>
-          </div>
-          <figure class="th__diagram">
-            <svg viewBox="0 0 560 270" role="img" aria-label="Las cinco disciplinas de la organización que aprende">
-              <g class="dg-acc"><line x1="280" y1="135" x2="280" y2="56"/><line x1="280" y1="135" x2="446" y2="135"/><line x1="280" y1="135" x2="280" y2="214"/><line x1="280" y1="135" x2="114" y2="135"/></g>
-              <circle class="dg-soft" cx="280" cy="56" r="44"/><text class="dg-tm" x="280" y="53" text-anchor="middle">Visión</text><text class="dg-tm" x="280" y="67" text-anchor="middle">compartida</text>
-              <circle class="dg-soft" cx="446" cy="135" r="44"/><text class="dg-tm" x="446" y="132" text-anchor="middle">Aprendizaje</text><text class="dg-tm" x="446" y="146" text-anchor="middle">en equipo</text>
-              <circle class="dg-soft" cx="280" cy="214" r="44"/><text class="dg-tm" x="280" y="211" text-anchor="middle">Dominio</text><text class="dg-tm" x="280" y="225" text-anchor="middle">personal</text>
-              <circle class="dg-soft" cx="114" cy="135" r="44"/><text class="dg-tm" x="114" y="132" text-anchor="middle">Modelos</text><text class="dg-tm" x="114" y="146" text-anchor="middle">mentales</text>
-              <circle class="dg-fill" cx="280" cy="135" r="50"/><text class="dg-tw" x="280" y="132" text-anchor="middle">Pensamiento</text><text class="dg-tw" x="280" y="147" text-anchor="middle">sistémico</text>
-            </svg>
-            <figcaption>El pensamiento sistémico integra las otras cuatro disciplinas en la quinta disciplina.</figcaption>
-          </figure>
-        </article>
-
-        <article class="th__panel" role="tabpanel" id="p6-bronfen" aria-labelledby="t6-bronfen">
+        <article class="th__panel" role="tabpanel" id="p5-kohlberg" aria-labelledby="t5-kohlberg">
           <div class="th__media">
-            <svg class="th__plate" viewBox="0 0 200 200" role="img" aria-label="Retrato ilustrado de Urie Bronfenbrenner">
+            <svg class="th__plate" viewBox="0 0 200 200" role="img" aria-label="Retrato ilustrado de Lawrence Kohlberg">
               <rect width="200" height="200" fill="var(--paper-raised)"/>
               <circle cx="100" cy="90" r="56" fill="var(--chap)" opacity="0.12"/>
               <circle cx="100" cy="90" r="56" fill="none" stroke="var(--chap)" stroke-width="2"/>
-              <text x="100" y="106" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="52" fill="var(--chap)">UB</text>
-              <text x="100" y="176" text-anchor="middle" font-family="var(--font-mono)" font-weight="700" font-size="13" fill="var(--ink)">BRONFENBRENNER</text>
+              <text x="100" y="106" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="52" fill="var(--chap)">LK</text>
+              <text x="100" y="176" text-anchor="middle" font-family="var(--font-mono)" font-weight="700" font-size="15" fill="var(--ink)">KOHLBERG</text>
             </svg>
           </div>
           <div class="th__content">
-            <h3 class="th__name">Urie Bronfenbrenner <span class="th__years">1917–2005</span></h3>
+            <h3 class="th__name">Lawrence Kohlberg <span class="th__years">1927–1987</span></h3>
             <p class="th__role">Psicólogo · EE. UU. · (retrato ilustrado: sin foto de licencia libre)</p>
-            <p><span class="th__lead">Big idea.</span> El modelo ecológico: el desarrollo ocurre dentro de sistemas anidados — microsistema (aula, familia), mesosistema (sus relaciones), exosistema y macrosistema (la cultura) — a lo largo del tiempo.</p>
-            <p><span class="th__lead">En la práctica.</span> El tutor conecta aula, familia y centro: el estudiante vive en todos esos sistemas a la vez, y acompañarlo exige mirarlos juntos, no solo el aula.</p>
+            <p><span class="th__lead">Big idea.</span> El razonamiento moral madura por niveles: preconvencional (evitar el castigo, el interés propio), convencional (normas y aprobación) y posconvencional (principios éticos universales).</p>
+            <p><span class="th__lead">En la práctica.</span> Ayuda a entender cómo razonan los dilemas los estudiantes; el tutor acompaña el paso de «que no me castiguen» a «esto es lo justo».</p>
           </div>
           <figure class="th__diagram">
-            <svg viewBox="0 0 560 250" role="img" aria-label="Los sistemas anidados del modelo ecológico">
-              <ellipse cx="280" cy="125" rx="270" ry="115" fill="var(--chap)" opacity="0.08" stroke="var(--ink)" stroke-width="1.5"/>
-              <ellipse cx="280" cy="125" rx="206" ry="92" fill="var(--chap)" opacity="0.10" stroke="var(--ink)" stroke-width="1.5"/>
-              <ellipse cx="280" cy="125" rx="142" ry="68" fill="var(--chap)" opacity="0.14" stroke="var(--ink)" stroke-width="1.5"/>
-              <ellipse cx="280" cy="125" rx="78" ry="44" fill="var(--chap)" opacity="0.22" stroke="var(--ink)" stroke-width="1.5"/>
-              <circle class="dg-fill" cx="280" cy="125" r="30"/><text class="dg-tw" x="280" y="129" text-anchor="middle" font-size="12">Estudiante</text>
-              <text class="dg-tm" x="280" y="74" text-anchor="middle">Microsistema</text>
-              <text class="dg-tm" x="280" y="50" text-anchor="middle">Mesosistema</text>
-              <text class="dg-tm" x="280" y="28" text-anchor="middle">Exosistema</text>
-              <text class="dg-ta" x="280" y="234" text-anchor="middle">Macrosistema · cultura (y el tiempo: cronosistema)</text>
+            <svg viewBox="0 0 560 230" role="img" aria-label="Los tres niveles del desarrollo moral de Kohlberg">
+              <path class="dg-acc" d="M28 210 L28 30" stroke-width="2"/><path class="dg-fill" d="M28 24 l-5 12 l10 0 z"/>
+              <rect x="44" y="150" width="210" height="60" rx="6" fill="var(--chap)" opacity="0.18" stroke="var(--ink)" stroke-width="1.5"/><text class="dg-tb" x="149" y="176" text-anchor="middle">Preconvencional</text><text class="dg-tm" x="149" y="194" text-anchor="middle">castigo · interés propio</text>
+              <rect x="175" y="90" width="210" height="60" rx="6" fill="var(--chap)" opacity="0.33" stroke="var(--ink)" stroke-width="1.5"/><text class="dg-tb" x="280" y="116" text-anchor="middle">Convencional</text><text class="dg-tm" x="280" y="134" text-anchor="middle">normas · aprobación</text>
+              <rect x="306" y="30" width="220" height="60" rx="6" fill="var(--chap)" opacity="0.5" stroke="var(--ink)" stroke-width="1.5"/><text class="dg-tb" x="416" y="56" text-anchor="middle">Posconvencional</text><text class="dg-tm" x="416" y="74" text-anchor="middle">principios universales</text>
             </svg>
-            <figcaption>El estudiante vive en sistemas anidados; el tutor teje las relaciones entre ellos.</figcaption>
+            <figcaption>El juicio moral asciende: del miedo al castigo a los principios de justicia.</figcaption>
+          </figure>
+        </article>
+
+        <article class="th__panel" role="tabpanel" id="p5-gilligan" aria-labelledby="t5-gilligan">
+          <div class="th__media"><img src="assets/img/theorists/gilligan.jpg" alt="Retrato de Carol Gilligan" loading="lazy" width="477" height="720"></div>
+          <div class="th__content">
+            <h3 class="th__name">Carol Gilligan <span class="th__years">1936–</span></h3>
+            <p class="th__role">Psicóloga · EE. UU.</p>
+            <p><span class="th__lead">Big idea.</span> La ética del cuidado: junto a la voz de la justicia (derechos y reglas) existe otra voz centrada en las relaciones, la responsabilidad y el cuidado del otro. Ambas son necesarias para un juicio moral completo.</p>
+            <p><span class="th__lead">En la práctica.</span> La ética del tutor no es solo cumplir reglas: es responder a las necesidades concretas de cada estudiante dentro de una relación de confianza.</p>
+          </div>
+          <figure class="th__diagram">
+            <svg viewBox="0 0 560 220" role="img" aria-label="Las dos voces de la ética según Gilligan">
+              <rect class="dg-soft" x="20" y="30" width="210" height="74" rx="8"/><text class="dg-tb" x="125" y="62" text-anchor="middle">Voz de la justicia</text><text class="dg-tm" x="125" y="82" text-anchor="middle">derechos · reglas · imparcialidad</text>
+              <rect class="dg-soft" x="330" y="30" width="210" height="74" rx="8"/><text class="dg-tb" x="435" y="62" text-anchor="middle">Voz del cuidado</text><text class="dg-tm" x="435" y="82" text-anchor="middle">relación · responsabilidad</text>
+              <path class="dg-acc" d="M125 104 C 125 140,230 140,262 154"/><path class="dg-acc" d="M435 104 C 435 140,330 140,298 154"/>
+              <rect class="dg-fill" x="170" y="156" width="220" height="50" rx="8"/><text class="dg-tw" x="280" y="186" text-anchor="middle">Juicio moral más completo</text>
+            </svg>
+            <figcaption>No solo reglas ni solo afecto: el cuidado y la justicia se complementan.</figcaption>
+          </figure>
+        </article>
+
+        <article class="th__panel" role="tabpanel" id="p5-cortina" aria-labelledby="t5-cortina">
+          <div class="th__media"><img src="assets/img/theorists/cortina.jpg" alt="Retrato de Adela Cortina" loading="lazy" width="539" height="720"></div>
+          <div class="th__content">
+            <h3 class="th__name">Adela Cortina <span class="th__years">1947–</span></h3>
+            <p class="th__role">Filósofa · España</p>
+            <p><span class="th__lead">Big idea.</span> La ética cívica distingue mínimos de justicia (compartidos y exigibles a todos) y máximos de felicidad (los proyectos de vida de cada quien, que se invitan, no se imponen). Y propone una ética de las profesiones con bienes internos.</p>
+            <p><span class="th__lead">En la práctica.</span> Da el marco de la ética profesional del tutor: hay mínimos exigibles (deontología, confidencialidad) y un sentido de la profesión orientado al bien del estudiante.</p>
+          </div>
+          <figure class="th__diagram">
+            <svg viewBox="0 0 560 210" role="img" aria-label="Mínimos de justicia y máximos de felicidad según Cortina">
+              <rect x="80" y="30" width="400" height="56" rx="8" fill="var(--chap)" opacity="0.18" stroke="var(--ink)" stroke-width="1.5"/><text class="dg-tb" x="280" y="54" text-anchor="middle">Máximos de felicidad</text><text class="dg-tm" x="280" y="73" text-anchor="middle">proyectos de vida · se invitan</text>
+              <rect class="dg-fill" x="80" y="92" width="400" height="56" rx="8"/><text class="dg-tw" x="280" y="116" text-anchor="middle">Mínimos de justicia</text><text class="dg-tw" x="280" y="134" text-anchor="middle" font-size="11">deber · exigibles a todos</text>
+              <line class="dg-line" x1="60" y1="160" x2="500" y2="160" stroke-width="3"/>
+              <text class="dg-tm" x="280" y="186" text-anchor="middle">Ética de las profesiones: bienes internos (el bien del estudiante)</text>
+            </svg>
+            <figcaption>Los mínimos de justicia son la base común; sobre ellos, cada quien construye sus máximos.</figcaption>
           </figure>
         </article>
       </div>
     </div>
 
-    <p class="th__credit">Retratos: Wikimedia Commons — Fullan (dominio público), Senge (CC BY-SA 4.0). Bronfenbrenner: retrato ilustrado (sin foto de licencia libre).</p>
+    <p class="th__credit">Retratos: Wikimedia Commons — Kant (dominio público), Gilligan (CC BY-SA 3.0), Cortina (CC BY 4.0). Kohlberg: retrato ilustrado (sin foto de licencia libre).</p>
   </div></section>
 
 <main>
 
 <section class="prose"><div class="wrap wrap--narrow">
-<p class="dropcap reveal">Hasta aquí hemos hablado de la tutoría como una relación: un tutor que escucha, observa y acompaña a un estudiante. Esa relación es el corazón del trabajo, pero no flota en el aire. Ocurre dentro de una institución que asigna horarios, reparte grupos, fija prioridades y decide qué cuenta como trabajo legítimo. Cuando la escuela no reserva tiempo para tutorar, no coordina lo que hace cada tutor ni reconoce esa labor, el acompañamiento se sostiene solo gracias al esfuerzo personal de quien lo ejerce, y eso lo vuelve frágil.</p>
-<p class="reveal">Este capítulo cambia el foco: del tutor a solas con el estudiante a la escuela completa. La tutoría no es solo una tarea del tutor, es una tarea de la institución. La orientación y la acción tutorial operan en tres niveles, del más cercano al alumno al más amplio del sistema. Cada nivel tiene un responsable, una función y un alcance distintos, y el tutor del aula necesita que los otros dos funcionen.</p>
+<p class="dropcap">La tutoría funciona porque crea una relación cercana, y esa cercanía es justo lo que la vuelve delicada. Cuando un estudiante confía y cuenta lo que le pasa, el tutor recibe un poder real sobre algo frágil. La ética profesional no es un adorno para esa relación: es lo que la hace habitable. Son los límites claros los que permiten que la confianza exista sin riesgo de daño.</p>
+<p>Sanz Ponce e Hirsch Adler (2016) ordenan la ética profesional del docente en cuatro dimensiones: los conflictos y dilemas éticos, la deontología, la identidad profesional y las competencias éticas. La idea de fondo es que actuar bien no es seguir el instinto del momento, sino reconocer en qué dimensión estamos y qué nos pide. Este capítulo recorre esas cuatro dimensiones y después baja a casos: dilemas concretos de tutoría, genéricos, del tipo que aparece en cualquier escuela.</p>
 </div></section>
-
-<hr class="rule">
 
 <section><div class="wrap">
-<p class="eyebrow reveal">Un mapa de tres planos</p>
-<h2 class="reveal">Aula, centro y sistema</h2>
-<p class="reveal">Los tres niveles son concéntricos, no una cadena de mando. El alcance crece del aula, donde la acción es directa y cotidiana, hasta el sector, donde es indirecta y de apoyo. El estudiante está siempre en el centro. Lo que cambia entre un plano y otro es quién actúa, con qué instrumento y sobre cuántas personas.</p>
+<p class="eyebrow">El mapa de fondo</p>
+<h2>Las cuatro dimensiones de la ética profesional docente</h2>
+<p class="section-note">Sanz Ponce e Hirsch Adler (2016) presentan la ética profesional del profesorado en cuatro dimensiones. No son cuatro temas sueltos: son cuatro maneras de mirar la misma responsabilidad.</p>
 
-<div class="grid grid--3">
-<div class="card reveal">
-<span class="tag">Nivel 1 · Aula</span>
-<h3>El tutor</h3>
-<p class="section-note"><strong>Responsable:</strong> el profesor-tutor.</p>
-<p class="section-note"><strong>Función:</strong> acción directa y cotidiana con el grupo.</p>
-<p class="section-note"><strong>Instrumento:</strong> la programación de aula y el Plan de Acción Tutorial (PAT).</p>
-<p class="section-note"><strong>Alcance:</strong> el grupo-clase y cada estudiante.</p>
-<p>Es el nivel más próximo al alumno. Aquí se materializa la tutoría: la entrevista, la observación, el seguimiento del grupo, la detección temprana de quien empieza a desengancharse. El tutor hace el trabajo de relación que ningún otro nivel puede hacer por él, porque nadie más está cada día frente a ese grupo.</p>
-</div>
-<div class="card reveal">
-<span class="tag">Nivel 2 · Centro</span>
-<h3>El departamento de orientación</h3>
-<p class="section-note"><strong>Responsable:</strong> el departamento o la unidad de orientación.</p>
-<p class="section-note"><strong>Función:</strong> diagnóstica e interventora; coordina y apoya a los tutores.</p>
-<p class="section-note"><strong>Instrumento:</strong> el Plan de Orientación y Acción Tutorial del centro.</p>
-<p class="section-note"><strong>Alcance:</strong> toda la institución.</p>
-<p>Articula la coherencia entre aulas y da el soporte especializado que un tutor solo no puede cubrir: evaluación psicopedagógica, derivación de casos, materiales comunes, criterios compartidos. Sin este nivel, cada tutor improvisa por su cuenta y lo que funciona en un grupo no llega a los demás.</p>
-</div>
-<div class="card reveal">
-<span class="tag">Nivel 3 · Sistema</span>
-<h3>Los equipos de zona</h3>
-<p class="section-note"><strong>Responsable:</strong> los equipos de orientación educativa y psicopedagógica de zona.</p>
-<p class="section-note"><strong>Función:</strong> acción indirecta, externa y de apoyo a varios centros.</p>
-<p class="section-note"><strong>Instrumento:</strong> asesoramiento de zona, evaluaciones especializadas, recursos sectoriales.</p>
-<p class="section-note"><strong>Alcance:</strong> un sector, una zona o un área educativa.</p>
-<p>Es el nivel sistémico. Conecta los centros con la administración y con los recursos especializados que ninguna escuela tiene por sí sola. Cuando un caso excede al departamento del centro, este nivel aporta la mirada externa y los servicios de la zona.</p>
-</div>
+<div class="grid grid--2">
+
+<div class="card">
+<span class="tag">01 · Conflictos y dilemas éticos</span>
+<p>El núcleo práctico. Un dilema aparece cuando dos valores legítimos chocan y no se puede honrar a ambos sin renunciar a algo. Resolverlos no es cuestión solo de buena voluntad: exige análisis, fundamentación y la capacidad de decidir cuando no hay una salida cómoda.</p>
 </div>
 
-<div class="box box--accent reveal">
-<span class="tag">Cómo leer el mapa</span>
-<p>El tutor del Nivel 1 hace la tutoría; el Nivel 2 la coordina y la sostiene dentro del centro; el Nivel 3 la respalda desde fuera. La acción tutorial es un mismo proceso de orientación con tres radios de alcance. Por encima de los tres opera además un macro-nivel, el del sistema educativo y la administración, donde la orientación se diseña, se norma y se financia como política. A ese plano volvemos al cierre del capítulo.</p>
+<div class="card">
+<span class="tag">02 · Deontología</span>
+<p>El deber profesional, las normas y comportamientos éticos que orientan la práctica y las relaciones, tanto entre los propios profesionales como con los demás agentes sociales (Novoa, citado en Sanz Ponce e Hirsch Adler, 2016). Jover (citado allí) delimita cinco ámbitos del deber docente: la profesión, la institución, los compañeros, los alumnos y la sociedad.</p>
+</div>
+
+<div class="card">
+<span class="tag">03 · Identidad profesional</span>
+<p>Asumir que la dimensión educativa, y no solo la transmisión de contenidos, es parte de la propia labor. El tutor que se reconoce como educador, y no como simple gestor de un grupo, actúa distinto: la ética deja de ser una exigencia externa y pasa a ser parte de cómo entiende su trabajo.</p>
+</div>
+
+<div class="card">
+<span class="tag">04 · Competencias éticas</span>
+<p>Lo que el docente sabe, valora y hace en clave ética: conocimientos, actitudes, valores, destrezas y comportamientos (Sanz Ponce e Hirsch Adler, 2016). La ética profesional se vuelve competencia cuando se traduce en conductas concretas y sostenidas, no en buenas intenciones.</p>
+</div>
+
 </div>
 </div></section>
 
 <hr class="rule">
 
-<section><div class="wrap">
-<p class="eyebrow reveal">Lo que sostiene la tutoría</p>
-<h2 class="reveal">La gestión y el liderazgo habilitan el acompañamiento</h2>
-<div class="prose">
-<p class="reveal">Que existan tres niveles no garantiza que funcionen. Lo que los hace funcionar es la gestión escolar: el modo en que el centro gobierna sus decisiones, reparte el tiempo y coordina a las personas. La gestión escolar es una de las columnas básicas de la eficiencia de cualquier institución educativa, y se relaciona con los aprendizajes, los profesores y el currículo (Rivera Badillo y Cavazos Arroyo, 2015). Dicho de otro modo: el acompañamiento que el tutor da en el aula depende de decisiones que se toman en la dirección del centro.</p>
-<p class="reveal">Esas decisiones tienen nombres concretos. Para que la tutoría suceda, el centro tiene que reservar tiempo lectivo para tutorar, asignar grupos de tamaño manejable, coordinar a los tutores entre sí, dar acceso al apoyo del departamento de orientación y reconocer la labor como parte del trabajo, no como un añadido voluntario. Nada de esto lo decide el tutor: lo decide la gestión del plantel.</p>
+<section class="prose"><div class="wrap">
+<p class="eyebrow">De la teoría al pasillo</p>
+<h2>Cuatro dilemas de tutoría</h2>
+<p class="section-note">Casos genéricos, del tipo que se repite en cualquier escuela. Lee primero el caso, piensa tu respuesta y luego abre el panel. No hay respuestas perfectas; hay decisiones fundamentadas.</p>
+
+<div class="dilema">
+<h3>1 · El secreto que pesa demasiado</h3>
+<p class="caso">Una estudiante te pide hablar a solas. Antes de contarte nada te hace prometer que no se lo dirás a nadie. Tú aceptas. Entonces te confía que desde hace semanas tiene pensamientos de hacerse daño y que ya intentó algo. Te repite que confió en ti precisamente porque prometiste guardar el secreto.</p>
+<details>
+<summary><span class="chev"></span>¿Qué harías?</summary>
+<div class="answer">
+<p>La confidencialidad es real, pero no es absoluta. Sostiene la confianza mientras la información solo afecte a la persona que la comparte. Aquí hay un riesgo grave para su vida, y eso cambia la regla: no se puede guardar.</p>
+<p>Lo honesto no es romper la promesa a sus espaldas, sino reencuadrarla con ella. Algo como: "Te agradezco que confiaras en mí, y por eso mismo no puedo quedarme callado cuando tu seguridad está en juego. Voy a buscar ayuda contigo, no en tu contra." Después se activa el protocolo de la escuela y se involucra a quien corresponda, cuidando que ella no quede sola en el proceso.</p>
+<p class="principio"><b>Principio:</b> confidencialidad y sus límites. Se guarda lo confiado, salvo cuando callar pone en riesgo la integridad del estudiante o de terceros.</p>
+</div>
+</details>
 </div>
 
-<div class="box reveal">
-<span class="tag">De la fuente</span>
-<p>Rivera Badillo y Cavazos Arroyo, retomando a Garín y Castro (2010), sintetizan cuatro factores clave de la dirección escolar que inciden en la calidad de la gestión: que la dirección esté implicada en todos los procesos de gestión del centro, que se ejerza de forma participativa, que la autonomía institucional sea la garantía de un desempeño eficaz y que se atienda el escaso atractivo de la función directiva. Los tres primeros explican por qué un PAT del centro solo prospera con una dirección que lo asuma, lo comparta y tenga margen para sostenerlo.</p>
+<div class="dilema">
+<h3>2 · El alumno que se aferra</h3>
+<p class="caso">Un estudiante difícil ha empezado a buscarte todos los días. Te escribe a deshoras, quiere que solo tú lo atiendas y reacciona mal cuando lo derivas o cuando atiendes a otros. Sientes que la relación se está volviendo dependiente y que excede lo que un tutor puede y debe sostener.</p>
+<details>
+<summary><span class="chev"></span>¿Qué harías?</summary>
+<div class="answer">
+<p>Aquí chocan dos deberes: no abandonar a quien te necesita y no fingir un rol que no te toca. La salida no es cortar de golpe, porque eso sería abandono, ni sostenerlo todo en solitario, porque eso alimenta la dependencia y te rebasa.</p>
+<p>Se nombran límites con claridad y sin frialdad: horarios y canales de contacto, y la explicación de que cuidarlo bien incluye que otras personas también lo acompañen. Y se deriva: si hay señales que exceden la tutoría, entra el orientador o el profesional adecuado. Poner el límite no es soltar al estudiante; es ordenar el acompañamiento para que sea sostenible.</p>
+<p class="principio"><b>Principio:</b> no abandono más derivación. Acompañar sin desaparecer, y reconocer cuándo el caso excede el propio rol.</p>
+</div>
+</details>
 </div>
 
-<div class="prose">
-<p class="reveal">El liderazgo es la otra mitad. Los autores recogen que la actuación de los líderes afecta el ambiente y la cultura de la organización escolar, y que su ausencia obstaculiza el cambio y la mejora (Rivera Badillo y Cavazos Arroyo, 2015). Entre los rasgos que su estudio identifica en los directivos están el trabajo en equipo, la toma de decisiones colegiada y la gestión humanista, esto es, la detección de las necesidades de los colaboradores. Esos mismos rasgos son los que permiten que un claustro construya un plan de tutoría compartido en lugar de dejar a cada tutor a su suerte.</p>
+<div class="dilema">
+<h3>3 · El favorito sin querer</h3>
+<p class="caso">Hay un estudiante con quien te entiendes muy bien: educado, participativo, fácil de tratar. Sin darte cuenta, le das más tiempo en tutoría, le perdonas pequeños retrasos y eres más comprensivo con él que con el resto. Otro estudiante, más áspero en el trato, te lo reclama: dice que con él eres más duro.</p>
+<details>
+<summary><span class="chev"></span>¿Qué harías?</summary>
+<div class="answer">
+<p>El favoritismo casi nunca es una decisión; es una inclinación que se cuela. Por eso lo primero es tomarse en serio el reclamo en lugar de defenderse. Si la percepción existe, ya hay un problema de justicia, aunque la intención fuera buena.</p>
+<p>Justicia no significa tratar a todos de forma idéntica, sino dar a cada quien lo que necesita con el mismo criterio para todos. Conviene revisar la propia práctica: a quién atiendes más, a quién le perdonas qué, y volver a anclar las decisiones en reglas explícitas y comunes en vez de en la simpatía. La cercanía con un estudiante no puede pagarse con la distancia hacia otro.</p>
+<p class="principio"><b>Principio:</b> justicia y no favoritismos. El mismo criterio para todos; la afinidad personal no decide el trato profesional.</p>
+</div>
+</details>
 </div>
 
-<blockquote class="quote reveal">La gestión escolar es una herramienta que sistematiza las acciones dirigidas al logro de las metas y objetivos propuestos.
-<cite>Rivera Badillo y Cavazos Arroyo (2015)</cite></blockquote>
-
-<div class="prose">
-<p class="reveal">Lo que esto significa para el tutor es directo. El acompañamiento no se sostiene solo con vocación. Se sostiene cuando la gestión convierte la tutoría en una prioridad del centro y le da las cuatro cosas que necesita: coordinación entre quienes la ejercen, tiempo en el horario, recursos de apoyo y un plan de tutoría que sea de la institución y no de un profesor aislado.</p>
+<div class="dilema">
+<h3>4 · Lo que ves fuera del aula</h3>
+<p class="caso">En redes sociales encuentras, por casualidad, publicaciones de un estudiante tuyo que sugieren una situación familiar complicada en casa, aunque él nunca te ha contado nada y no sabe que las viste. No es información que él te haya confiado, pero te preocupa de verdad.</p>
+<details>
+<summary><span class="chev"></span>¿Qué harías?</summary>
+<div class="answer">
+<p>La tentación es actuar de inmediato con lo que viste. Pero confrontar al estudiante con material que él no te entregó rompe su privacidad y puede sentirse como vigilancia, no como cuidado. La preocupación es legítima; la vía de entrada, no.</p>
+<p>Lo correcto es no usar esa información como prueba ni revelar cómo la obtuviste, y en cambio abrir un espacio normal de tutoría donde él pueda hablar si quiere: una conversación de seguimiento, atención a señales en clase, disponibilidad sin presión. Si aparecen indicios reales de riesgo o desprotección, se activa la ruta institucional. El límite es claro: cuidar no autoriza a invadir.</p>
+<p class="principio"><b>Principio:</b> privacidad y respeto a la persona. La preocupación se canaliza por vías profesionales, no espiando la vida privada del estudiante.</p>
+</div>
+</details>
 </div>
 
-<ol class="numlist reveal">
-<li><strong>Coordinación.</strong> Los tutores no trabajan en paralelo sino articulados por el departamento de orientación, con criterios y materiales comunes.</li>
-<li><strong>Tiempo.</strong> Hay horas lectivas reservadas para la tutoría; sin ellas, el acompañamiento se hace en los huecos y se vuelve opcional.</li>
-<li><strong>Recursos.</strong> El tutor tiene acceso a apoyo especializado del centro y de la zona cuando un caso lo excede.</li>
-<li><strong>Plan del centro.</strong> Existe un PAT institucional que da continuidad y coherencia entre grupos, etapas y años.</li>
-</ol>
 </div></section>
 
-<hr class="rule">
-
-<section><div class="wrap wrap--narrow">
-<p class="eyebrow reveal">Del aula al sistema</p>
-<h2 class="reveal">El tutor como agente de la escuela</h2>
-<div class="prose">
-<p class="reveal">Hay un último giro. Cuando el centro sostiene la tutoría, el tutor deja de ser solo alguien que ayuda a un estudiante y pasa a ser un agente de la escuela. Su trabajo cotidiano, la detección temprana de quien falta, baja o se aísla, es exactamente el mecanismo que la institución usa para no perder a sus alumnos. El acompañamiento personalizado del aula es la pieza con la que la escuela mueve sus propios resultados.</p>
-<p class="reveal">Ese mismo mecanismo, mirado desde arriba, es una palanca de política pública. La acción tutorial deja de ser una práctica de aula y se vuelve política cuando se institucionaliza como medio para reducir el abandono, cerrar brechas de equidad y mejorar la permanencia y el egreso (González-Benito y Vélaz de Medrano, 2015). Lo preventivo del tutor se traduce en sistemas de alerta temprana; lo personalizado, en iniciativas focalizadas en los estudiantes más vulnerables; lo continuo, en programas que acompañan toda la trayectoria. El gesto del tutor que repara en una ausencia es la unidad mínima de una política de equidad.</p>
-<p class="reveal">Por eso el mapa de tres niveles se cierra hacia arriba. El tutor actúa en el aula, el centro lo coordina, la zona lo respalda y el sistema lo convierte en política. La advertencia es la misma en los dos extremos: una tutoría sin relación se vacía en burocracia, y una política de tutoría que solo persigue indicadores corre el riesgo de perder su núcleo, que es el vínculo entre una persona que acompaña y otra que es acompañada.</p>
-</div>
-
-<div class="box box--accent reveal">
-<span class="tag">La idea del capítulo</span>
-<p>La tutoría es buena para el estudiante y buena para la escuela. Lo primero exige un tutor que acompañe; lo segundo, una institución que lo habilite. Cuando ambas cosas coinciden, el tutor se vuelve agente de mejora del centro y la tutoría se vuelve palanca del sistema.</p>
+<section class="prose"><div class="wrap wrap--narrow">
+<div class="box box--accent">
+<span class="tag">Regla práctica · confidencialidad</span>
+<p><strong>Lo que se guarda.</strong> Lo que el estudiante confía en tutoría se queda contigo. No es tema de pasillo, ni de la sala de profesores, ni de las familias por simple curiosidad. Compartir información solo con quien necesita conocerla para ayudar, y solo lo necesario.</p>
+<p><strong>Cuándo se debe romper.</strong> El secreto cede cuando callar pone en riesgo al estudiante o a otra persona: riesgo para su vida o su salud, indicios de abuso o maltrato, o peligro para terceros. En esos casos no se trata de traicionar la confianza, sino de protegerla con la única decisión que cuida de verdad.</p>
+<p style="margin-bottom:0"><strong>Cómo hacerlo bien.</strong> Avisar de los límites desde el principio ("guardaré lo que me cuentes, salvo que tu seguridad esté en juego"), romper el secreto de frente y no a escondidas, y activar el protocolo de la escuela sin dejar solo al estudiante.</p>
 </div>
 </div></section>
 
-<hr class="rule">
-
-<section><div class="wrap wrap--narrow">
-<h2 class="reveal">Referencias</h2>
-<div class="refs reveal">
-<p>González-Benito, A., y Vélaz de Medrano, C. (2015). <em>La acción tutorial en el sistema escolar</em>. Universidad Nacional de Educación a Distancia (UNED).</p>
-<p>Rivera Badillo, J. M., y Cavazos Arroyo, J. (2015). La importancia de la gestión y el liderazgo escolar en las instituciones de Educación Media Superior Tecnológica (CETIS y CBTIS) del estado de Tlaxcala. <em>RIDE Revista Iberoamericana para la Investigación y el Desarrollo Educativo</em>, <em>6</em>(11).</p>
+<section class="prose"><div class="wrap wrap--narrow">
+<h2 id="referencias">Referencias</h2>
+<div class="refs">
+<p>Sanz Ponce, R., &amp; Hirsch Adler, A. (2016). Ética profesional en el profesorado de educación secundaria de la Comunidad Valenciana. <em>Perfiles Educativos, 38</em>(151), 141&ndash;154.</p>
 </div>
 </div></section>
 
 </main>
 
-<nav class="pager"><div class="wrap"><a href="cap5.html"><span class="dir">Anterior</span>Ética profesional</a><a class="nx" href="cap7.html"><span class="dir">Siguiente</span>Del marco al proyecto</a></div></nav>
+<nav class="pager"><div class="wrap"><a href="cap5.html"><span class="dir">Anterior</span>Ser tutor en la era digital y de la IA</a><a class="nx" href="cap7.html"><span class="dir">Siguiente</span>Gestión escolar</a></div></nav>
 
 <footer class="foot"><div class="wrap">Ser tutor · Temas Selectos de Educación (UPAEP) · Hesus García Cobos</div></footer>
 

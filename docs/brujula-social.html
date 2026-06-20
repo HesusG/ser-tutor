@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La brújula social del tutor · Ser tutor</title>
+<meta name="description" content="Microactividad interactiva para practicar competencias sociales de Bisquerra: escucha, respeto, comunicación, asertividad y solución de conflictos.">
+<link rel="stylesheet" href="assets/book.css">
+<style>
+body{--chap:var(--c4)}
+.activity-head{padding:calc(var(--gap)*2.4) 0 calc(var(--gap)*1.2);border-bottom:var(--bw) solid var(--ink)}
+.activity-head .lead{max-width:42ch}
+.activity-shell{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:var(--gap);align-items:start}
+.scene,.decision,.scoreboard,.result-panel{border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper-raised);box-shadow:var(--sh) var(--sh) 0 var(--shadow)}
+.scene{position:sticky;top:80px;min-height:560px;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto}
+.scene__top{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem 1.1rem;border-bottom:var(--bw) solid var(--ink);background:var(--paper)}
+.step-label{font-family:var(--font-mono);font-weight:700;font-size:.85rem;color:var(--chap)}
+.timer{font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.stage{position:relative;min-height:360px;padding:1rem;background:
+  linear-gradient(90deg,color-mix(in srgb,var(--chap) 10%,transparent) 0 1px,transparent 1px 100%),
+  linear-gradient(0deg,color-mix(in srgb,var(--ink) 8%,transparent) 0 1px,transparent 1px 100%);
+  background-size:34px 34px}
+.stage::before{content:"";position:absolute;left:0;right:0;bottom:0;height:92px;background:color-mix(in srgb,var(--chap) 18%,var(--paper));border-top:var(--bw) solid var(--ink)}
+.avatar{position:absolute;bottom:54px;width:142px;height:210px}
+.avatar--teacher{left:9%}.avatar--student{right:9%}
+.avatar svg{width:100%;height:100%;display:block;filter:drop-shadow(4px 5px 0 var(--shadow))}
+.bubble{position:absolute;max-width:min(58%,360px);top:24px;right:8%;border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper-raised);padding:.85rem .95rem;box-shadow:4px 4px 0 var(--shadow);font-size:1.03rem;line-height:1.35}
+.bubble::after{content:"";position:absolute;right:52px;bottom:-13px;width:24px;height:24px;background:var(--paper-raised);border-right:var(--bw) solid var(--ink);border-bottom:var(--bw) solid var(--ink);transform:rotate(45deg)}
+.competency-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--bw) solid var(--ink)}
+.competency-strip span{font-family:var(--font-mono);font-size:.72rem;line-height:1.25;padding:.72rem .65rem;border-right:1px solid var(--ink);color:var(--ink-soft);min-height:52px}
+.competency-strip span:last-child{border-right:0}
+.competency-strip .is-on{background:var(--chap);color:#fff;font-weight:700}
+.side{display:grid;gap:var(--gap)}
+.scoreboard{padding:1rem}
+.meters{display:grid;gap:.75rem}
+.meter{display:grid;grid-template-columns:92px 1fr 38px;gap:.65rem;align-items:center;font-family:var(--font-mono);font-size:.78rem}
+.track{height:14px;border:var(--bw) solid var(--ink);background:var(--paper);border-radius:999px;overflow:hidden}
+.fill{height:100%;width:50%;background:var(--chap);transition:width .25s ease,background .25s ease}
+.fill--clarity{background:#2C6E8F}.fill--respect{background:#1F7A4C}.fill--bond{background:#C4351C}
+.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-top:1rem}
+.progress span{height:10px;border:var(--bw) solid var(--ink);background:var(--paper)}
+.progress .done{background:var(--chap)}
+.decision{padding:1rem 1.1rem}
+.decision h2{font-size:1.45rem;margin:.1rem 0 .35rem}
+.decision p{max-width:100%;margin:.35rem 0 1rem}
+.choices{display:grid;gap:.8rem}
+.choice{width:100%;text-align:left;border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper);color:var(--ink);padding:.85rem .9rem;cursor:pointer;box-shadow:4px 4px 0 var(--shadow);transition:transform .1s,box-shadow .1s,background .15s}
+.choice:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--shadow)}
+.choice:focus-visible{outline:3px solid var(--chap);outline-offset:3px}
+.choice strong{display:block;font-family:var(--font-mono);font-size:.78rem;color:var(--chap);margin-bottom:.2rem}
+.choice span{display:block;font-family:var(--font-body);font-size:1.03rem;line-height:1.35}
+.choice.is-picked{background:color-mix(in srgb,var(--chap) 13%,var(--paper));transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shadow)}
+.feedback{display:none;margin-top:1rem;border-left:6px solid var(--chap);padding:.15rem 0 .15rem .9rem}
+.feedback.is-on{display:block}
+.feedback h3{font-size:1.1rem;margin:0 0 .2rem}
+.feedback p{margin:0;color:var(--ink-soft)}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
+.action{font-family:var(--font-mono);font-weight:700;font-size:.82rem;border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--chap);color:#fff;padding:.65rem .85rem;cursor:pointer;box-shadow:4px 4px 0 var(--shadow)}
+.action.secondary{background:var(--paper);color:var(--ink)}
+.action:disabled{opacity:.5;cursor:not-allowed}
+.result-panel{display:none;padding:1.15rem}
+.result-panel.is-on{display:block}
+.result-panel h2{font-size:1.55rem;margin:0 0 .35rem}
+.result-badge{display:inline-block;font-family:var(--font-mono);font-weight:700;font-size:.8rem;background:var(--chap);color:#fff;border:var(--bw) solid var(--ink);border-radius:var(--rad);padding:.3rem .5rem;margin-bottom:.75rem}
+.map{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin:1rem 0}
+.map span{border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper);padding:.65rem;font-family:var(--font-mono);font-size:.76rem;line-height:1.3;min-height:74px}
+.map b{display:block;color:var(--chap);margin-bottom:.25rem}
+.note{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);line-height:1.55}
+@media(max-width:900px){
+  .activity-shell{grid-template-columns:1fr}
+  .scene{position:relative;top:auto;min-height:auto}
+  .stage{min-height:330px}
+}
+@media(max-width:620px){
+  .stage{min-height:360px}
+  .avatar{width:112px;height:170px;bottom:52px}
+  .avatar--teacher{left:4%}.avatar--student{right:4%}
+  .bubble{left:1rem;right:1rem;max-width:none;top:16px;font-size:.98rem}
+  .competency-strip,.map{grid-template-columns:1fr 1fr}
+  .meter{grid-template-columns:78px 1fr 34px}
+}
+@media(prefers-reduced-motion:reduce){
+  .fill,.choice{transition:none}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><a class="nav__brand" href="index.html"><span class="sq"></span> Ser tutor</a><div class="nav__right"><a href="cap4.html">Cap. 4</a><a href="index.html#indice">Índice</a><button class="toggle" id="themeToggle" type="button">Tema</button></div></div></nav>
+
+<header class="activity-head"><div class="wrap">
+  <p class="eyebrow">Microactividad · 5 minutos</p>
+  <h1>La brújula social del tutor</h1>
+  <p class="lead">Toma cuatro decisiones ante un conflicto escolar y observa si tu respuesta sostiene claridad, respeto y vínculo.</p>
+</div></header>
+
+<main>
+<section><div class="wrap activity-shell">
+  <aside class="scene" aria-label="Escena de tutoría">
+    <div class="scene__top">
+      <span class="step-label" id="stepLabel">Paso 1 de 4</span>
+      <span class="timer">Duración sugerida: 5 min</span>
+    </div>
+    <div class="stage">
+      <div class="bubble" id="studentLine">Profe, usted siempre me baja puntos. No se vale. Mejor ya no hago nada.</div>
+      <div class="avatar avatar--teacher" aria-label="Avatar docente">
+        <svg viewBox="0 0 140 210" role="img">
+          <rect x="36" y="84" width="68" height="94" rx="10" fill="var(--paper-raised)" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M38 116 L18 158" fill="none" stroke="var(--ink)" stroke-width="12" stroke-linecap="round"/>
+          <path d="M102 116 L124 158" fill="none" stroke="var(--ink)" stroke-width="12" stroke-linecap="round"/>
+          <circle cx="70" cy="48" r="34" fill="#F3C9A6" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M38 44 C44 12,96 10,104 44 C90 34,58 34,38 44Z" fill="#2C6E8F" stroke="var(--ink)" stroke-width="3"/>
+          <circle cx="58" cy="51" r="3" fill="var(--ink)"/><circle cx="82" cy="51" r="3" fill="var(--ink)"/>
+          <path d="M58 68 C66 74,76 74,84 68" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <rect x="48" y="178" width="18" height="28" rx="4" fill="#1F7A4C" stroke="var(--ink)" stroke-width="3"/>
+          <rect x="74" y="178" width="18" height="28" rx="4" fill="#1F7A4C" stroke="var(--ink)" stroke-width="3"/>
+          <rect x="52" y="98" width="36" height="10" fill="var(--chap)" stroke="var(--ink)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="avatar avatar--student" aria-label="Avatar estudiante">
+        <svg viewBox="0 0 140 210" role="img">
+          <rect x="34" y="92" width="72" height="88" rx="12" fill="#C4351C" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M36 124 L14 144" fill="none" stroke="var(--ink)" stroke-width="11" stroke-linecap="round"/>
+          <path d="M104 124 L126 144" fill="none" stroke="var(--ink)" stroke-width="11" stroke-linecap="round"/>
+          <circle cx="70" cy="52" r="33" fill="#D9A77E" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M42 46 C44 18,94 12,102 48 C84 38,62 38,42 46Z" fill="#15130E"/>
+          <circle cx="58" cy="56" r="3" fill="var(--ink)"/><circle cx="82" cy="56" r="3" fill="var(--ink)"/>
+          <path d="M56 72 C64 66,76 66,84 72" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+          <rect x="48" y="180" width="18" height="26" rx="4" fill="#2C6E8F" stroke="var(--ink)" stroke-width="3"/>
+          <rect x="74" y="180" width="18" height="26" rx="4" fill="#2C6E8F" stroke="var(--ink)" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+    <div class="competency-strip" aria-label="Competencias sociales en juego">
+      <span id="comp0" class="is-on">Escucha y comunicación receptiva</span>
+      <span id="comp1">Respeto por los demás</span>
+      <span id="comp2">Comunicación expresiva y asertividad</span>
+      <span id="comp3">Cooperación y solución de conflictos</span>
+    </div>
+  </aside>
+
+  <div class="side">
+    <section class="scoreboard" aria-label="Brújula social">
+      <p class="eyebrow">Brújula social</p>
+      <div class="meters">
+        <div class="meter"><span>Claridad</span><div class="track"><div class="fill fill--clarity" id="clarityFill"></div></div><strong id="clarityScore">50</strong></div>
+        <div class="meter"><span>Respeto</span><div class="track"><div class="fill fill--respect" id="respectFill"></div></div><strong id="respectScore">50</strong></div>
+        <div class="meter"><span>Vínculo</span><div class="track"><div class="fill fill--bond" id="bondFill"></div></div><strong id="bondScore">50</strong></div>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="bar0"></span><span id="bar1"></span><span id="bar2"></span><span id="bar3"></span></div>
+    </section>
+
+    <section class="decision" id="decisionPanel" aria-live="polite">
+      <p class="eyebrow" id="phase">Comunicación receptiva</p>
+      <h2 id="prompt">¿Qué haces primero?</h2>
+      <p id="context">El estudiante llega alterado. Tu primera respuesta define si la conversación abre o se cierra.</p>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback">
+        <h3 id="feedbackTitle">Feedback</h3>
+        <p id="feedbackText"></p>
+      </div>
+      <div class="actions">
+        <button class="action" id="nextBtn" type="button" disabled>Siguiente</button>
+        <button class="action secondary" id="restartBtn" type="button">Reiniciar</button>
+      </div>
+    </section>
+
+    <section class="result-panel" id="resultPanel" aria-live="polite">
+      <span class="result-badge" id="resultBadge">Resultado</span>
+      <h2 id="resultTitle">Respuesta socialmente competente</h2>
+      <p id="resultText"></p>
+      <div class="map">
+        <span><b>Escuchar</b> Recibir el mensaje antes de corregir.</span>
+        <span><b>Respetar</b> Separar a la persona del problema.</span>
+        <span><b>Expresar</b> Marcar criterio sin descalificar.</span>
+        <span><b>Resolver</b> Cerrar con una acción verificable.</span>
+      </div>
+      <p class="note">Idea clave: ser socialmente competente no es evitar el conflicto; es sostener el vínculo mientras se expresa con claridad lo que se piensa, se siente y se necesita.</p>
+      <div class="actions">
+        <button class="action" id="againBtn" type="button">Volver a jugar</button>
+        <a class="action secondary" href="cap4.html">Regresar al capítulo</a>
+      </div>
+    </section>
+  </div>
+</div></section>
+</main>
+
+<nav class="pager"><div class="wrap"><a href="cap4.html"><span class="dir">Volver</span>Habilidades socioemocionales</a><a class="nx" href="cap5.html"><span class="dir">Siguiente</span>Ser tutor en la era digital y de la IA</a></div></nav>
+
+<footer class="foot"><div class="wrap">Ser tutor · Temas Selectos de Educación (UPAEP) · Hesus García Cobos</div></footer>
+
+<script src="assets/book.js"></script>
+<script>
+(function(){
+  var steps=[
+    {
+      phase:"Comunicación receptiva",
+      prompt:"¿Qué haces primero?",
+      context:"El estudiante llega alterado. Tu primera respuesta define si la conversación abre o se cierra.",
+      line:"Profe, usted siempre me baja puntos. No se vale. Mejor ya no hago nada.",
+      choices:[
+        {type:"Pasiva",text:"Bueno, no pasa nada. Si quieres lo vemos otro día.",delta:{clarity:-12,respect:6,bond:4},title:"Baja el conflicto, pero evita el fondo",feedback:"Cuidas el tono, pero dejas sin atender el reclamo y el criterio académico queda difuso."},
+        {type:"Agresiva",text:"No me hables así. Si sigues con esa actitud, pierdes tu oportunidad.",delta:{clarity:8,respect:-18,bond:-16},title:"Hay control, pero se rompe la escucha",feedback:"La regla queda clara, pero la respuesta castiga la emoción antes de comprender el mensaje."},
+        {type:"Asertiva",text:"Te escucho. Dime qué parte de la calificación te parece injusta y lo revisamos con calma.",delta:{clarity:12,respect:14,bond:14},title:"Abres la conversación",feedback:"Practicas escucha y das un cauce concreto sin prometer cambiar la calificación."}
+      ]
+    },
+    {
+      phase:"Respeto por los demás",
+      prompt:"¿Cómo reconoces su emoción?",
+      context:"Ya escuchaste que se siente tratado injustamente. Ahora necesitas validar sin darle automáticamente la razón.",
+      line:"Es que sí estudié. Siento que no cuenta nada de lo que hago.",
+      choices:[
+        {type:"Pasiva",text:"Sí, tienes razón, quizá fui demasiado exigente contigo.",delta:{clarity:-14,respect:8,bond:7},title:"Validas, pero cedes el criterio",feedback:"Reconocer la emoción no exige abandonar la evaluación ni asumir culpa sin revisar evidencias."},
+        {type:"Agresiva",text:"Eso no es cierto. Aquí todos se evalúan igual.",delta:{clarity:6,respect:-14,bond:-12},title:"Defiendes la norma, pero niegas la experiencia",feedback:"Puede ser verdad que la regla sea igual, pero la frase bloquea la posibilidad de comprender lo que vive el estudiante."},
+        {type:"Asertiva",text:"Entiendo que te frustre sentir que tu esfuerzo no se ve. Revisemos juntos qué evidencia hay.",delta:{clarity:12,respect:15,bond:12},title:"Validas sin rendir el criterio",feedback:"Distingues emoción y hecho: reconoces la vivencia y llevas el diálogo hacia evidencia revisable."}
+      ]
+    },
+    {
+      phase:"Comunicación expresiva y asertividad",
+      prompt:"¿Qué límite expresas?",
+      context:"El estudiante insiste y sube el tono. Necesitas sostener el respeto y el criterio.",
+      line:"Entonces cámbieme la nota. Si no, voy a decir que usted me trae mala voluntad.",
+      choices:[
+        {type:"Pasiva",text:"Está bien, te subo algunos puntos para que no haya problema.",delta:{clarity:-18,respect:4,bond:-6},title:"Evitas presión, pero pierdes justicia",feedback:"Ceder por amenaza enseña que la presión decide más que la evidencia."},
+        {type:"Agresiva",text:"Haz lo que quieras. Con amenazas no vas a conseguir nada conmigo.",delta:{clarity:9,respect:-16,bond:-14},title:"El límite aparece como confrontación",feedback:"Hay un límite, pero el tono vuelve la conversación una lucha de poder."},
+        {type:"Asertiva",text:"Puedo revisar la evidencia contigo; no puedo cambiar una nota por presión o amenaza.",delta:{clarity:16,respect:12,bond:8},title:"Límite claro y respetuoso",feedback:"Defiendes el criterio sin atacar a la persona. Eso es asertividad: claridad con respeto."}
+      ]
+    },
+    {
+      phase:"Cooperación y solución de conflictos",
+      prompt:"¿Cómo cierras la conversación?",
+      context:"El conflicto necesita una salida. La respuesta competente termina con acuerdo, no solo con discurso.",
+      line:"Entonces, ¿qué hago? Ya no sé ni por dónde empezar.",
+      choices:[
+        {type:"Pasiva",text:"Tú piensa qué quieres hacer y luego me avisas.",delta:{clarity:-10,respect:4,bond:-3},title:"Das libertad, pero poco acompañamiento",feedback:"El estudiante queda solo ante el problema. Falta una acción concreta para reparar o avanzar."},
+        {type:"Agresiva",text:"Pues ponte al corriente. Las indicaciones estaban desde el inicio.",delta:{clarity:5,respect:-13,bond:-14},title:"Cierras rápido, pero sin cooperación",feedback:"La indicación puede ser cierta, pero no construye una salida ni recupera disposición."},
+        {type:"Asertiva",text:"Hagamos esto: revisamos la rúbrica ahora, eliges una evidencia para mejorar y acordamos fecha de entrega.",delta:{clarity:15,respect:12,bond:14},title:"Conviertes el conflicto en plan",feedback:"La salida combina criterio, participación del estudiante y un acuerdo verificable."}
+      ]
+    }
+  ];
+  var state={index:0,clarity:50,respect:50,bond:50,picked:null,types:[]};
+  var ids=["phase","prompt","context","studentLine","choices","feedback","feedbackTitle","feedbackText","nextBtn","restartBtn","resultPanel","decisionPanel","resultBadge","resultTitle","resultText","againBtn"];
+  var el={};
+  ids.forEach(function(id){el[id]=document.getElementById(id);});
+  function clamp(n){return Math.max(0,Math.min(100,n));}
+  function setText(id,text){document.getElementById(id).textContent=text;}
+  function updateMeters(){
+    [["clarity","clarityFill","clarityScore"],["respect","respectFill","respectScore"],["bond","bondFill","bondScore"]].forEach(function(row){
+      var value=clamp(state[row[0]]);
+      document.getElementById(row[1]).style.width=value+"%";
+      setText(row[2],String(value));
+    });
+    steps.forEach(function(_,i){
+      var bar=document.getElementById("bar"+i);
+      if(bar)bar.classList.toggle("done",i<state.index);
+      var comp=document.getElementById("comp"+i);
+      if(comp)comp.classList.toggle("is-on",i===state.index);
+    });
+  }
+  function renderStep(){
+    var step=steps[state.index];
+    setText("stepLabel","Paso "+(state.index+1)+" de "+steps.length);
+    el.phase.textContent=step.phase;
+    el.prompt.textContent=step.prompt;
+    el.context.textContent=step.context;
+    el.studentLine.textContent=step.line;
+    el.choices.innerHTML="";
+    el.feedback.classList.remove("is-on");
+    el.nextBtn.disabled=true;
+    state.picked=null;
+    step.choices.forEach(function(choice,i){
+      var btn=document.createElement("button");
+      btn.className="choice";
+      btn.type="button";
+      btn.innerHTML="<strong>Respuesta "+String.fromCharCode(65+i)+"</strong><span>"+choice.text+"</span>";
+      btn.addEventListener("click",function(){pickChoice(i,btn);});
+      el.choices.appendChild(btn);
+    });
+    updateMeters();
+  }
+  function pickChoice(i,btn){
+    if(state.picked!==null)return;
+    var choice=steps[state.index].choices[i];
+    state.picked=choice;
+    state.types.push(choice.type);
+    state.clarity=clamp(state.clarity+choice.delta.clarity);
+    state.respect=clamp(state.respect+choice.delta.respect);
+    state.bond=clamp(state.bond+choice.delta.bond);
+    Array.prototype.slice.call(el.choices.children).forEach(function(child){child.disabled=true;});
+    btn.classList.add("is-picked");
+    el.feedbackTitle.textContent=choice.type+": "+choice.title;
+    el.feedbackText.textContent=choice.feedback;
+    el.feedback.classList.add("is-on");
+    el.nextBtn.disabled=false;
+    updateMeters();
+  }
+  function majorityType(){
+    var counts={Pasiva:0,Agresiva:0,Asertiva:0};
+    state.types.forEach(function(type){counts[type]+=1;});
+    if(counts.Asertiva>=3)return "asertiva";
+    if(counts.Agresiva>counts.Pasiva)return "agresiva";
+    if(counts.Pasiva>counts.Agresiva)return "pasiva";
+    return "mixta";
+  }
+  function showResult(){
+    var avg=Math.round((state.clarity+state.respect+state.bond)/3);
+    var style=majorityType();
+    var title="Respuesta socialmente competente";
+    var badge="Equilibrio asertivo";
+    var text="Lograste sostener los tres ejes: claridad para expresar criterio, respeto por la experiencia del estudiante y vínculo suficiente para construir una salida.";
+    if(avg<62 && style==="agresiva"){
+      title="Respuesta con tendencia agresiva";
+      badge="Mucho control, poco vínculo";
+      text="Tus decisiones marcaron límites, pero redujeron escucha y respeto. En clave Bisquerra, falta equilibrar comunicación expresiva con comunicación receptiva.";
+    }else if(avg<62 && style==="pasiva"){
+      title="Respuesta con tendencia pasiva";
+      badge="Mucho cuidado, poca claridad";
+      text="Tus decisiones bajaron el conflicto inmediato, pero dejaron débiles los límites y el criterio. La asertividad exige cuidar el vínculo sin renunciar a lo justo.";
+    }else if(avg<70 || style==="mixta"){
+      title="Respuesta en construcción";
+      badge="Equilibrio parcial";
+      text="Hubo momentos competentes y momentos frágiles. Revisa cuál eje bajó más: claridad, respeto o vínculo. Ahí está la siguiente práctica.";
+    }
+    el.decisionPanel.style.display="none";
+    el.resultPanel.classList.add("is-on");
+    el.resultBadge.textContent=badge;
+    el.resultTitle.textContent=title;
+    el.resultText.textContent=text;
+    setText("stepLabel","Resultado");
+    steps.forEach(function(_,i){
+      var bar=document.getElementById("bar"+i);
+      if(bar)bar.classList.add("done");
+      var comp=document.getElementById("comp"+i);
+      if(comp)comp.classList.remove("is-on");
+    });
+  }
+  function restart(){
+    state={index:0,clarity:50,respect:50,bond:50,picked:null,types:[]};
+    el.resultPanel.classList.remove("is-on");
+    el.decisionPanel.style.display="";
+    renderStep();
+  }
+  el.nextBtn.addEventListener("click",function(){
+    if(state.picked===null)return;
+    state.index+=1;
+    if(state.index>=steps.length)showResult();
+    else renderStep();
+  });
+  el.restartBtn.addEventListener("click",restart);
+  el.againBtn.addEventListener("click",restart);
+  renderStep();
+})();
+</script>
+</body>
+</html>

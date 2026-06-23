@@ -20,6 +20,18 @@
       <h1>La Brújula Social</h1>
       <p>Simulador de decisiones para el tutor. Elige un caso, conversa con el estudiante y observa si tu respuesta sostiene <strong>claridad</strong>, <strong>respeto</strong> y <strong>vínculo</strong>.</p>
     </div>
+
+    <div class="rpg-modes" role="radiogroup" aria-label="Modo de juego" id="rpgModes">
+      <button type="button" class="rpg-mode" id="modeExplorar" role="radio" aria-checked="true" data-mode="explorar">
+        <span class="rpg-mode__name">Explorar</span>
+        <span class="rpg-mode__desc">Cada opción muestra su estilo (asertiva, pasiva…) como guía para aprender.</span>
+      </button>
+      <button type="button" class="rpg-mode" id="modeReto" role="radio" aria-checked="false" data-mode="reto">
+        <span class="rpg-mode__name">Reto</span>
+        <span class="rpg-mode__desc">Sin pistas: decides a ciegas y el estilo se revela hasta después de elegir.</span>
+      </button>
+    </div>
+
     <div class="rpg-cases" id="rpgCaseList"></div>
   </section>
 
@@ -30,9 +42,9 @@
       <img class="rpg-sprite" id="rpgSprite" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
       <div class="rpg-hud" aria-label="Brújula social">
         <span class="rpg-turn" id="rpgTurn">Turno 1</span>
-        <span class="rpg-meter"><span>CLA</span><span class="rpg-meter__track" role="img" aria-label="Claridad"><span class="rpg-meter__fill rpg-meter__fill--clarity" id="clarityFill"></span></span><span class="rpg-meter__val" id="clarityScore">50</span></span>
-        <span class="rpg-meter"><span>RES</span><span class="rpg-meter__track" role="img" aria-label="Respeto"><span class="rpg-meter__fill rpg-meter__fill--respect" id="respectFill"></span></span><span class="rpg-meter__val" id="respectScore">50</span></span>
-        <span class="rpg-meter"><span>VÍN</span><span class="rpg-meter__track" role="img" aria-label="Vínculo"><span class="rpg-meter__fill rpg-meter__fill--bond" id="bondFill"></span></span><span class="rpg-meter__val" id="bondScore">50</span></span>
+        <span class="rpg-meter"><span>CLA</span><span class="rpg-meter__track" id="clarityMeter" role="progressbar" aria-label="Claridad" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="rpg-meter__fill rpg-meter__fill--clarity" id="clarityFill"></span></span><span class="rpg-meter__val" id="clarityScore">50</span></span>
+        <span class="rpg-meter"><span>RES</span><span class="rpg-meter__track" id="respectMeter" role="progressbar" aria-label="Respeto" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="rpg-meter__fill rpg-meter__fill--respect" id="respectFill"></span></span><span class="rpg-meter__val" id="respectScore">50</span></span>
+        <span class="rpg-meter"><span>VÍN</span><span class="rpg-meter__track" id="bondMeter" role="progressbar" aria-label="Vínculo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="rpg-meter__fill rpg-meter__fill--bond" id="bondFill"></span></span><span class="rpg-meter__val" id="bondScore">50</span></span>
       </div>
     </div>
 
@@ -48,6 +60,7 @@
         <span class="rpg-fb-type" id="rpgFbType"></span>
         <strong id="rpgFbTitle"></strong>
         <p id="rpgFbText"></p>
+        <span class="rpg-fb-delta" id="rpgFbDelta"></span>
       </div>
       <button class="rpg-next" id="rpgNext" type="button" hidden>Continuar ▸</button>
     </div>
@@ -60,8 +73,23 @@
     <p class="rpg-result__text" id="resultText"></p>
     <p class="rpg-result__profile" id="resultProfile"></p>
 
+    <div class="rpg-fundamento" id="resultRiskBox" hidden>
+      <h3>Riesgo pedagógico</h3>
+      <p class="rpg-result__risk" id="resultRisk"></p>
+    </div>
+
+    <div class="rpg-fundamento" id="resultActionsBox" hidden>
+      <h3>Qué ajustar la próxima vez</h3>
+      <ul class="rpg-actions-list" id="resultActions"></ul>
+    </div>
+
+    <div class="rpg-fundamento" id="resultPhraseBox" hidden>
+      <h3>Prueba esta frase</h3>
+      <blockquote class="rpg-phrase" id="resultPhrase"></blockquote>
+    </div>
+
     <div class="rpg-fundamento">
-      <h3>Habilidades a trabajar</h3>
+      <h3>Siguiente práctica</h3>
       <ul class="rpg-skills" id="resultSkills"></ul>
     </div>
 
@@ -77,6 +105,7 @@
 
     <div class="rpg-actions">
       <button class="rpg-btn" id="rpgAgain" type="button">Volver a jugar</button>
+      <button class="rpg-btn rpg-btn--alt" id="rpgSwitch" type="button" hidden></button>
       <button class="rpg-btn rpg-btn--ghost" id="rpgMenu" type="button">Elegir otro caso</button>
       <a class="rpg-btn rpg-btn--ghost" href="cap4.html">Regresar al capítulo</a>
     </div>

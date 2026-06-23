@@ -75,7 +75,7 @@ window.BRUJULA_CASES.acoso = {
 
     n2_recover: {
       speaker: "student2", expression: "asustada", name: "Valeria",
-      line: "Ya sabía que no me iba a creer. Mejor olvídelo, no dije nada.",
+      line: "No debí decir nada… ahora va a ser peor. Mejor olvídelo.",
       prompt: "Se cerró y se arrepiente de hablar. ¿Cómo recuperas su confianza?",
       competency: "Reparación del vínculo — CASEL: conciencia social",
       choices: [
@@ -153,7 +153,7 @@ window.BRUJULA_CASES.acoso = {
 
     n4_drift: {
       speaker: "student2", expression: "triste", name: "Valeria",
-      line: "Sabía que no debí decir nada. Olvídelo, profe.",
+      line: "¿Y ahora qué? Siento que todo va a empeorar por mi culpa.",
       prompt: "Quedó desprotegida y arrepentida. ¿Cómo cierras sin abandonarla?",
       competency: "Cooperación y seguimiento — SEP / UNESCO",
       choices: [

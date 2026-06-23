@@ -142,7 +142,7 @@ window.BRUJULA_CASES.crisis = {
           feedback: "Acompañar a la ruta de apoyo, sumar a la familia y dar seguimiento es contención real, dentro de tu rol.",
           next: "end" },
         { type: "Pasiva", text: "Qué bueno que ya lo platicaste. Verás que se te pasa solito.",
-          delta: { clarity: -14, respect: 4, bond: -4 },
+          delta: { clarity: -14, respect: -6, bond: -8 },
           title: "Cierras sin canalizar", ground: "etica-limite-rol",
           feedback: "Confiar en que 'se le pasa solo' tras una señal de riesgo omite el paso clave: la ayuda especializada.",
           next: "end" },
@@ -156,7 +156,7 @@ window.BRUJULA_CASES.crisis = {
 
     n4_drift: {
       speaker: "student3", expression: "triste", name: "Diego",
-      line: "Ya decía yo que mejor no hablaba. Olvídelo, profe.",
+      line: "Da igual. Al final sigo igual de solo con esto.",
       prompt: "Quedó solo con su malestar. ¿Cómo cierras sin abandonarlo?",
       competency: "Acompañamiento y red de apoyo — SEP / ética",
       choices: [

@@ -32,7 +32,7 @@ window.BRUJULA_CASES.calificacion = {
           feedback: "Practicas escucha y das un cauce concreto sin prometer cambiar la nota. El estudiante baja la guardia.",
           next: "n2_open" },
         { type: "Pasiva", text: "Bueno, no pasa nada. Si quieres lo vemos otro día.",
-          delta: { clarity: -12, respect: 6, bond: 4 },
+          delta: { clarity: -12, respect: 0, bond: -4 },
           title: "Bajas el conflicto, pero evitas el fondo", ground: "bisquerra-asertividad",
           feedback: "Cuidas el tono, pero dejas el reclamo sin atender y el criterio académico queda difuso.",
           next: "n2_recover" },
@@ -131,7 +131,7 @@ window.BRUJULA_CASES.calificacion = {
 
     /* Cierre tras un buen límite */
     n4_plan: {
-      speaker: "student", expression: "neutral", name: "Mateo",
+      speaker: "student", expression: "triste", name: "Mateo",
       line: "Entonces, ¿qué hago? Ya no sé ni por dónde empezar.",
       prompt: "Se abrió a cooperar. ¿Cómo cierras la conversación?",
       competency: "Cooperación y solución de conflictos — SEP / OCDE",
@@ -157,7 +157,7 @@ window.BRUJULA_CASES.calificacion = {
     /* Cierre tras un mal límite: hay que rescatar algo */
     n4_drift: {
       speaker: "student", expression: "triste", name: "Mateo",
-      line: "Ya ni para qué. Usted hace lo que quiere de todos modos.",
+      line: "Ya ni para qué. Al final aquí nada se resuelve de verdad.",
       prompt: "Quedó resentido. ¿Cómo cierras sin perderlo del todo?",
       competency: "Cooperación y solución de conflictos — SEP / OCDE",
       choices: [

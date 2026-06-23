@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Brújula Social · Simulador RPG · Ser tutor</title>
+<meta name="description" content="Simulador tipo RPG para practicar competencias socioemocionales del tutor: escucha, respeto, asertividad y solución de conflictos. Decisiones ramificadas, fundamentadas en CASEL y SEP.">
+<link rel="stylesheet" href="assets/book.css">
+<link rel="stylesheet" href="assets/rpg/rpg.css">
+</head>
+<body class="rpg-page">
+<nav class="nav"><div class="wrap"><a class="nav__brand" href="index.html"><span class="sq"></span> Ser tutor</a><div class="nav__right"><a href="cap4.html">Cap. 4</a><a href="index.html#indice">Índice</a><button class="toggle" id="themeToggle" type="button">Tema</button></div></div></nav>
+
+<main>
+<div class="rpg" id="rpg">
+
+  <!-- ===== Selección de caso ===== -->
+  <section id="rpgSelect" aria-label="Elegir caso">
+    <div class="rpg-intro">
+      <h1>La Brújula Social</h1>
+      <p>Simulador de decisiones para el tutor. Elige un caso, conversa con el estudiante y observa si tu respuesta sostiene <strong>claridad</strong>, <strong>respeto</strong> y <strong>vínculo</strong>.</p>
+    </div>
+    <div class="rpg-cases" id="rpgCaseList"></div>
+  </section>
+
+  <!-- ===== Juego ===== -->
+  <section id="rpgGame" aria-label="Escena de tutoría" hidden>
+    <div class="rpg-stage">
+      <img class="rpg-bg" id="rpgBg" alt="" aria-hidden="true" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <img class="rpg-sprite" id="rpgSprite" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <div class="rpg-hud" aria-label="Brújula social">
+        <span class="rpg-turn" id="rpgTurn">Turno 1</span>
+        <span class="rpg-meter"><span>CLA</span><span class="rpg-meter__track" role="img" aria-label="Claridad"><span class="rpg-meter__fill rpg-meter__fill--clarity" id="clarityFill"></span></span><span class="rpg-meter__val" id="clarityScore">50</span></span>
+        <span class="rpg-meter"><span>RES</span><span class="rpg-meter__track" role="img" aria-label="Respeto"><span class="rpg-meter__fill rpg-meter__fill--respect" id="respectFill"></span></span><span class="rpg-meter__val" id="respectScore">50</span></span>
+        <span class="rpg-meter"><span>VÍN</span><span class="rpg-meter__track" role="img" aria-label="Vínculo"><span class="rpg-meter__fill rpg-meter__fill--bond" id="bondFill"></span></span><span class="rpg-meter__val" id="bondScore">50</span></span>
+      </div>
+    </div>
+
+    <div class="rpg-dialog">
+      <span class="rpg-speaker" id="rpgSpeaker"></span>
+      <p class="rpg-line" id="rpgLine" aria-live="polite"></p>
+    </div>
+
+    <div class="rpg-decision" id="rpgDecision">
+      <p class="rpg-prompt" id="rpgPrompt"></p>
+      <div class="rpg-choices" id="rpgChoices" role="group" aria-label="Opciones de respuesta"></div>
+      <div class="rpg-feedback" id="rpgFeedback" aria-live="polite" hidden>
+        <span class="rpg-fb-type" id="rpgFbType"></span>
+        <strong id="rpgFbTitle"></strong>
+        <p id="rpgFbText"></p>
+      </div>
+      <button class="rpg-next" id="rpgNext" type="button" hidden>Continuar ▸</button>
+    </div>
+  </section>
+
+  <!-- ===== Resultado ===== -->
+  <section id="rpgResult" tabindex="-1" aria-label="Resultado" hidden>
+    <span class="rpg-result__badge" id="resultBadge">Resultado</span>
+    <h2 id="resultTitle"></h2>
+    <p class="rpg-result__text" id="resultText"></p>
+    <p class="rpg-result__profile" id="resultProfile"></p>
+
+    <div class="rpg-fundamento">
+      <h3>Habilidades a trabajar</h3>
+      <ul class="rpg-skills" id="resultSkills"></ul>
+    </div>
+
+    <div class="rpg-fundamento">
+      <h3>Fundamento de tus decisiones</h3>
+      <ul class="rpg-grounds" id="resultGrounds"></ul>
+    </div>
+
+    <div class="rpg-fundamento">
+      <h3>Para seguir (referencias en español)</h3>
+      <ul class="rpg-refs" id="resultRefs"></ul>
+    </div>
+
+    <div class="rpg-actions">
+      <button class="rpg-btn" id="rpgAgain" type="button">Volver a jugar</button>
+      <button class="rpg-btn rpg-btn--ghost" id="rpgMenu" type="button">Elegir otro caso</button>
+      <a class="rpg-btn rpg-btn--ghost" href="cap4.html">Regresar al capítulo</a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<nav class="pager"><div class="wrap"><a href="cap4.html"><span class="dir">Volver</span>Habilidades socioemocionales</a><a class="nx" href="cap5.html"><span class="dir">Siguiente</span>Ser tutor en la era digital y de la IA</a></div></nav>
+
+<footer class="foot"><div class="wrap">Ser tutor · Temas Selectos de Educación (UPAEP) · Hesus García Cobos</div></footer>
+
+<script src="assets/book.js"></script>
+<script src="assets/rpg/cases/grounds.js"></script>
+<script src="assets/rpg/cases/calificacion.js"></script>
+<script src="assets/rpg/cases/acoso.js"></script>
+<script src="assets/rpg/cases/crisis.js"></script>
+<script src="assets/rpg/engine.js"></script>
+</body>
+</html>

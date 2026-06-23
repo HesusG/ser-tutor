@@ -6,3 +6,7 @@ __pycache__/
 
 # Manuscrito del libro (producto de pago) — NO publicar en repo público
 book/
+
+# Claves de API — NUNCA commitear
+.env
+tools/.env

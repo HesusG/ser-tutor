@@ -47,6 +47,19 @@ y etiquetar** los propios sentimientos (libro *10 Ideas*, p.57, 90).
 - `DESNATURALIZAR/INTERÉS` El vocabulario emocional que enseñamos, ¿es universal o
   es el de una cultura concreta? ¿Qué emociones quedan fuera de la lista?
 
+**Posibles respuestas (y quién las ilumina).**
+- *A favor del nombrar:* aunque la introspección es imperfecta (**Nisbett &
+  Wilson**, 1977, *"Telling more than we can know"*), **poner la emoción en palabras
+  sí ayuda**: **Lieberman** (2007, *affect labeling*) mostró que nombrar reduce la
+  activación de la amígdala, y **Feldman Barrett** y **Kashdan** defienden la
+  **granularidad emocional** (tener más palabras para emociones) como predictor de
+  mejor regulación. O sea: aunque la emoción se *construya*, el vocabulario es útil.
+- *El matiz:* esa misma granularidad **no exige un diccionario universal cerrado**
+  —solo riqueza de matices— así que sirve sin caer en el universalismo.
+- *Sobre medir por autoinforme:* **Mayer y Salovey** proponen medir la inteligencia
+  emocional como **habilidad** (pruebas de desempeño), no por lo que la persona dice
+  de sí misma, justamente para esquivar ese sesgo que arrastra Bisquerra.
+
 ---
 
 ## 2. Regulación emocional
@@ -76,6 +89,19 @@ violencia.
   injusticia?
 - `SOSPECHA` "Autogenerarse emociones positivas", ¿puede volverse una obligación de
   estar bien que reprime lo que la persona realmente siente?
+
+**Posibles respuestas (y quién las ilumina).**
+- *"Regular no es reprimir" le da la razón la ciencia:* el **modelo de proceso de
+  James Gross** muestra que la **reevaluación** (reinterpretar la situación) funciona
+  mejor que la **supresión** (tragarse la expresión), que tiene costos cognitivos,
+  fisiológicos y hasta de memoria. Bisquerra acierta en distinguir regulación de
+  represión.
+- *Pero "apropiada según quién" sigue abierto:* **Susan David** (*agilidad
+  emocional*) critica la **"tiranía de la positividad"** —la incomodidad es parte de
+  una vida con sentido—; y **Audre Lorde** (*Los usos de la ira*) y **Myisha Cherry**
+  (*The Case for Rage*) defienden que cierta ira ante la injusticia es **moralmente
+  valiosa** y motor de cambio. Síntesis honesta: **regular sí, pero sin patologizar
+  las emociones "negativas" ni exigir positividad**.
 
 ---
 
@@ -107,6 +133,19 @@ emocional"* (2007, §3; libro p.60).
 - `EVIDENCIA/CONTRACARA` La autoestima alta, ¿produce buenos resultados o es más
   bien resultado de ellos? ¿Qué dice la evidencia, no la intuición?
 
+**Posibles respuestas (y quién las ilumina).**
+- *La contradicción "autonomía + buscar ayuda" se resuelve:* la **Teoría de la
+  Autodeterminación** (**Deci y Ryan**) aclara que **autonomía no es independencia**,
+  es **volición** (que la acción nazca de uno y concuerde con los propios valores);
+  es totalmente compatible con la **relación** (relatedness) y con pedir ayuda.
+  Bisquerra tiene razón al juntarlas, aunque no lo explique.
+- *Sobre la autoestima:* **Baumeister et al.** (2003) muestran que la alta
+  autoestima no causa los logros; **Kristin Neff** propone la **autocompasión** como
+  constructo mejor respaldado.
+- *Sobre la responsabilización:* la **ética del cuidado** (**Gilligan**, **Noddings**)
+  advierte que el ideal del individuo autosuficiente puede **ocultar** la dependencia
+  real y el apoyo estructural que toda persona necesita.
+
 ---
 
 ## 4. Competencia social
@@ -134,6 +173,20 @@ libro p.63, "Idea clave 3"). Se desglosa en nueve microcompetencias.
   romper el vínculo? ¿El modelo lo contempla, o siempre premia la armonía?
 - `DEFINIR/GENEALOGÍA` Las "habilidades sociales correctas", ¿son universales o son
   las de una cultura y una clase concretas? ¿Quién definió que esas eran las buenas?
+
+**Posibles respuestas (y quién las ilumina).**
+- *"¿Habilidades correctas según quién?":* **Pierre Bourdieu** responde que muchas
+  "habilidades sociales" son **capital cultural** de clase media que la escuela
+  premia (y que el profesorado, también de clase media, reconoce más fácil); el niño
+  de clase trabajadora no es menos hábil, su **código es otro**. La **psicología
+  cultural** (**Markus y Kitayama**) muestra que lo "apropiado" cambia entre culturas
+  más independientes o más interdependientes.
+- *"¿El conflicto es una falla?":* **Chantal Mouffe** (*agonismo*) sostiene que el
+  conflicto es **constitutivo** de la convivencia democrática, no un error a borrar.
+- *La contracara que sostiene a Bisquerra:* la investigación sobre conducta
+  **prosocial** (**Eisenberg**) y la **CNV** (**Rosenberg**) sí muestran beneficios
+  reales y bastante transculturales de cooperar y empatizar. No todo es construcción
+  de clase.
 
 ---
 
@@ -166,6 +219,18 @@ decisiones, ciudadanía y **bienestar subjetivo**.
 - `EVIDENCIA/CONTRACARA` ¿Qué evidencia hay de que esto produzca bienestar
   **duradero**, y no solo mejoras a corto plazo que tienden a desvanecerse?
 
+**Posibles respuestas (y quién las ilumina).**
+- *"¿Bienestar individual o estructural?":* el **enfoque de las capacidades**
+  (**Amartya Sen** y **Martha Nussbaum**) responde de frente: el bienestar **no es
+  solo un sentir subjetivo**, depende de las **libertades y oportunidades reales**
+  (*capabilities*) que las condiciones materiales habilitan. Eso corrige la
+  individualización: no se puede "organizar la vida de forma equilibrada" sin
+  condiciones que lo permitan.
+- *Modelos de bienestar más ricos:* **Carol Ryff** (bienestar psicológico
+  eudaimónico) y **Seligman** (PERMA) ofrecen marcos más estructurados que el
+  "bienestar subjetivo" a secas —aunque comparten el riesgo de la **crisis de
+  replicación** de la psicología positiva.
+
 ---
 
 ## 6. Preguntas sobre el modelo completo (el pentágono)
@@ -183,6 +248,18 @@ Más allá de cada competencia, conviene cuestionar **la figura misma**:
   hay un **mercado** detrás de la palabra "competencia".)
 - `DESNATURALIZAR` El bonito pentágono con caritas sonrientes, ¿no hace parecer
   **natural, ordenado y cerrado** algo que en realidad está en debate?
+
+**Posibles respuestas (y quién las ilumina).**
+- *La proliferación de marcos delata la construcción:* hay muchos esquemas (CASEL 5,
+  **Mayer y Salovey**, **Petrides**, **Goleman**, **Bar-On**) porque el campo se está
+  **construyendo**, no descubriendo. La distinción clave: el **modelo de habilidad**
+  (Mayer y Salovey) es más disciplinado empíricamente, mientras que los **modelos
+  "mixtos"** (Goleman, Bar-On y, en parte, Bisquerra) se critican por **mezclar**
+  rasgos, actitudes y habilidades en un mismo saco (Humphrey y otros señalan esta
+  dispersión conceptual).
+- *Lo justo:* que sea una construcción **no lo invalida** —ordenar el campo con un
+  lenguaje común es útil—; lo que pide es **presentarlo como modelo en debate, no
+  como ley natural**.
 
 ---
 
@@ -207,10 +284,25 @@ Más allá de cada competencia, conviene cuestionar **la figura misma**:
 - Baumeister, R. F., et al. (2003). Does High Self-Esteem Cause Better Performance…? *Psychological Science in the Public Interest, 4*(1).
 - Bisquerra Alzina, R. (2020). *Educación emocional: 10 ideas clave.* Graó.
 - Bisquerra Alzina, R., y Pérez Escoda, N. (2007). Las competencias emocionales. *Educación XXI, 10*, 61–82.
+- Bourdieu, P. (1979/1986). *La distinción* / The Forms of Capital. *(capital cultural y habitus.)*
+- Cherry, M. (2021). *The Case for Rage.* Oxford University Press.
 - Davies, W. (2015). *The Happiness Industry.* Verso.
+- David, S. (2016). *Emotional Agility.* Avery.
+- Deci, E. L., & Ryan, R. M. (2000). Self-Determination Theory. *(autonomía ≠ independencia.)*
 - Ecclestone, K., & Hayes, D. (2009/2019). *The Dangerous Rise of Therapeutic Education.* Routledge.
+- Eisenberg, N. (varios). Investigación sobre conducta prosocial.
 - Feldman Barrett, L. (2017). *How Emotions Are Made.* Houghton Mifflin Harcourt.
 - Foucault, M. (1978/1997). *¿Qué es la crítica?*
+- Gilligan, C. (1982); Noddings, N. (1984). *(ética del cuidado.)*
+- Gross, J. J. (1998, 2002). Process model of emotion regulation. *Psychophysiology / Review of General Psychology.*
+- Lieberman, M. D., et al. (2007). Putting Feelings Into Words (*affect labeling*). *Psychological Science.*
+- Lorde, A. (1981). The Uses of Anger.
+- Markus, H., & Kitayama, S. (1991). Culture and the self. *Psychological Review.*
+- Mayer, J. D., & Salovey, P. (1997). *(modelo de inteligencia emocional como habilidad.)*
+- Mouffe, C. (2013). *Agonistics.* Verso.
+- Neff, K. (2011). *Self-Compassion.*
+- Nussbaum, M., & Sen, A. (1993/2011). *(enfoque de las capacidades.)*
+- Ryff, C. (1989). Psychological well-being. *Journal of Personality and Social Psychology.*
 
 ---
 

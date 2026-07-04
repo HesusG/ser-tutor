@@ -24,6 +24,17 @@
 .toc a:nth-child(4){--chap:var(--c4)}.toc a:nth-child(5){--chap:var(--c5)}.toc a:nth-child(6){--chap:var(--c6)}
 .toc a:nth-child(7){--chap:var(--c7)}.toc a:nth-child(8){--chap:var(--c8)}.toc a:nth-child(9){--chap:var(--c9)}
 .toc a:hover .toc__n{color:var(--chap)}
+.special{border-top:var(--bw) solid var(--ink);padding:calc(var(--gap)*1.7) 0}
+.special__link{display:grid;grid-template-columns:2.4rem 1fr auto;gap:1rem;align-items:center;color:var(--ink);
+  border:var(--bw) solid var(--ink);border-radius:var(--rad);background:var(--paper-raised);
+  box-shadow:var(--sh) var(--sh) 0 var(--shadow);padding:1rem 1.1rem}
+.special__link:hover{color:var(--ink);border-color:var(--ink);transform:translate(-1px,-1px);
+  box-shadow:calc(var(--sh) + 2px) calc(var(--sh) + 2px) 0 var(--shadow)}
+.special__n{font-family:var(--font-mono);font-weight:700;color:var(--c6)}
+.special__t{font-family:var(--font-display);font-weight:600;font-size:1.25rem;line-height:1.18}
+.special__d{display:block;font-family:var(--font-body);font-size:1rem;color:var(--ink-soft);margin-top:.2rem;max-width:60ch}
+.special__go{font-family:var(--font-mono);font-size:.85rem;color:var(--c6)}
+@media(max-width:700px){.special__link{grid-template-columns:2.4rem 1fr}.special__go{display:none}}
 </style>
 </head>
 <body>
@@ -56,6 +67,15 @@
   <a href="cap9.html"><span class="toc__n">09</span><span><span class="toc__t">Cierre: acompañar a quien acompaña</span><span class="toc__d">Coevaluación y una coda sobre el oficio.</span></span></a>
 </nav>
 </section>
+
+<section class="special"><div class="wrap">
+  <p class="eyebrow">Actividad especial</p>
+  <a class="special__link" href="bien-comun/">
+    <span class="special__n">BC</span>
+    <span><span class="special__t">Pedagogía del Bien Común</span><span class="special__d">Expediente editorial sobre ética, Lévinas, comunidad de cuestionamiento y educación superior en México.</span></span>
+    <span class="special__go">Abrir</span>
+  </a>
+</div></section>
 
 <footer class="foot"><div class="wrap">Ser tutor · Temas Selectos de Educación (UPAEP) · Hesus García Cobos</div></footer>
 <script src="assets/book.js"></script>

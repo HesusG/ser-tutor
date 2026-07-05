@@ -71,17 +71,17 @@
   .hero{position:relative;overflow:hidden;padding:clamp(3.6rem,8vw,7rem) 0 clamp(2.6rem,5vw,4rem)}
   .hero::before{content:"";position:absolute;top:0;right:0;width:min(54%,640px);height:100%;
     background:url("assets/athens-bg.jpg") right center/cover;filter:grayscale(1) contrast(1.04);
-    opacity:.13;-webkit-mask-image:linear-gradient(90deg,transparent,#000 62%);mask-image:linear-gradient(90deg,transparent,#000 62%);pointer-events:none}
+    opacity:.22;-webkit-mask-image:linear-gradient(90deg,transparent,#000 62%);mask-image:linear-gradient(90deg,transparent,#000 62%);pointer-events:none}
   .hero .wrap{position:relative;z-index:1}
-  @media (max-width:720px){.hero::before{opacity:.06;width:78%}}
+  @media (max-width:720px){.hero::before{opacity:.1;width:78%}}
 
   /* faint old-master engravings behind ética + institución */
   #etica,#institucion{position:relative;overflow:hidden}
   #etica > .wrap,#institucion > .wrap{position:relative;z-index:1}
-  #etica::before,#institucion::before{content:"";position:absolute;pointer-events:none;filter:grayscale(1) contrast(1.04);opacity:.08;z-index:0}
+  #etica::before,#institucion::before{content:"";position:absolute;pointer-events:none;filter:grayscale(1) contrast(1.04);opacity:.16;z-index:0}
   #etica::before{top:0;right:0;width:min(46%,540px);height:60%;background:url("assets/creation.jpg") 38% 42%/cover;-webkit-mask-image:linear-gradient(215deg,#000,transparent 68%);mask-image:linear-gradient(215deg,#000,transparent 68%)}
   #institucion::before{bottom:0;left:0;width:min(32%,380px);height:82%;background:url("assets/jerome.jpg") bottom left/contain no-repeat;-webkit-mask-image:linear-gradient(35deg,#000,transparent 60%);mask-image:linear-gradient(35deg,#000,transparent 60%)}
-  @media (max-width:720px){#etica::before,#institucion::before{opacity:.05}}
+  @media (max-width:720px){#etica::before,#institucion::before{opacity:.09}}
   .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);margin:0 0 1.4rem;display:inline-flex;align-items:center;gap:.6rem;font-weight:600}
   .kicker::before{content:"";width:28px;height:2px;background:var(--accent)}
   .hero h1{font-size:clamp(2.9rem,9vw,5.6rem);max-width:14ch;letter-spacing:-.035em}

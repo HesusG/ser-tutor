@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pedagogía del Bien Común · Ser tutor</title>
-<meta name="description" content="Te explico, en primera persona y con fuentes, qué es la Pedagogía del Bien Común de la UPAEP: su significado y autores (Sánchez Cuevas y Medina Delgadillo), su ética de la otredad con Lévinas, y su vínculo con las instituciones de educación superior de México y las que dan clase en línea.">
+<meta name="description" content="Qué es la Pedagogía del Bien Común de la UPAEP, contada desde el aula y con fuentes: su origen y autores (Sánchez Cuevas y Medina Delgadillo), su ética de la otredad con Lévinas, y su vínculo con las universidades de México y las que dan clase en línea.">
 <style>
   :root{
     --paper:#f4f2ec;
@@ -32,7 +32,9 @@
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
-    margin:0;background:var(--paper);color:var(--ink);
+    margin:0;color:var(--ink);
+    background-color:var(--paper);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     font-family:var(--sans);font-size:clamp(1.02rem,.98rem + .22vw,1.1rem);
     line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
@@ -66,7 +68,12 @@
   @media (max-width:760px){.nav__links{display:none}}
 
   /* hero */
-  .hero{padding:clamp(3.6rem,8vw,7rem) 0 clamp(2.6rem,5vw,4rem)}
+  .hero{position:relative;overflow:hidden;padding:clamp(3.6rem,8vw,7rem) 0 clamp(2.6rem,5vw,4rem)}
+  .hero::before{content:"";position:absolute;top:0;right:0;width:min(54%,640px);height:100%;
+    background:url("assets/athens-bg.jpg") right center/cover;filter:grayscale(1) contrast(1.04);
+    opacity:.13;-webkit-mask-image:linear-gradient(90deg,transparent,#000 62%);mask-image:linear-gradient(90deg,transparent,#000 62%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:1}
+  @media (max-width:720px){.hero::before{opacity:.06;width:78%}}
   .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);margin:0 0 1.4rem;display:inline-flex;align-items:center;gap:.6rem;font-weight:600}
   .kicker::before{content:"";width:28px;height:2px;background:var(--accent)}
   .hero h1{font-size:clamp(2.9rem,9vw,5.6rem);max-width:14ch;letter-spacing:-.035em}
@@ -267,9 +274,9 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <p class="kicker">Ensayo · Ética y tutoría en la educación superior</p>
+      <p class="kicker">Un modelo educativo de la UPAEP</p>
       <h1>Pedagogía del Bien Común</h1>
-      <p class="hero__deck">Te escribo como docente, no como manual. Aquí te explico un estilo educativo que no busca solo que tu estudiante apruebe materias, sino formar personas capaces de convivir, servir y transformar su entorno.</p>
+      <p class="hero__deck">Educar no se termina cuando el alumno aprueba. La UPAEP le puso nombre a esa intuición y la volvió un modelo. En estas páginas la recorro desde el aula: qué es, de dónde viene y qué me exige frente a un estudiante de carne y hueso.</p>
       <p class="hero__q">¿Qué hago cuando ayudar a un estudiante <em>parece chocar</em> con ser justo con todos?</p>
       <p class="hero__meta">
         <span>Para docentes y tutores</span>
@@ -286,15 +293,15 @@
     <div class="wrap">
       <div class="s-head">
         <span class="s-index">[01]</span>
-        <h2>Qué significa la Pedagogía del Bien Común</h2>
+        <h2>Qué es, en el fondo, la Pedagogía del Bien Común</h2>
       </div>
 
       <div class="split">
         <div class="prose">
-          <p class="lede">Si das clase en una universidad mexicana, quizá ya escuchaste hablar del bien común sin saber que existe un modelo pedagógico que lo sistematiza.</p>
-          <p>Quiero empezar por lo primero: quiénes lo han nombrado y articulado. No es la ocurrencia de un solo autor. Lo formularon <strong>Mariano Sánchez Cuevas</strong> y <strong>Jorge Medina Delgadillo</strong>, ambos vicerrectores de la UPAEP, y lo publicaron como propuesta pedagógica en el documento fundacional de la serie fundamentos <a class="cite" href="#ref-scmd2024">(Sánchez Cuevas &amp; Medina Delgadillo, 2024)</a>, continuación de una obra previa que ya definía sus principios y pilares <a class="cite" href="#ref-scmd2021">(Sánchez Cuevas &amp; Medina Delgadillo, 2021)</a>.</p>
-          <p>Te explico de dónde bebe: de la antropología personalista de cuño católico (Mounier, Maritain, Wojtyła, Stein), de la Doctrina Social de la Iglesia y de las intuiciones educativas de los fundadores de la UPAEP. Con esas fuentes ordena la enseñanza en tres preguntas que tú mismo puedes hacerte: a quién formo, para qué formo y cómo formo.</p>
-          <p>Quiero que veas que esto no se quedó en el papel. Sus principios se investigaron con actores reales de la comunidad educativa <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a> y se probaron en métodos concretos, como la tutoría entre pares <a class="cite" href="#ref-sc2019">(Sánchez Cuevas et al., 2019)</a>. Te invito a contrastar cada pilar con una experiencia tuya de aula antes de seguir leyendo.</p>
+          <p class="lede">Si das clase en una universidad mexicana, quizá ya escuchaste hablar del bien común sin saber que hay un modelo pedagógico detrás.</p>
+          <p>Vale la pena aclarar el origen. La idea de educar para el bien común no es nueva: viene de Aristóteles y de Tomás de Aquino, y llega hasta la UNESCO y la Doctrina Social de la Iglesia. Lo que sí es propio de la UPAEP es haberla convertido en un modelo con nombre, pilares y método. Eso lo hicieron dos personas concretas, sus vicerrectores <strong>Mariano Sánchez Cuevas</strong> y <strong>Jorge Medina Delgadillo</strong>: lo publicaron en el documento fundacional de 2024 <a class="cite" href="#ref-scmd2024">(Sánchez Cuevas &amp; Medina Delgadillo, 2024)</a>, que continúa un libro anterior donde ya habían fijado sus principios y pilares <a class="cite" href="#ref-scmd2021">(Sánchez Cuevas &amp; Medina Delgadillo, 2021)</a>.</p>
+          <p>Su raíz más honda es la antropología personalista de cuño católico (Mounier, Maritain, Wojtyła, Stein): la convicción de que cada estudiante es una persona con dignidad y no un expediente. Con esa base, el modelo ordena la enseñanza en tres preguntas que tú y yo podemos hacernos antes de cada clase: a quién formo, para qué formo y cómo formo.</p>
+          <p>Y no se quedó en el papel. Sus principios se investigaron con la comunidad educativa <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a> y se probaron en métodos concretos, como la tutoría entre pares <a class="cite" href="#ref-sc2019">(Sánchez Cuevas et al., 2019)</a>. Antes de seguir, párate en cada pilar y contrástalo con algo que te haya pasado dando clase.</p>
         </div>
 
         <div class="doc reveal">
@@ -401,13 +408,13 @@
     <div class="wrap">
       <div class="s-head">
         <span class="s-index">[02]</span>
-        <h2>Ética, otredad y comunidad de cuestionamiento</h2>
+        <h2>La ética empieza donde la regla no alcanza</h2>
       </div>
 
       <div class="split">
         <div class="prose">
-          <p class="lede">Te propongo un problema real: cuando enseño, ¿reduzco al estudiante a lo que espero de él o lo acojo como alguien que me desborda?</p>
-          <p>Con esa pregunta entro a Emmanuel Lévinas. Te explico su idea central: para él la ética es filosofía primera. Antes de conocer o clasificar al otro, su <em>rostro</em> ya me interpela y me hace responsable, y eso ordena la relación pedagógica como hospitalidad y no como imposición de un saber <a class="cite" href="#ref-levinas2012">(Lévinas, 1961/2012)</a>. Lévinas lo lleva aún más lejos con la responsabilidad asimétrica, esa en la que respondo por el otro incluso antes de elegirlo <a class="cite" href="#ref-levinas1987">(Lévinas, 1974/1987)</a>.</p>
+          <p class="lede">Va un problema de verdad: cuando enseño, ¿reduzco al estudiante a lo que espero de él o lo acojo como alguien que me desborda?</p>
+          <p>Con esa pregunta entro a Emmanuel Lévinas. Su idea central es exigente: la ética es filosofía primera. Antes de conocer o clasificar al otro, su <em>rostro</em> ya me interpela y me hace responsable; la relación con el alumno se vuelve entonces hospitalidad y no imposición de un saber <a class="cite" href="#ref-levinas2012">(Lévinas, 1961/2012)</a>. Y lo lleva todavía más lejos: respondo por el otro incluso antes de haberlo elegido <a class="cite" href="#ref-levinas1987">(Lévinas, 1974/1987)</a>.</p>
           <p>Fíjate en una influencia que no es casual: uno de los propios autores del modelo, Jorge Medina Delgadillo, es estudioso de Lévinas, y por su lectura entra la antropología del rostro a la Pedagogía del Bien Común <a class="cite" href="#ref-medina2010">(Medina Delgadillo, 2010</a>; <a class="cite" href="#ref-medina2017">2017)</a>.</p>
           <h3>Qué significa pensar desde la otredad</h3>
           <p>La otredad reconoce al otro como radicalmente distinto e irreductible a mis categorías. En el aula significa acoger al estudiante en su diferencia cultural, social y personal, y rechazar toda pedagogía que lo homogenice. Lo aterrizo con dos ideas cercanas: el encuentro <em>Yo-Tú</em> de Buber, que se opone a tratar al otro como un <em>Ello</em> u objeto <a class="cite" href="#ref-buber2017">(Buber, 1923/2017)</a>, y la tesis de Ricoeur de que mi identidad se construye pasando por el otro <a class="cite" href="#ref-ricoeur1996">(Ricoeur, 1990/1996)</a>.</p>
@@ -488,13 +495,13 @@
     <div class="wrap">
       <div class="s-head">
         <span class="s-index">[03]</span>
-        <h2>La vinculación con tu institución</h2>
+        <h2>Qué cambia esto en tu universidad</h2>
       </div>
 
       <div class="prose">
         <p class="lede">Me centro sobre todo en las instituciones de educación superior de México y, en paralelo, en las que damos clase en línea.</p>
-        <p>Elijo ese foco por una razón práctica: es donde trabajo y donde la acogida del rostro se vuelve, al mismo tiempo, un reto humano y técnico. Te explico que el modelo se difunde de manera institucional a través del Instituto Promotor del Bien Común de la UPAEP <a class="cite" href="#ref-ipbc">(Instituto Promotor del Bien Común, s. f.)</a>, y eso importa para tu propia IES porque te da un marco ya probado en la práctica, con procesos concretos y no solo discurso.</p>
-        <p>Muestro que el bien común puede traducirse en dinámicas concretas de desarrollo, y no quedarse en abstracción <a class="cite" href="#ref-nebel2022">(Nebel &amp; Medina Delgadillo, 2022)</a>, y que hay evidencia de cómo lo viven los actores clave, evidencia que puedes usar para justificar su adopción <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a>. Incluso su fundamentación del cuerpo vivo y la subjetividad sostiene esa integralidad que una universidad dice querer formar <a class="cite" href="#ref-sm2018">(Sánchez Muñoz &amp; Medina Delgadillo, 2018)</a>.</p>
+        <p>Elijo ese foco por una razón práctica: es donde trabajo, y ahí la acogida del rostro se vuelve a la vez un reto humano y técnico. El modelo se difunde de forma institucional a través del Instituto Promotor del Bien Común de la UPAEP <a class="cite" href="#ref-ipbc">(Instituto Promotor del Bien Común, s. f.)</a>, y eso le sirve a tu universidad porque le da un marco ya probado en la práctica, con procesos concretos y no solo discurso.</p>
+        <p>Y no se queda en abstracción: el bien común puede volverse dinámicas concretas de desarrollo <a class="cite" href="#ref-nebel2022">(Nebel &amp; Medina Delgadillo, 2022)</a>, y hay evidencia de cómo lo viven los actores clave que puedes usar para justificar su adopción <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a>. Incluso su fundamentación del cuerpo vivo y la subjetividad sostiene esa integralidad que toda universidad dice querer formar <a class="cite" href="#ref-sm2018">(Sánchez Muñoz &amp; Medina Delgadillo, 2018)</a>.</p>
       </div>
 
       <div class="table-scroll reveal">

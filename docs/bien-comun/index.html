@@ -119,33 +119,22 @@
   .doc__t{font-weight:760;letter-spacing:-.01em;margin:.2rem 0 .35rem;line-height:1.2}
   .doc__l{font-family:var(--mono);font-size:.78rem;word-break:break-word}
 
-  /* scrollytelling: pillars */
-  .scrolly{margin-top:clamp(2.6rem,5vw,3.6rem)}
-  .scrolly__label{font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.04em;margin:0 0 1.2rem}
-  .scrolly__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.6rem,4vw,3rem);align-items:start}
-  .sticky{position:sticky;top:70px;height:min(72vh,500px);display:flex}
-  .stage{position:relative;flex:1;border:2px solid var(--ink);background:var(--surface);box-shadow:var(--shadow-hard);overflow:hidden}
-  .layer{position:absolute;inset:0;padding:clamp(1.4rem,3vw,2.2rem);display:flex;flex-direction:column;justify-content:center;opacity:0;transition:opacity .5s var(--e-out)}
-  .layer.is-active{opacity:1}
-  .layer__no{font-family:var(--mono);font-size:.82rem;color:var(--accent);letter-spacing:.06em;font-weight:700}
-  .layer__word{font-size:clamp(1.9rem,4.4vw,3.2rem);font-weight:840;letter-spacing:-.03em;line-height:.98;margin:.5rem 0 .2rem;max-width:100%;overflow-wrap:break-word;hyphens:auto}
-  .layer__delors{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft)}
-  .layer__rule{height:2px;background:var(--ink);margin:1.2rem 0}
-  .layer__prin{font-size:.82rem;font-family:var(--mono);color:var(--muted);letter-spacing:.02em}
-  .layer__prinval{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:780;letter-spacing:-.02em;margin-top:.2rem}
-  .steps{display:flex;flex-direction:column}
-  .step{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:1rem 0;transition:opacity .4s var(--e-out)}
-  .step:first-child{min-height:34vh}
-  .scrolly-on .step:not(.is-active){opacity:.72}
-  .step__no{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:700;letter-spacing:.04em}
-  .step h3{font-size:clamp(1.5rem,3.6vw,2.1rem);margin:.4rem 0 .6rem;letter-spacing:-.02em}
-  .step p{color:var(--ink-soft);max-width:40ch}
-  @media (max-width:760px){
-    .scrolly__grid{grid-template-columns:1fr}
-    .sticky{position:static;height:auto;margin-bottom:1.4rem}
-    .stage{min-height:300px}
-    .step{min-height:auto;opacity:1;padding:1.4rem 0;border-top:2px solid var(--line)}
-  }
+  /* pilares (grid compacto con iconos) */
+  .pillars-wrap{margin-top:clamp(2.4rem,5vw,3.4rem)}
+  .pillars-label{font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.03em;margin:0 0 1.2rem;max-width:62ch}
+  .pillars-label .cite{white-space:normal}
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+  .pillar{border:2px solid var(--ink);background:var(--surface);padding:1.3rem 1.2rem;box-shadow:var(--shadow-hard-sm);display:flex;flex-direction:column;transition:transform .18s var(--e-out),box-shadow .18s var(--e-out)}
+  .pillar:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+  .pillar__ic{width:34px;height:34px;color:var(--accent);margin-bottom:1rem;display:block;flex:0 0 auto}
+  .pillar__no{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.06em;font-weight:700}
+  .pillar__name{font-size:1.35rem;font-weight:820;letter-spacing:-.02em;margin:.15rem 0 .2rem}
+  .pillar__aim{font-family:var(--mono);font-size:.74rem;color:var(--accent);letter-spacing:.01em;margin:0 0 .8rem}
+  .pillar__desc{font-size:.92rem;color:var(--ink-soft);line-height:1.45;margin:0 0 1rem}
+  .pillar__prin{margin-top:auto;padding-top:.8rem;border-top:1px solid var(--line);font-weight:720;font-size:.98rem;letter-spacing:-.01em}
+  .pillar__prin span{display:block;font-family:var(--mono);font-size:.66rem;color:var(--muted);font-weight:600;letter-spacing:.05em;margin-bottom:.2rem}
+  @media (max-width:860px){.pillars{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:480px){.pillars{grid-template-columns:1fr}}
 
   /* triad desde/por/para */
   .triad{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink);box-shadow:var(--shadow-hard-sm);margin-top:2rem;background:var(--surface)}
@@ -165,6 +154,7 @@
   .phil{margin-top:clamp(2.4rem,5vw,3.2rem)}
   .phil__k{font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.04em;margin:0 0 1.1rem}
   .phil__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem}
+  .phil__photo{width:62px;height:62px;border-radius:50%;border:2px solid var(--ink);object-fit:cover;filter:grayscale(1) contrast(1.05);background:var(--paper);margin-bottom:.9rem}
   .phil__card{border:2px solid var(--ink);background:var(--paper-2);padding:1.15rem;box-shadow:var(--shadow-hard-sm);transition:transform .18s var(--e-out),box-shadow .18s var(--e-out)}
   .phil__card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
   .phil__name{font-weight:820;font-size:1.08rem;letter-spacing:-.015em}
@@ -198,7 +188,7 @@
   .route-swap.is-swapping{opacity:0}
 
   /* community questions */
-  .cq-head{font-size:1.2rem;margin:clamp(2.4rem,5vw,3.2rem) 0 1.3rem;letter-spacing:-.01em}
+  .cq-head{font-size:1.2rem;margin:clamp(3.4rem,6vw,4.8rem) 0 1.8rem;letter-spacing:-.01em;max-width:54ch}
   .cq{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
   .cq li{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--line)}
   .cq .lbl{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.02em;font-weight:700;padding-top:.1rem}
@@ -250,7 +240,7 @@
   .reveal.is-in{animation:revealIn .7s var(--e-out) both}
   @media (prefers-reduced-motion:reduce){
     .reveal.is-in{animation:none}
-    .layer,.step,.route,.route-swap,.phil__card{transition:none}
+    .route,.route-swap,.phil__card,.pillar{transition:none}
   }
 </style>
 </head>
@@ -336,68 +326,42 @@
         </div>
       </div>
 
-      <!-- scrollytelling pillars -->
-      <div class="scrolly">
-        <p class="scrolly__label">Los cuatro pilares, en diálogo con el Informe Delors. Desliza para recorrerlos <a class="cite" href="#ref-scmd2024">(Sánchez Cuevas &amp; Medina Delgadillo, 2024)</a>.</p>
-        <div class="scrolly__grid">
-          <div class="sticky">
-            <div class="stage" aria-hidden="true">
-              <div class="layer is-active" data-layer="0">
-                <span class="layer__no">PILAR 01</span>
-                <span class="layer__word">Integralidad</span>
-                <span class="layer__delors">Aprender a ser</span>
-                <div class="layer__rule"></div>
-                <span class="layer__prin">Principio correlativo</span>
-                <span class="layer__prinval">Experiencias integrales</span>
-              </div>
-              <div class="layer" data-layer="1">
-                <span class="layer__no">PILAR 02</span>
-                <span class="layer__word">Alteridad</span>
-                <span class="layer__delors">Aprender a convivir</span>
-                <div class="layer__rule"></div>
-                <span class="layer__prin">Principio correlativo</span>
-                <span class="layer__prinval">Cultura del encuentro</span>
-              </div>
-              <div class="layer" data-layer="2">
-                <span class="layer__no">PILAR 03</span>
-                <span class="layer__word">Don</span>
-                <span class="layer__delors">Aprender a transformar</span>
-                <div class="layer__rule"></div>
-                <span class="layer__prin">Principio correlativo</span>
-                <span class="layer__prinval">Liderazgo transformador</span>
-              </div>
-              <div class="layer" data-layer="3">
-                <span class="layer__no">PILAR 04</span>
-                <span class="layer__word">Amor</span>
-                <span class="layer__delors">Aprender a trascender</span>
-                <div class="layer__rule"></div>
-                <span class="layer__prin">Principio correlativo</span>
-                <span class="layer__prinval">Trascendencia en el bien común</span>
-              </div>
-            </div>
-          </div>
-          <div class="steps">
-            <div class="step is-active" data-step="0">
-              <span class="step__no">01 · Integralidad</span>
-              <h3>Educo a la persona entera</h3>
-              <p>Quiero desarrollar todos los talentos del estudiante, no solo su rendimiento. Lo llevo al aula con experiencias que cimbran y dan sentido, y que tocan no solo la cabeza sino lo que el estudiante siente y decide.</p>
-            </div>
-            <div class="step" data-step="1">
-              <span class="step__no">02 · Alteridad</span>
-              <h3>Reconozco al otro como distinto y digno</h3>
-              <p>Aquí aprendemos a convivir. Cultivo una cultura del encuentro: hábitos de escucha, respeto y acogida, para caminar juntos aun cuando pensamos distinto.</p>
-            </div>
-            <div class="step" data-step="2">
-              <span class="step__no">03 · Don</span>
-              <h3>Pongo mis talentos al servicio</h3>
-              <p>Aprendemos a transformar. Busco formar un liderazgo transformador: alguien de alta preparación y sentido humanista, comprometido con cambiar realidades sociales injustas.</p>
-            </div>
-            <div class="step" data-step="3">
-              <span class="step__no">04 · Amor</span>
-              <h3>Voy más allá del interés propio</h3>
-              <p>Aprendemos a trascender. La motivación última de mi trabajo educativo es construir bien común, ir siempre un poco más allá de lo que me conviene.</p>
-            </div>
-          </div>
+      <!-- pilares -->
+      <div class="pillars-wrap">
+        <p class="pillars-label">Cuatro pilares, en diálogo con el Informe Delors <a class="cite" href="#ref-scmd2024">(Sánchez Cuevas &amp; Medina Delgadillo, 2024)</a>.</p>
+        <div class="pillars">
+          <article class="pillar reveal">
+            <svg class="pillar__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/></svg>
+            <span class="pillar__no">Pilar 01</span>
+            <h3 class="pillar__name">Integralidad</h3>
+            <p class="pillar__aim">Aprender a ser</p>
+            <p class="pillar__desc">Educar a la persona entera, no solo su rendimiento.</p>
+            <p class="pillar__prin"><span>Principio</span>Experiencias integrales</p>
+          </article>
+          <article class="pillar reveal">
+            <svg class="pillar__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="9.5" r="3"/><circle cx="16" cy="9.5" r="3"/><path d="M2.8 20c0-2.9 2.3-4.7 5.2-4.7M21.2 20c0-2.9-2.3-4.7-5.2-4.7"/></svg>
+            <span class="pillar__no">Pilar 02</span>
+            <h3 class="pillar__name">Alteridad</h3>
+            <p class="pillar__aim">Aprender a convivir</p>
+            <p class="pillar__desc">Reconocer al otro como alguien distinto y digno.</p>
+            <p class="pillar__prin"><span>Principio</span>Cultura del encuentro</p>
+          </article>
+          <article class="pillar reveal">
+            <svg class="pillar__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="8.5" rx="1"/><path d="M3.5 10.5h17M12 10.5V19"/><path d="M12 10.5C10.7 8 8 8 8 9.7c0 1.2 2.2.8 4 .8M12 10.5C13.3 8 16 8 16 9.7c0 1.2-2.2.8-4 .8"/></svg>
+            <span class="pillar__no">Pilar 03</span>
+            <h3 class="pillar__name">Don</h3>
+            <p class="pillar__aim">Aprender a transformar</p>
+            <p class="pillar__desc">Poner los propios talentos al servicio de los demás.</p>
+            <p class="pillar__prin"><span>Principio</span>Liderazgo transformador</p>
+          </article>
+          <article class="pillar reveal">
+            <svg class="pillar__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-6.5-4-6.5-8.7C5.5 8.6 7.2 7 9.2 7c1.3 0 2.3.6 2.8 1.6C12.5 7.6 13.5 7 14.8 7c2 0 3.7 1.6 3.7 4.3C18.5 16 12 20 12 20z"/></svg>
+            <span class="pillar__no">Pilar 04</span>
+            <h3 class="pillar__name">Amor</h3>
+            <p class="pillar__aim">Aprender a trascender</p>
+            <p class="pillar__desc">Ir más allá del interés propio, hacia el bien común.</p>
+            <p class="pillar__prin"><span>Principio</span>Trascendencia en el bien común</p>
+          </article>
         </div>
       </div>
     </div>
@@ -430,16 +394,19 @@
         <p class="phil__k">TRES VOCES DE LA ALTERIDAD</p>
         <div class="phil__row">
           <div class="phil__card reveal">
+            <img class="phil__photo" src="assets/fil-levinas.jpg" alt="Retrato de Emmanuel Lévinas" loading="lazy">
             <p class="phil__name">Emmanuel Lévinas</p>
             <p class="phil__years">1906-1995</p>
             <p class="phil__c">Desplazó la filosofía del yo hacia la responsabilidad por el Otro. El rostro me interpela antes de toda elección: enseñar deja de ser imponer un saber y se vuelve acogida.</p>
           </div>
           <div class="phil__card reveal">
+            <img class="phil__photo" src="assets/fil-buber.jpg" alt="Retrato de Martin Buber" loading="lazy">
             <p class="phil__name">Martin Buber</p>
             <p class="phil__years">1878-1965</p>
             <p class="phil__c">Iniciador de la filosofía dialógica. Distingue el <em>Yo-Tú</em> recíproco del <em>Yo-Ello</em> que cosifica. Solo me constituyo en el encuentro con un Tú, base de una pedagogía de la confianza.</p>
           </div>
           <div class="phil__card reveal">
+            <img class="phil__photo" src="assets/fil-dussel.jpg" alt="Retrato de Enrique Dussel" loading="lazy">
             <p class="phil__name">Enrique Dussel</p>
             <p class="phil__years">1934-2023</p>
             <p class="phil__c">Fundador de la Filosofía de la Liberación. Piensa la alteridad desde el pobre y el excluido de la periferia: la educación como encuentro que desenmascara la dominación <a class="cite" href="#ref-dussel1996">(Dussel, 1977/1996)</a>.</p>
@@ -609,23 +576,6 @@
     cur.addEventListener("transitionend",swap,{once:true});setTimeout(swap,260);
   }
   buttons.forEach(function(b){b.addEventListener("click",function(){render(b.getAttribute("data-route"));});});
-
-  /* scrollytelling: pillars (sticky + steps via IntersectionObserver) */
-  var steps=[].slice.call(document.querySelectorAll(".step"));
-  var layers=[].slice.call(document.querySelectorAll(".layer"));
-  if(steps.length && "IntersectionObserver" in window && window.innerWidth>760){
-    document.documentElement.classList.add("scrolly-on");
-    var setActive=function(i){
-      steps.forEach(function(s,n){s.classList.toggle("is-active",n===i);});
-      layers.forEach(function(l,n){l.classList.toggle("is-active",n===i);});
-    };
-    var sio=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){var i=parseInt(e.target.getAttribute("data-step"),10);if(!isNaN(i))setActive(i);}
-      });
-    },{rootMargin:"-45% 0px -45% 0px",threshold:0});
-    steps.forEach(function(s){sio.observe(s);});
-  }
 
   /* reveal (visible by default; is-in adds one-shot entrance) */
   if(!reduce && "IntersectionObserver" in window){

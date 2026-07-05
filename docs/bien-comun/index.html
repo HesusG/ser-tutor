@@ -74,6 +74,14 @@
     opacity:.13;-webkit-mask-image:linear-gradient(90deg,transparent,#000 62%);mask-image:linear-gradient(90deg,transparent,#000 62%);pointer-events:none}
   .hero .wrap{position:relative;z-index:1}
   @media (max-width:720px){.hero::before{opacity:.06;width:78%}}
+
+  /* faint old-master engravings behind ética + institución */
+  #etica,#institucion{position:relative;overflow:hidden}
+  #etica > .wrap,#institucion > .wrap{position:relative;z-index:1}
+  #etica::before,#institucion::before{content:"";position:absolute;pointer-events:none;filter:grayscale(1) contrast(1.04);opacity:.08;z-index:0}
+  #etica::before{top:0;right:0;width:min(46%,540px);height:60%;background:url("assets/creation.jpg") 38% 42%/cover;-webkit-mask-image:linear-gradient(215deg,#000,transparent 68%);mask-image:linear-gradient(215deg,#000,transparent 68%)}
+  #institucion::before{bottom:0;left:0;width:min(32%,380px);height:82%;background:url("assets/jerome.jpg") bottom left/contain no-repeat;-webkit-mask-image:linear-gradient(35deg,#000,transparent 60%);mask-image:linear-gradient(35deg,#000,transparent 60%)}
+  @media (max-width:720px){#etica::before,#institucion::before{opacity:.05}}
   .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);margin:0 0 1.4rem;display:inline-flex;align-items:center;gap:.6rem;font-weight:600}
   .kicker::before{content:"";width:28px;height:2px;background:var(--accent)}
   .hero h1{font-size:clamp(2.9rem,9vw,5.6rem);max-width:14ch;letter-spacing:-.035em}
@@ -108,6 +116,7 @@
   .author__photo{width:88px;height:88px;border-radius:50%;border:2px solid var(--ink);object-fit:cover;filter:grayscale(1) contrast(1.05);background:var(--paper-2)}
   .author__name{font-weight:800;font-size:1.12rem;letter-spacing:-.015em}
   .author__role{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.01em;margin:.25rem 0 .55rem;line-height:1.4}
+  .author__badge{display:inline-block;font-family:var(--mono);font-size:.67rem;font-weight:700;letter-spacing:.02em;color:var(--accent-strong);background:var(--accent-wash);border:1px solid var(--accent);padding:.22rem .5rem;margin:0 0 .6rem;line-height:1.35}
   .author__why{font-size:.92rem;color:var(--ink-soft);line-height:1.5}
   .author__links{margin:.7rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-family:var(--mono);font-size:.72rem}
   .author__links a{text-decoration:none;border-bottom:1px solid var(--line)}
@@ -290,7 +299,7 @@
         <div class="prose">
           <p class="lede">Si das clase en una universidad mexicana, quizá ya escuchaste hablar del bien común sin saber que hay un modelo pedagógico detrás.</p>
           <p>Vale la pena aclarar el origen. La idea de educar para el bien común no es nueva: viene de Aristóteles y de Tomás de Aquino, y llega hasta la UNESCO y la Doctrina Social de la Iglesia. Lo que sí es propio de la UPAEP es haberla convertido en un modelo con nombre, pilares y método. Eso lo hicieron dos personas concretas, sus vicerrectores <strong>Mariano Sánchez Cuevas</strong> y <strong>Jorge Medina Delgadillo</strong>: lo publicaron en el documento fundacional de 2024 <a class="cite" href="#ref-scmd2024">(Sánchez Cuevas &amp; Medina Delgadillo, 2024)</a>, que continúa un libro anterior donde ya habían fijado sus principios y pilares <a class="cite" href="#ref-scmd2021">(Sánchez Cuevas &amp; Medina Delgadillo, 2021)</a>.</p>
-          <p>Su raíz más honda es la antropología personalista de cuño católico (Mounier, Maritain, Wojtyła, Stein): la convicción de que cada estudiante es una persona con dignidad y no un expediente. Con esa base, el modelo ordena la enseñanza en tres preguntas que tú y yo podemos hacernos antes de cada clase: a quién formo, para qué formo y cómo formo.</p>
+          <p>Su raíz más honda es la antropología personalista de cuño católico (Mounier, Maritain, Wojtyła, Stein): la convicción de que cada estudiante es, ante todo, una persona con dignidad. Con esa base, el modelo ordena la enseñanza en tres preguntas que tú y yo podemos hacernos antes de cada clase: a quién formo, para qué formo y cómo formo.</p>
           <p>Y no se quedó en el papel. Sus principios se investigaron con la comunidad educativa <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a> y se probaron en métodos concretos, como la tutoría entre pares <a class="cite" href="#ref-sc2019">(Sánchez Cuevas et al., 2019)</a>. Antes de seguir, párate en cada pilar y contrástalo con algo que te haya pasado dando clase.</p>
         </div>
 
@@ -320,8 +329,9 @@
           <div>
             <p class="author__name">Jorge Medina Delgadillo</p>
             <p class="author__role">Vicerrector de Investigación, UPAEP · Doctor en Filosofía y en Educación</p>
+            <p class="author__badge">Rector electo de la UPAEP · asume el 1 de agosto de 2026</p>
             <p class="author__why">Fuente primaria del marco y estudioso de Lévinas. Su obra une la antropología personalista y la ética del rostro con la teoría del bien común.</p>
-            <p class="author__links"><a href="https://scholar.google.com/citations?user=Ez5FDy0AAAAJ&amp;hl=es" target="_blank" rel="noopener">Scholar</a><a href="https://orcid.org/0000-0001-6530-1902" target="_blank" rel="noopener">ORCID</a></p>
+            <p class="author__links"><a href="https://scholar.google.com/citations?user=Ez5FDy0AAAAJ&amp;hl=es" target="_blank" rel="noopener">Scholar</a><a href="https://orcid.org/0000-0001-6530-1902" target="_blank" rel="noopener">ORCID</a><a href="https://oem.com.mx/elsoldepuebla/local/upaep-designa-a-jorge-medina-delgadillo-como-nuevo-rector-cual-es-su-trayectoria-28803275" target="_blank" rel="noopener">Nombramiento</a></p>
           </div>
         </div>
       </div>
@@ -335,7 +345,7 @@
             <span class="pillar__no">Pilar 01</span>
             <h3 class="pillar__name">Integralidad</h3>
             <p class="pillar__aim">Aprender a ser</p>
-            <p class="pillar__desc">Educar a la persona entera, no solo su rendimiento.</p>
+            <p class="pillar__desc">Formar a la persona completa: su mente, su carácter y su forma de convivir.</p>
             <p class="pillar__prin"><span>Principio</span>Experiencias integrales</p>
           </article>
           <article class="pillar reveal">
@@ -378,7 +388,7 @@
       <div class="split">
         <div class="prose">
           <p class="lede">Va un problema de verdad: cuando enseño, ¿reduzco al estudiante a lo que espero de él o lo acojo como alguien que me desborda?</p>
-          <p>Con esa pregunta entro a Emmanuel Lévinas. Su idea central es exigente: la ética es filosofía primera. Antes de conocer o clasificar al otro, su <em>rostro</em> ya me interpela y me hace responsable; la relación con el alumno se vuelve entonces hospitalidad y no imposición de un saber <a class="cite" href="#ref-levinas2012">(Lévinas, 1961/2012)</a>. Y lo lleva todavía más lejos: respondo por el otro incluso antes de haberlo elegido <a class="cite" href="#ref-levinas1987">(Lévinas, 1974/1987)</a>.</p>
+          <p>Con esa pregunta entro a Emmanuel Lévinas. Su idea central es exigente: la ética es filosofía primera. Antes de conocer o clasificar al otro, su <em>rostro</em> ya me interpela y me hace responsable; la relación con el alumno se vuelve entonces hospitalidad, un recibir al otro antes de pretender enseñarle <a class="cite" href="#ref-levinas2012">(Lévinas, 1961/2012)</a>. Y lo lleva todavía más lejos: respondo por el otro incluso antes de haberlo elegido <a class="cite" href="#ref-levinas1987">(Lévinas, 1974/1987)</a>.</p>
           <p>Fíjate en una influencia que no es casual: uno de los propios autores del modelo, Jorge Medina Delgadillo, es estudioso de Lévinas, y por su lectura entra la antropología del rostro a la Pedagogía del Bien Común <a class="cite" href="#ref-medina2010">(Medina Delgadillo, 2010</a>; <a class="cite" href="#ref-medina2017">2017)</a>.</p>
           <h3>Qué significa pensar desde la otredad</h3>
           <p>La otredad reconoce al otro como radicalmente distinto e irreductible a mis categorías. En el aula significa acoger al estudiante en su diferencia cultural, social y personal, y rechazar toda pedagogía que lo homogenice. Lo aterrizo con dos ideas cercanas: el encuentro <em>Yo-Tú</em> de Buber, que se opone a tratar al otro como un <em>Ello</em> u objeto <a class="cite" href="#ref-buber2017">(Buber, 1923/2017)</a>, y la tesis de Ricoeur de que mi identidad se construye pasando por el otro <a class="cite" href="#ref-ricoeur1996">(Ricoeur, 1990/1996)</a>.</p>
@@ -419,7 +429,7 @@
         <div class="case__grid">
           <figure class="fig reveal">
             <img src="assets/tinta-seis-caso.jpg" alt="Documento del caso «La tinta invisible del seis»">
-            <figcaption><b>FIG. 1</b> · Uso este caso como laboratorio ético: no es sentimentalismo contra rigor, sino deliberación responsable.</figcaption>
+            <figcaption><b>FIG. 1</b> · Uso este caso como laboratorio ético: un espacio para practicar la deliberación responsable ante un dilema real.</figcaption>
           </figure>
           <div>
             <h3>El caso de la maestra Carmen y Gael</h3>
@@ -449,7 +459,7 @@
         <h3 class="cq-head">Comunidad de cuestionamiento: las preguntas que sostienen mi decisión</h3>
         <ul class="cq reveal">
           <li><span class="lbl">Dilema</span><span class="qq">¿Qué valor está chocando aquí: verdad, cuidado, justicia, permanencia, confianza institucional?</span></li>
-          <li><span class="lbl">Rostro</span><span class="qq">¿Qué le debo a Gael como persona concreta, no como indicador?</span></li>
+          <li><span class="lbl">Rostro</span><span class="qq">¿Qué le debo a Gael, la persona concreta que tengo enfrente?</span></li>
           <li><span class="lbl">Comunidad</span><span class="qq">¿Qué le debo al grupo que confía en que la evaluación significa algo?</span></li>
           <li><span class="lbl">Ruta</span><span class="qq">¿Qué vías institucionales existen antes de aprobar o reprobar en privado?</span></li>
         </ul>
@@ -467,7 +477,7 @@
 
       <div class="prose">
         <p class="lede">Me centro sobre todo en las instituciones de educación superior de México y, en paralelo, en las que damos clase en línea.</p>
-        <p>Elijo ese foco por una razón práctica: es donde trabajo, y ahí la acogida del rostro se vuelve a la vez un reto humano y técnico. El modelo se difunde de forma institucional a través del Instituto Promotor del Bien Común de la UPAEP <a class="cite" href="#ref-ipbc">(Instituto Promotor del Bien Común, s. f.)</a>, y eso le sirve a tu universidad porque le da un marco ya probado en la práctica, con procesos concretos y no solo discurso.</p>
+        <p>Elijo ese foco por una razón práctica: es donde trabajo, y ahí la acogida del rostro se vuelve a la vez un reto humano y técnico. El modelo se difunde de forma institucional a través del Instituto Promotor del Bien Común de la UPAEP <a class="cite" href="#ref-ipbc">(Instituto Promotor del Bien Común, s. f.)</a>, y eso le sirve a tu universidad porque le da un marco ya probado en la práctica, con procesos que puedes adoptar.</p>
         <p>Y no se queda en abstracción: el bien común puede volverse dinámicas concretas de desarrollo <a class="cite" href="#ref-nebel2022">(Nebel &amp; Medina Delgadillo, 2022)</a>, y hay evidencia de cómo lo viven los actores clave que puedes usar para justificar su adopción <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a>. Incluso su fundamentación del cuerpo vivo y la subjetividad sostiene esa integralidad que toda universidad dice querer formar <a class="cite" href="#ref-sm2018">(Sánchez Muñoz &amp; Medina Delgadillo, 2018)</a>.</p>
       </div>
 
@@ -477,7 +487,7 @@
             <tr><th scope="col">Área institucional</th><th scope="col">Aplicación del bien común</th><th scope="col">Pregunta ética</th></tr>
           </thead>
           <tbody>
-            <tr><td>Tutoría</td><td>Acompaño al estudiante como persona completa, no como trámite.</td><td>¿Lo veo como persona o como caso?</td></tr>
+            <tr><td>Tutoría</td><td>Acompaño al estudiante como la persona completa que es, con su historia y su contexto.</td><td>¿Lo veo como persona o como caso?</td></tr>
             <tr><td>Evaluación</td><td>Uso criterios claros, evidencias y oportunidades formativas.</td><td>¿Estoy siendo justo o solo rígido?</td></tr>
             <tr><td>Becas y apoyos</td><td>Reduzco barreras reales de permanencia.</td><td>¿Quién queda fuera por condiciones que puedo atender?</td></tr>
             <tr><td>Currículo</td><td>Conecto la profesión con problemas sociales reales.</td><td>¿Para qué sociedad estoy formando?</td></tr>
@@ -491,6 +501,19 @@
         <div><span class="mk">híbrido</span><h3>Entre modalidades</h3><p>Cuido que la flexibilidad no se vuelva desorden ni privilegio invisible para quien tiene menos.</p></div>
         <div><span class="mk">en línea</span><h3>A distancia</h3><p>También hay rostro aunque no haya cámara: cada entrega tardía o cada silencio puede esconder una historia.</p></div>
       </div>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="closing">
+    <div class="wrap">
+      <span class="tag">En síntesis</span>
+      <div class="triad">
+        <div><span class="prep">desde</span><h3>el bien común</h3><p>Reconozco la dignidad de cada persona como un bien en sí.</p></div>
+        <div><span class="prep">por</span><h3>el bien común</h3><p>Hago de la relación educativa el medio del crecimiento.</p></div>
+        <div><span class="prep">para</span><h3>el bien común</h3><p>Formo a alguien que lo construya en su familia, su barrio y su país.</p></div>
+      </div>
+      <p class="closing__q">¿Qué haré distinto el próximo lunes en mi aula, presencial o en línea, para pasar de <em>contemplar</em> el bien común a <em>acrecentarlo</em>?</p>
     </div>
   </section>
 
@@ -522,18 +545,6 @@
     </div>
   </section>
 </main>
-
-<section class="closing">
-  <div class="wrap">
-    <span class="tag">Aprendizaje central</span>
-    <div class="triad">
-      <div><span class="prep">desde</span><h3>el bien común</h3><p>Reconozco la dignidad de cada persona como un bien en sí.</p></div>
-      <div><span class="prep">por</span><h3>el bien común</h3><p>Hago de la relación educativa el medio del crecimiento.</p></div>
-      <div><span class="prep">para</span><h3>el bien común</h3><p>Formo a alguien que lo construya en su familia, su barrio y su país.</p></div>
-    </div>
-    <p class="closing__q">¿Qué haré distinto el próximo lunes en mi aula, presencial o en línea, para pasar de <em>contemplar</em> el bien común a <em>acrecentarlo</em>?</p>
-  </div>
-</section>
 
 <nav class="pager" aria-label="Navegación del libro">
   <div class="pager__in">

@@ -4,282 +4,252 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pedagogía del Bien Común · Ser tutor</title>
-<meta name="description" content="Un estilo educativo que parte de la dignidad de cada estudiante: qué significa la Pedagogía del Bien Común, su relación con la ética y la comunidad de cuestionamiento, y su vinculación con las instituciones de educación superior en México. Con el caso de Carmen y Gael.">
+<meta name="description" content="Te explico, en primera persona y con fuentes, qué es la Pedagogía del Bien Común de la UPAEP: su significado y autores (Sánchez Cuevas y Medina Delgadillo), su ética de la otredad con Lévinas, y su vínculo con las instituciones de educación superior de México y las que dan clase en línea.">
 <style>
   :root{
-    --paper:#faf8f4;
-    --surface:#ffffff;
-    --ink:#17171a;
-    --ink-soft:#41434a;
-    --muted:#6b6e77;
+    --paper:#f4f2ec;
+    --paper-2:#eae7dd;
+    --surface:#fbfaf6;
+    --ink:#17150f;
+    --ink-soft:#403d34;
+    --muted:#636054;
     --accent:#0e6b6b;
-    --accent-strong:#0a5555;
-    --accent-wash:#e7f0ef;
-    --line:#e4e1d9;
-    --line-strong:#cfccc2;
+    --accent-strong:#0a5252;
+    --accent-wash:#e3efed;
+    --line:#dcd8cc;
+    --shadow-hard:6px 6px 0 var(--ink);
+    --shadow-hard-sm:4px 4px 0 var(--ink);
 
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,Consolas,monospace;
 
-    --measure:min(100% - 2.5rem, 1000px);
-    --prose:66ch;
-
-    --z-nav:100;
-
+    --measure:min(100% - 2.5rem, 1080px);
+    --prose:64ch;
     --e-out:cubic-bezier(.22,1,.36,1);
   }
 
   *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-size:clamp(1rem,.97rem + .2vw,1.075rem);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:clamp(1.02rem,.98rem + .22vw,1.1rem);
+    line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
-
-  h1,h2,h3{
-    font-weight:640;
-    line-height:1.08;
-    letter-spacing:-.022em;
-    margin:0;
-    text-wrap:balance;
-  }
+  h1,h2,h3{margin:0;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
+  h1{font-weight:840}h2{font-weight:820}h3{font-weight:760}
   p{margin:0;text-wrap:pretty}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{color:var(--accent-strong)}
+  a{color:var(--accent)}a:hover{color:var(--accent-strong)}
   img{max-width:100%;display:block}
-
   .wrap{width:var(--measure);margin-inline:auto}
 
-  /* ---------- nav ---------- */
-  .nav{
-    position:sticky;top:0;z-index:var(--z-nav);
-    background:color-mix(in srgb,var(--paper) 86%,transparent);
-    backdrop-filter:saturate(1.05) blur(8px);
-    border-bottom:1px solid var(--line);
+  /* reading progress (scroll-driven, decorative, degrades to hidden) */
+  .progress{position:fixed;inset:0 0 auto 0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:200}
+  @supports (animation-timeline:scroll()){
+    .progress{animation:grow linear both;animation-timeline:scroll(root)}
+    @keyframes grow{to{transform:scaleX(1)}}
   }
-  .nav__in{
-    width:var(--measure);margin-inline:auto;
-    height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  }
-  .brand{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink);font-weight:600;letter-spacing:-.01em}
-  .brand .sq{width:11px;height:11px;background:var(--accent);border-radius:2px}
-  .nav__links{display:flex;gap:1.5rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.01em}
-  .nav__links a{color:var(--ink-soft)}
+  @media (prefers-reduced-motion:reduce){.progress{display:none}}
+
+  /* skip link */
+  .skip{position:absolute;left:-9999px;top:.4rem;background:var(--ink);color:var(--paper);padding:.55rem .9rem;font-family:var(--mono);font-size:.78rem;z-index:300}
+  .skip:focus{left:.4rem}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--paper) 85%,transparent);backdrop-filter:saturate(1.05) blur(8px);border-bottom:2px solid var(--ink)}
+  .nav__in{width:var(--measure);margin-inline:auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink);font-weight:800;letter-spacing:-.02em;text-decoration:none}
+  .brand .sq{width:12px;height:12px;background:var(--accent);border:2px solid var(--ink)}
+  .nav__links{display:flex;gap:1.5rem;font-family:var(--mono);font-size:.76rem;letter-spacing:.02em}
+  .nav__links a{color:var(--ink-soft);text-decoration:none}
   .nav__links a:hover{color:var(--accent)}
-  @media (max-width:720px){ .nav__links{display:none} }
+  @media (max-width:760px){.nav__links{display:none}}
 
-  /* ---------- hero ---------- */
-  .hero{padding:clamp(4rem,9vw,8rem) 0 clamp(3rem,6vw,5rem)}
-  .kicker{
-    font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;
-    color:var(--accent);text-transform:none;margin:0 0 1.4rem;
-    display:inline-flex;align-items:center;gap:.6rem;
-  }
-  .kicker::before{content:"";width:26px;height:1px;background:var(--accent)}
-  .hero h1{font-size:clamp(2.6rem,6.2vw,4rem);max-width:15ch}
-  .hero__deck{
-    margin:1.8rem 0 0;max-width:52ch;
-    font-size:clamp(1.12rem,1rem + .7vw,1.35rem);color:var(--ink-soft);line-height:1.5;
-  }
-  .hero__q{
-    margin:2.2rem 0 0;max-width:24ch;
-    font-size:clamp(1.5rem,1.1rem + 2vw,2.35rem);
-    line-height:1.2;font-weight:600;letter-spacing:-.02em;text-wrap:balance;
-  }
-  .hero__q em{font-style:italic;font-weight:500;color:var(--accent)}
-  .hero__meta{
-    margin:2.6rem 0 0;padding-top:1.4rem;border-top:1px solid var(--line);
-    font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.02em;
-    display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;
-  }
+  /* hero */
+  .hero{padding:clamp(3.6rem,8vw,7rem) 0 clamp(2.6rem,5vw,4rem)}
+  .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--accent);margin:0 0 1.4rem;display:inline-flex;align-items:center;gap:.6rem;font-weight:600}
+  .kicker::before{content:"";width:28px;height:2px;background:var(--accent)}
+  .hero h1{font-size:clamp(2.9rem,9vw,5.6rem);max-width:14ch;letter-spacing:-.035em}
+  .hero__deck{margin:1.8rem 0 0;max-width:52ch;font-size:clamp(1.14rem,1rem + .8vw,1.4rem);color:var(--ink-soft);line-height:1.5}
+  .hero__q{margin:2rem 0 0;max-width:22ch;font-size:clamp(1.55rem,1.1rem + 2.2vw,2.6rem);line-height:1.15;font-weight:820;letter-spacing:-.03em}
+  .hero__q em{font-style:italic;font-weight:600;color:var(--accent)}
+  .hero__meta{margin:2.4rem 0 0;padding-top:1.3rem;border-top:2px solid var(--ink);font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.02em;display:flex;flex-wrap:wrap;gap:.5rem 1.4rem}
+  .hero__by{margin:1rem 0 0;font-size:.95rem;color:var(--muted)}
+  .hero__by a{font-weight:600}
 
-  /* ---------- section scaffold ---------- */
-  .section{padding:clamp(3.5rem,7vw,6.5rem) 0;border-top:1px solid var(--line)}
-  .s-head{
-    display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:baseline;
-    margin:0 0 2.4rem;
-  }
-  .s-index{font-family:var(--mono);font-size:.82rem;color:var(--accent);font-weight:600;letter-spacing:.02em;white-space:nowrap}
-  .s-head h2{font-size:clamp(1.7rem,1.2rem + 2vw,2.5rem);max-width:20ch}
-  .lede{
-    font-size:clamp(1.15rem,1rem + .8vw,1.4rem);color:var(--ink-soft);line-height:1.45;
-    max-width:44ch;margin:0 0 1.4rem;
-  }
+  /* section scaffold */
+  .section{padding:clamp(3.4rem,7vw,6rem) 0;border-top:2px solid var(--ink)}
+  .s-head{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:baseline;margin:0 0 2rem}
+  .s-index{font-family:var(--mono);font-size:.85rem;color:var(--accent);font-weight:700;letter-spacing:.04em;white-space:nowrap}
+  .s-head h2{font-size:clamp(1.9rem,1.2rem + 2.6vw,3.2rem);max-width:19ch}
+  .lede{font-size:clamp(1.2rem,1rem + .9vw,1.5rem);color:var(--ink);line-height:1.35;max-width:26ch;font-weight:720;letter-spacing:-.02em;margin:0 0 1.4rem}
   .prose{max-width:var(--prose)}
-  .prose p + p{margin-top:1rem}
-  .prose h3{font-size:1.2rem;margin:0 0 .5rem;letter-spacing:-.01em}
+  .prose p+p{margin-top:1rem}
+  .prose h3{font-size:1.22rem;margin:1.8rem 0 .5rem;letter-spacing:-.015em}
+  .split{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.8rem,4vw,3.2rem);align-items:start}
+  @media (max-width:760px){.split{grid-template-columns:1fr}}
 
-  /* two-column split */
-  .split{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.8rem,4vw,3.4rem);align-items:start}
-  @media (max-width:760px){ .split{grid-template-columns:1fr} }
+  /* inline citation */
+  .cite{font-size:.86em;color:var(--accent);text-decoration:none;white-space:nowrap;border-bottom:1px dotted color-mix(in srgb,var(--accent) 55%,transparent)}
+  .cite:hover{color:var(--accent-strong);border-bottom-style:solid}
 
-  /* ---------- figures ---------- */
-  figure{margin:0}
-  .fig{position:relative;background:var(--surface);border:1px solid var(--line);padding:.55rem}
-  .fig img{width:100%;height:auto;filter:grayscale(1) contrast(1.03) brightness(1.02)}
-  .fig::after{
-    content:"";position:absolute;inset:.55rem;
-    background:var(--accent);mix-blend-mode:multiply;opacity:.1;pointer-events:none;
-  }
-  .fig figcaption{
-    font-family:var(--mono);font-size:.74rem;color:var(--muted);line-height:1.45;
-    margin-top:.6rem;padding-left:.1rem;
-  }
-  .fig figcaption b{color:var(--accent);font-weight:600;letter-spacing:.04em}
+  mark{background:var(--accent-wash);color:var(--ink);padding:.02em .12em;box-decoration-break:clone}
 
-  /* ---------- ruled lists (pillars, questions, refs) ---------- */
-  .ruled{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
-  .ruled > li{
-    display:grid;grid-template-columns:auto 1fr;gap:1.1rem;
-    padding:1.25rem 0;border-bottom:1px solid var(--line);
-  }
-  .ruled .n{font-family:var(--mono);font-size:.85rem;color:var(--accent);font-weight:600;padding-top:.15rem}
-  .ruled .term{font-weight:640;letter-spacing:-.01em;font-size:1.1rem}
-  .ruled .desc{color:var(--ink-soft);margin-top:.15rem}
-  .ruled .eg{display:block;margin-top:.5rem;font-family:var(--mono);font-size:.78rem;color:var(--muted);line-height:1.5}
+  /* author cards */
+  .authors{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;margin:2.6rem 0}
+  .author{border:2px solid var(--ink);background:var(--surface);padding:1.3rem;box-shadow:var(--shadow-hard-sm);display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start}
+  .author__photo{width:88px;height:88px;border-radius:50%;border:2px solid var(--ink);object-fit:cover;filter:grayscale(1) contrast(1.05);background:var(--paper-2)}
+  .author__name{font-weight:800;font-size:1.12rem;letter-spacing:-.015em}
+  .author__role{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.01em;margin:.25rem 0 .55rem;line-height:1.4}
+  .author__why{font-size:.92rem;color:var(--ink-soft);line-height:1.5}
+  .author__links{margin:.7rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-family:var(--mono);font-size:.72rem}
+  .author__links a{text-decoration:none;border-bottom:1px solid var(--line)}
 
-  /* triad: desde / por / para */
-  .triad{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.4rem;border:1px solid var(--line)}
-  .triad > div{padding:1.4rem 1.3rem;border-right:1px solid var(--line)}
-  .triad > div:last-child{border-right:0}
-  .triad .prep{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.02em}
-  .triad h3{margin:.4rem 0 .4rem;font-size:1.05rem;letter-spacing:-.01em}
-  .triad p{color:var(--ink-soft);font-size:.95rem;line-height:1.5}
-  @media (max-width:640px){ .triad{grid-template-columns:1fr}.triad>div{border-right:0;border-bottom:1px solid var(--line)}.triad>div:last-child{border-bottom:0} }
+  /* document callout */
+  .doc{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;align-items:center;border:2px solid var(--ink);background:var(--paper-2);padding:1.1rem 1.3rem;box-shadow:var(--shadow-hard-sm);margin:1.6rem 0 0}
+  .doc img{width:74px;height:auto;border:2px solid var(--ink);filter:grayscale(1) contrast(1.04)}
+  .doc__k{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.04em}
+  .doc__t{font-weight:760;letter-spacing:-.01em;margin:.2rem 0 .35rem;line-height:1.2}
+  .doc__l{font-family:var(--mono);font-size:.78rem;word-break:break-word}
 
-  /* ---------- pull quote ---------- */
-  .pull{
-    margin:2.6rem 0 0;padding-top:1.6rem;border-top:1px solid var(--line-strong);
-    max-width:34ch;
-  }
-  .pull blockquote{
-    margin:0;font-size:clamp(1.4rem,1.05rem + 1.6vw,2rem);line-height:1.25;
-    font-weight:560;letter-spacing:-.015em;text-wrap:balance;
-  }
-  .pull cite{
-    display:block;margin-top:1rem;font-style:normal;
-    font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.02em;
+  /* scrollytelling: pillars */
+  .scrolly{margin-top:clamp(2.6rem,5vw,3.6rem)}
+  .scrolly__label{font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.04em;margin:0 0 1.2rem}
+  .scrolly__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.6rem,4vw,3rem);align-items:start}
+  .sticky{position:sticky;top:70px;height:min(72vh,500px);display:flex}
+  .stage{position:relative;flex:1;border:2px solid var(--ink);background:var(--surface);box-shadow:var(--shadow-hard);overflow:hidden}
+  .layer{position:absolute;inset:0;padding:clamp(1.4rem,3vw,2.2rem);display:flex;flex-direction:column;justify-content:center;opacity:0;transition:opacity .5s var(--e-out)}
+  .layer.is-active{opacity:1}
+  .layer__no{font-family:var(--mono);font-size:.82rem;color:var(--accent);letter-spacing:.06em;font-weight:700}
+  .layer__word{font-size:clamp(1.9rem,4.4vw,3.2rem);font-weight:840;letter-spacing:-.03em;line-height:.98;margin:.5rem 0 .2rem;max-width:100%;overflow-wrap:break-word;hyphens:auto}
+  .layer__delors{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft)}
+  .layer__rule{height:2px;background:var(--ink);margin:1.2rem 0}
+  .layer__prin{font-size:.82rem;font-family:var(--mono);color:var(--muted);letter-spacing:.02em}
+  .layer__prinval{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:780;letter-spacing:-.02em;margin-top:.2rem}
+  .steps{display:flex;flex-direction:column}
+  .step{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:1rem 0;transition:opacity .4s var(--e-out)}
+  .step:first-child{min-height:34vh}
+  .scrolly-on .step:not(.is-active){opacity:.72}
+  .step__no{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:700;letter-spacing:.04em}
+  .step h3{font-size:clamp(1.5rem,3.6vw,2.1rem);margin:.4rem 0 .6rem;letter-spacing:-.02em}
+  .step p{color:var(--ink-soft);max-width:40ch}
+  @media (max-width:760px){
+    .scrolly__grid{grid-template-columns:1fr}
+    .sticky{position:static;height:auto;margin-bottom:1.4rem}
+    .stage{min-height:300px}
+    .step{min-height:auto;opacity:1;padding:1.4rem 0;border-top:2px solid var(--line)}
   }
 
-  /* ---------- case + route widget ---------- */
-  .case{margin-top:clamp(2.4rem,5vw,3.6rem)}
-  .case__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(1.8rem,4vw,3rem);align-items:start}
-  @media (max-width:820px){ .case__grid{grid-template-columns:1fr} }
-  .case h3{font-size:1.3rem;margin:0 0 .7rem;letter-spacing:-.015em}
-  .case p{color:var(--ink-soft)}
-  .case p + p{margin-top:.8rem}
+  /* triad desde/por/para */
+  .triad{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink);box-shadow:var(--shadow-hard-sm);margin-top:2rem;background:var(--surface)}
+  .triad>div{padding:1.4rem 1.3rem;border-right:2px solid var(--ink)}
+  .triad>div:last-child{border-right:0}
+  .triad .prep{font-family:var(--mono);font-size:1rem;color:var(--accent);font-weight:700}
+  .triad h3{margin:.35rem 0 .45rem;font-size:1.1rem;letter-spacing:-.01em}
+  .triad p{color:var(--ink-soft);font-size:.94rem;line-height:1.48}
+  @media (max-width:640px){.triad{grid-template-columns:1fr}.triad>div{border-right:0;border-bottom:2px solid var(--ink)}.triad>div:last-child{border-bottom:0}}
 
-  .routes{margin-top:1.8rem;border:1px solid var(--line);background:var(--surface)}
-  .routes__tabs{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line)}
-  .route{
-    flex:1 1 auto;appearance:none;background:transparent;border:0;cursor:pointer;
-    font-family:var(--mono);font-size:.76rem;color:var(--ink-soft);letter-spacing:.01em;
-    padding:.85rem 1rem;text-align:left;border-right:1px solid var(--line);
-    display:inline-flex;align-items:center;gap:.45rem;transition:color .2s var(--e-out),background .2s var(--e-out);
-  }
+  /* pull quote */
+  .pull{margin:2.4rem 0 0;padding:1.6rem 0 0;border-top:2px solid var(--ink);max-width:34ch}
+  .pull blockquote{margin:0;font-size:clamp(1.45rem,1.05rem + 1.7vw,2.1rem);line-height:1.18;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+  .pull cite{display:block;margin-top:1rem;font-style:normal;font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.02em}
+
+  /* neobrutalist philosophers */
+  .phil{margin-top:clamp(2.4rem,5vw,3.2rem)}
+  .phil__k{font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.04em;margin:0 0 1.1rem}
+  .phil__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem}
+  .phil__card{border:2px solid var(--ink);background:var(--paper-2);padding:1.15rem;box-shadow:var(--shadow-hard-sm);transition:transform .18s var(--e-out),box-shadow .18s var(--e-out)}
+  .phil__card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+  .phil__name{font-weight:820;font-size:1.08rem;letter-spacing:-.015em}
+  .phil__years{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.02em;margin:.15rem 0 .6rem}
+  .phil__c{font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+
+  /* case + route widget */
+  .case{margin-top:clamp(2.6rem,5vw,3.6rem)}
+  .case__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(1.8rem,4vw,3rem);align-items:start}
+  @media (max-width:820px){.case__grid{grid-template-columns:1fr}}
+  .fig{background:var(--surface);border:2px solid var(--ink);padding:.5rem;box-shadow:var(--shadow-hard-sm)}
+  .fig img{width:100%;filter:grayscale(1) contrast(1.03)}
+  .fig figcaption{font-family:var(--mono);font-size:.73rem;color:var(--muted);line-height:1.45;margin-top:.55rem;padding:0 .3rem .2rem}
+  .fig figcaption b{color:var(--accent);font-weight:700;letter-spacing:.04em}
+  .case h3{font-size:1.35rem;margin:0 0 .6rem;letter-spacing:-.02em}
+  .case p{color:var(--ink-soft)}.case p+p{margin-top:.75rem}
+  .routes{margin-top:1.7rem;border:2px solid var(--ink);background:var(--surface);box-shadow:var(--shadow-hard-sm)}
+  .routes__tabs{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--ink)}
+  .route{flex:1 1 auto;appearance:none;background:transparent;border:0;border-right:2px solid var(--ink);cursor:pointer;font-family:var(--mono);font-size:.75rem;color:var(--ink-soft);letter-spacing:.01em;padding:.85rem 1rem;text-align:left;font-weight:600;transition:color .2s var(--e-out),background .2s var(--e-out)}
   .route:last-child{border-right:0}
-  .route::before{content:"→";color:var(--accent);opacity:.55;transition:opacity .2s var(--e-out)}
   .route:hover{color:var(--ink);background:var(--accent-wash)}
-  .route[aria-pressed="true"]{color:var(--accent-strong);background:var(--accent-wash);font-weight:600}
-  .route[aria-pressed="true"]::before{opacity:1}
+  .route[aria-pressed="true"]{color:var(--accent-strong);background:var(--accent-wash);font-weight:700}
   .route:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-
   .route-panel{padding:1.5rem 1.4rem}
-  .route-panel h4{margin:0 0 .5rem;font-size:1.08rem;font-weight:640;letter-spacing:-.01em}
+  .route-panel h4{margin:0 0 .5rem;font-size:1.1rem;font-weight:800;letter-spacing:-.01em}
   .route-panel p{margin:0 0 .9rem;color:var(--ink-soft)}
   .route-panel ul{margin:0;padding:0;list-style:none;display:grid;gap:.55rem}
   .route-panel li{position:relative;padding-left:1.2rem;font-size:.92rem;color:var(--ink-soft)}
-  .route-panel li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--accent);border-radius:50%}
+  .route-panel li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;background:var(--accent)}
   .route-swap{transition:opacity .22s var(--e-out)}
   .route-swap.is-swapping{opacity:0}
 
   /* community questions */
-  .cq-head{font-size:1.15rem;margin:clamp(2.4rem,5vw,3.2rem) 0 1.4rem;letter-spacing:-.01em}
-  .cq{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
-  .cq li{display:grid;grid-template-columns:8.5rem 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--line)}
-  .cq .lbl{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.02em;padding-top:.1rem}
-  .cq .qq{color:var(--ink);font-size:1.02rem;line-height:1.45}
-  @media (max-width:560px){ .cq li{grid-template-columns:1fr;gap:.25rem} }
+  .cq-head{font-size:1.2rem;margin:clamp(2.4rem,5vw,3.2rem) 0 1.3rem;letter-spacing:-.01em}
+  .cq{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+  .cq li{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--line)}
+  .cq .lbl{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.02em;font-weight:700;padding-top:.1rem}
+  .cq .qq{color:var(--ink);font-size:1.02rem;line-height:1.42}
+  @media (max-width:560px){.cq li{grid-template-columns:1fr;gap:.25rem}}
 
-  /* ---------- table ---------- */
-  .table-scroll{overflow-x:auto;margin-top:2.2rem;border:1px solid var(--line)}
-  table{border-collapse:collapse;width:100%;min-width:640px;font-size:.95rem}
-  thead th{
-    text-align:left;font-family:var(--mono);font-size:.74rem;letter-spacing:.03em;color:var(--muted);
-    font-weight:600;padding:.9rem 1.1rem;border-bottom:1px solid var(--line-strong);background:var(--surface);
-  }
+  /* table */
+  .table-scroll{overflow-x:auto;margin-top:2rem;border:2px solid var(--ink);box-shadow:var(--shadow-hard-sm)}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:.95rem;background:var(--surface)}
+  thead th{text-align:left;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--accent);font-weight:700;padding:.9rem 1.1rem;border-bottom:2px solid var(--ink)}
   tbody td{padding:1rem 1.1rem;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft)}
   tbody tr:last-child td{border-bottom:0}
-  tbody td:first-child{color:var(--ink);font-weight:600}
+  tbody td:first-child{color:var(--ink);font-weight:700}
   tbody td:last-child{font-style:italic;color:var(--muted)}
 
-  /* modes row */
-  .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.2rem;border-top:1px solid var(--line)}
-  .modes > div{padding:1.4rem 1.3rem 1.4rem 0;border-top:2px solid var(--accent);margin-right:1px}
-  .modes h3{font-size:1.02rem;margin:.2rem 0 .5rem;letter-spacing:-.01em}
-  .modes p{color:var(--ink-soft);font-size:.94rem;line-height:1.5}
-  .modes .mk{font-family:var(--mono);font-size:.74rem;color:var(--accent);letter-spacing:.02em}
-  @media (max-width:640px){ .modes{grid-template-columns:1fr;gap:1.4rem} }
+  /* modes */
+  .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+  .modes>div{border:2px solid var(--ink);background:var(--surface);padding:1.2rem;box-shadow:var(--shadow-hard-sm)}
+  .modes .mk{font-family:var(--mono);font-size:.74rem;color:var(--accent);letter-spacing:.03em;font-weight:700}
+  .modes h3{font-size:1.05rem;margin:.35rem 0 .5rem;letter-spacing:-.01em}
+  .modes p{color:var(--ink-soft);font-size:.92rem;line-height:1.48}
+  @media (max-width:640px){.modes{grid-template-columns:1fr}}
 
-  /* ---------- references ---------- */
-  .ref-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line)}
-  .ref-groups > div{padding:1.5rem 1.4rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .ref-groups > div:nth-child(2n){border-right:0}
-  .ref-groups > div:nth-last-child(-n+2){border-bottom:0}
-  .ref-groups h3{font-size:1.05rem;margin:0 0 .5rem;letter-spacing:-.01em}
-  .ref-groups p{color:var(--ink-soft);font-size:.94rem;line-height:1.5}
-  @media (max-width:640px){
-    .ref-groups{grid-template-columns:1fr}
-    .ref-groups > div{border-right:0}
-    .ref-groups > div:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
-    .ref-groups > div:last-child{border-bottom:0}
-  }
-  .sources{margin:2.4rem 0 0;padding:0;list-style:none;counter-reset:src;border-top:1px solid var(--line)}
-  .sources li{
-    counter-increment:src;display:grid;grid-template-columns:auto 1fr;gap:1.1rem;
-    padding:1.05rem 0;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--ink-soft);
-  }
-  .sources li::before{content:counter(src,decimal-leading-zero);font-family:var(--mono);font-size:.82rem;color:var(--accent);padding-top:.1rem}
-  .sources em{font-style:italic;color:var(--ink)}
-  .sources cite{font-style:normal;color:var(--ink);font-weight:600}
+  /* closing */
+  .closing{padding:clamp(3.6rem,7vw,6rem) 0;border-top:2px solid var(--ink);background:var(--paper-2)}
+  .closing .tag{display:block;font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.03em;margin-bottom:1.3rem;font-weight:700}
+  .closing__q{max-width:30ch;font-size:clamp(1.5rem,1.1rem + 2vw,2.4rem);line-height:1.14;font-weight:820;letter-spacing:-.028em;margin-top:1.8rem}
+  .closing__q em{font-style:italic;color:var(--accent);font-weight:600}
 
-  /* ---------- closing ---------- */
-  .closing{padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--line);background:var(--surface)}
-  .closing p{
-    max-width:34ch;font-size:clamp(1.4rem,1.05rem + 1.7vw,2.15rem);line-height:1.24;
-    font-weight:560;letter-spacing:-.018em;text-wrap:balance;
-  }
-  .closing p em{font-style:italic;color:var(--accent);font-weight:500}
-  .closing .tag{display:block;font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.02em;margin-bottom:1.4rem}
+  /* references (APA 7, hanging indent) */
+  .refs{padding-left:2.2em}
+  .refs li{list-style:none;text-indent:-2.2em;padding:0 0 1rem;font-size:.92rem;color:var(--ink-soft);line-height:1.5;max-width:80ch}
+  .refs li:target{background:var(--accent-wash);text-indent:0;padding:.6rem .8rem;margin-left:-2.2em}
+  .refs em{font-style:italic;color:var(--ink)}
+  .refs a{word-break:break-word;font-size:.95em}
 
-  /* ---------- pager + footer ---------- */
-  .pager{border-top:1px solid var(--line)}
+  /* pager + footer */
+  .pager{border-top:2px solid var(--ink)}
   .pager__in{width:var(--measure);margin-inline:auto;display:flex;justify-content:space-between;gap:1.5rem;padding:2rem 0}
-  .pager a{max-width:46%;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+  .pager a{max-width:46%;color:var(--ink);font-weight:800;letter-spacing:-.01em;text-decoration:none}
   .pager a:hover{color:var(--accent)}
-  .pager .dir{display:block;font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.03em;font-weight:400;margin-bottom:.2rem}
+  .pager .dir{display:block;font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.03em;font-weight:600;margin-bottom:.2rem}
   .pager .nx{text-align:right;margin-left:auto}
-  .foot{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem}
+  .foot{border-top:2px solid var(--ink);padding:1.6rem 0 2.4rem}
   .foot__in{width:var(--measure);margin-inline:auto;font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.02em}
 
-  /* ---------- motion: default is fully visible; is-in plays a one-shot entrance ---------- */
-  @keyframes revealIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  /* reveal: visible by default, is-in adds a one-shot entrance */
+  @keyframes revealIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   .reveal.is-in{animation:revealIn .7s var(--e-out) both}
   @media (prefers-reduced-motion:reduce){
     .reveal.is-in{animation:none}
-    .route-swap,.route{transition:none}
+    .layer,.step,.route,.route-swap,.phil__card{transition:none}
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#hallazgos">Saltar al contenido</a>
+<div class="progress" aria-hidden="true"></div>
 
 <header class="nav">
   <div class="nav__in">
@@ -299,13 +269,15 @@
     <div class="wrap">
       <p class="kicker">Ensayo · Ética y tutoría en la educación superior</p>
       <h1>Pedagogía del Bien Común</h1>
-      <p class="hero__deck">Un estilo educativo que no busca solo que el estudiante apruebe materias, sino formar personas capaces de convivir, servir y transformar su entorno.</p>
-      <p class="hero__q">¿Qué haces cuando ayudar a un estudiante <em>parece chocar</em> con ser justo con todos?</p>
+      <p class="hero__deck">Te escribo como docente, no como manual. Aquí te explico un estilo educativo que no busca solo que tu estudiante apruebe materias, sino formar personas capaces de convivir, servir y transformar su entorno.</p>
+      <p class="hero__q">¿Qué hago cuando ayudar a un estudiante <em>parece chocar</em> con ser justo con todos?</p>
       <p class="hero__meta">
         <span>Para docentes y tutores</span>
-        <span>IES mexicanas</span>
-        <span>Presencial · Híbrido · MOOC</span>
+        <span>IES de México</span>
+        <span>Presencial e híbrido</span>
+        <span>Clases en línea</span>
       </p>
+      <p class="hero__by">Un modelo formulado por <a href="#hallazgos">Mariano Sánchez Cuevas y Jorge Medina Delgadillo</a> (UPAEP).</p>
     </div>
   </section>
 
@@ -319,66 +291,106 @@
 
       <div class="split">
         <div class="prose">
-          <p class="lede">No se trata solo de aprender contenidos o pasar materias. Se trata de formar personas completas, capaces de convivir, servir y transformar su entorno.</p>
-          <p>El documento de UPAEP presenta la Pedagogía del Bien Común como un <strong>estilo educativo</strong>: responde tres preguntas básicas —quién es la persona que aprende, para qué se educa y cómo se diseñan experiencias formativas.</p>
-          <p>No es una dinámica aislada de clase ni una técnica suelta, sino una forma de entender la educación entera.</p>
+          <p class="lede">Si das clase en una universidad mexicana, quizá ya escuchaste hablar del bien común sin saber que existe un modelo pedagógico que lo sistematiza.</p>
+          <p>Quiero empezar por lo primero: quiénes lo han nombrado y articulado. No es la ocurrencia de un solo autor. Lo formularon <strong>Mariano Sánchez Cuevas</strong> y <strong>Jorge Medina Delgadillo</strong>, ambos vicerrectores de la UPAEP, y lo publicaron como propuesta pedagógica en el documento fundacional de la serie fundamentos <a class="cite" href="#ref-scmd2024">(Sánchez Cuevas &amp; Medina Delgadillo, 2024)</a>, continuación de una obra previa que ya definía sus principios y pilares <a class="cite" href="#ref-scmd2021">(Sánchez Cuevas &amp; Medina Delgadillo, 2021)</a>.</p>
+          <p>Te explico de dónde bebe: de la antropología personalista de cuño católico (Mounier, Maritain, Wojtyła, Stein), de la Doctrina Social de la Iglesia y de las intuiciones educativas de los fundadores de la UPAEP. Con esas fuentes ordena la enseñanza en tres preguntas que tú mismo puedes hacerte: a quién formo, para qué formo y cómo formo.</p>
+          <p>Quiero que veas que esto no se quedó en el papel. Sus principios se investigaron con actores reales de la comunidad educativa <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a> y se probaron en métodos concretos, como la tutoría entre pares <a class="cite" href="#ref-sc2019">(Sánchez Cuevas et al., 2019)</a>. Te invito a contrastar cada pilar con una experiencia tuya de aula antes de seguir leyendo.</p>
         </div>
-        <figure class="fig reveal">
-          <img src="assets/upaep-pedagogia.jpg" alt="Página del documento institucional de UPAEP donde inicia la sección sobre Pedagogía del Bien Común" loading="lazy">
-          <figcaption><b>FIG. 1</b> — Documento institucional UPAEP sobre Pedagogía del Bien Común.</figcaption>
-        </figure>
+
+        <div class="doc reveal">
+          <img src="assets/upaep-pedagogia.jpg" alt="Portada del documento institucional de la UPAEP sobre la Pedagogía del Bien Común">
+          <div>
+            <p class="doc__k">FUENTE PRIMARIA</p>
+            <p class="doc__t">La pedagogía del bien común (2024)</p>
+            <a class="doc__l" href="https://investigacion.upaep.mx/images/img/editorial_upaep/biblioteca_virtual/pdf/PBC2024.pdf" target="_blank" rel="noopener">investigacion.upaep.mx · PBC2024.pdf</a>
+          </div>
+        </div>
       </div>
 
-      <ol class="ruled reveal" style="margin-top:clamp(2.4rem,5vw,3.4rem)">
-        <li>
-          <span class="n">01</span>
+      <!-- author cards -->
+      <div class="authors">
+        <div class="author reveal">
+          <img class="author__photo" src="assets/autor-sanchez.jpg" alt="Retrato de Mariano Sánchez Cuevas">
           <div>
-            <span class="term">Integralidad</span>
-            <p class="desc">Educar a toda la persona, no solo su rendimiento académico.</p>
-            <small class="eg">Ejemplo: tutorías que atienden desempeño, contexto, hábitos y emociones.</small>
+            <p class="author__name">Mariano Sánchez Cuevas</p>
+            <p class="author__role">Vicerrector Académico, UPAEP · Doctor en Pedagogía</p>
+            <p class="author__why">Coautor de la obra fundacional que sistematiza el modelo. Articula el formar desde, por y para el bien común dentro del Modelo Educativo U50.</p>
+            <p class="author__links"><a href="https://dialnet.unirioja.es/servlet/autor?codigo=5478646" target="_blank" rel="noopener">Dialnet</a><a href="https://upaep.mx/micrositios/17centrosdecultura/ponentes/dr-mariano-sanchez-cuevas/" target="_blank" rel="noopener">Perfil UPAEP</a></p>
           </div>
-        </li>
-        <li>
-          <span class="n">02</span>
+        </div>
+        <div class="author reveal">
+          <img class="author__photo" src="assets/autor-medina.jpg" alt="Retrato de Jorge Medina Delgadillo">
           <div>
-            <span class="term">Alteridad</span>
-            <p class="desc">Reconocer al otro como alguien distinto, valioso y digno.</p>
-            <small class="eg">Ejemplo: diálogo respetuoso en grupos diversos.</small>
+            <p class="author__name">Jorge Medina Delgadillo</p>
+            <p class="author__role">Vicerrector de Investigación, UPAEP · Doctor en Filosofía y en Educación</p>
+            <p class="author__why">Fuente primaria del marco y estudioso de Lévinas. Su obra une la antropología personalista y la ética del rostro con la teoría del bien común.</p>
+            <p class="author__links"><a href="https://scholar.google.com/citations?user=Ez5FDy0AAAAJ&amp;hl=es" target="_blank" rel="noopener">Scholar</a><a href="https://orcid.org/0000-0001-6530-1902" target="_blank" rel="noopener">ORCID</a></p>
           </div>
-        </li>
-        <li>
-          <span class="n">03</span>
-          <div>
-            <span class="term">Don</span>
-            <p class="desc">Entender que los talentos no son solo para beneficio individual.</p>
-            <small class="eg">Ejemplo: proyectos profesionales con impacto social.</small>
-          </div>
-        </li>
-        <li>
-          <span class="n">04</span>
-          <div>
-            <span class="term">Amor</span>
-            <p class="desc">Salir del egoísmo y orientar la vida hacia algo más grande.</p>
-            <small class="eg">Ejemplo: compromiso ético, social y comunitario.</small>
-          </div>
-        </li>
-      </ol>
+        </div>
+      </div>
 
-      <div class="triad reveal">
-        <div>
-          <span class="prep">desde</span>
-          <h3>el bien común</h3>
-          <p>Reconocer que cada persona ya es un bien por su dignidad.</p>
-        </div>
-        <div>
-          <span class="prep">por</span>
-          <h3>el bien común</h3>
-          <p>Crear relaciones educativas que construyan comunidad y encuentro.</p>
-        </div>
-        <div>
-          <span class="prep">para</span>
-          <h3>el bien común</h3>
-          <p>Formar agentes capaces de transformar realidades injustas.</p>
+      <!-- scrollytelling pillars -->
+      <div class="scrolly">
+        <p class="scrolly__label">Los cuatro pilares, en diálogo con el Informe Delors. Desliza para recorrerlos <a class="cite" href="#ref-scmd2024">(Sánchez Cuevas &amp; Medina Delgadillo, 2024)</a>.</p>
+        <div class="scrolly__grid">
+          <div class="sticky">
+            <div class="stage" aria-hidden="true">
+              <div class="layer is-active" data-layer="0">
+                <span class="layer__no">PILAR 01</span>
+                <span class="layer__word">Integralidad</span>
+                <span class="layer__delors">Aprender a ser</span>
+                <div class="layer__rule"></div>
+                <span class="layer__prin">Principio correlativo</span>
+                <span class="layer__prinval">Experiencias integrales</span>
+              </div>
+              <div class="layer" data-layer="1">
+                <span class="layer__no">PILAR 02</span>
+                <span class="layer__word">Alteridad</span>
+                <span class="layer__delors">Aprender a convivir</span>
+                <div class="layer__rule"></div>
+                <span class="layer__prin">Principio correlativo</span>
+                <span class="layer__prinval">Cultura del encuentro</span>
+              </div>
+              <div class="layer" data-layer="2">
+                <span class="layer__no">PILAR 03</span>
+                <span class="layer__word">Don</span>
+                <span class="layer__delors">Aprender a transformar</span>
+                <div class="layer__rule"></div>
+                <span class="layer__prin">Principio correlativo</span>
+                <span class="layer__prinval">Liderazgo transformador</span>
+              </div>
+              <div class="layer" data-layer="3">
+                <span class="layer__no">PILAR 04</span>
+                <span class="layer__word">Amor</span>
+                <span class="layer__delors">Aprender a trascender</span>
+                <div class="layer__rule"></div>
+                <span class="layer__prin">Principio correlativo</span>
+                <span class="layer__prinval">Trascendencia en el bien común</span>
+              </div>
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step is-active" data-step="0">
+              <span class="step__no">01 · Integralidad</span>
+              <h3>Educo a la persona entera</h3>
+              <p>Quiero desarrollar todos los talentos del estudiante, no solo su rendimiento. Lo llevo al aula con experiencias que cimbran y dan sentido, y que tocan no solo la cabeza sino lo que el estudiante siente y decide.</p>
+            </div>
+            <div class="step" data-step="1">
+              <span class="step__no">02 · Alteridad</span>
+              <h3>Reconozco al otro como distinto y digno</h3>
+              <p>Aquí aprendemos a convivir. Cultivo una cultura del encuentro: hábitos de escucha, respeto y acogida, para caminar juntos aun cuando pensamos distinto.</p>
+            </div>
+            <div class="step" data-step="2">
+              <span class="step__no">03 · Don</span>
+              <h3>Pongo mis talentos al servicio</h3>
+              <p>Aprendemos a transformar. Busco formar un liderazgo transformador: alguien de alta preparación y sentido humanista, comprometido con cambiar realidades sociales injustas.</p>
+            </div>
+            <div class="step" data-step="3">
+              <span class="step__no">04 · Amor</span>
+              <h3>Voy más allá del interés propio</h3>
+              <p>Aprendemos a trascender. La motivación última de mi trabajo educativo es construir bien común, ir siempre un poco más allá de lo que me conviene.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -389,38 +401,62 @@
     <div class="wrap">
       <div class="s-head">
         <span class="s-index">[02]</span>
-        <h2>Ética y comunidad de cuestionamiento</h2>
+        <h2>Ética, otredad y comunidad de cuestionamiento</h2>
       </div>
 
       <div class="split">
         <div class="prose">
-          <p class="lede">La ética aparece cuando una regla no basta: cuando hay una persona concreta, una decisión difícil y consecuencias para otros.</p>
-          <h3>La ética no es solo “portarse bien”</h3>
-          <p>Con Roger-Pol Droit, la ética puede explicarse como la reflexión sobre la conducta cuando enfrentamos situaciones nuevas. La moral entrega reglas y valores recibidos; la ética pregunta cómo actuar cuando esas reglas chocan con una realidad concreta.</p>
-          <p>En el caso de Carmen, la regla dice que Gael no alcanza el mínimo. La realidad dice que Gael cuida a sus hermanos, falta por una carga familiar y aun así intenta aprender. Ahí empieza el dilema.</p>
+          <p class="lede">Te propongo un problema real: cuando enseño, ¿reduzco al estudiante a lo que espero de él o lo acojo como alguien que me desborda?</p>
+          <p>Con esa pregunta entro a Emmanuel Lévinas. Te explico su idea central: para él la ética es filosofía primera. Antes de conocer o clasificar al otro, su <em>rostro</em> ya me interpela y me hace responsable, y eso ordena la relación pedagógica como hospitalidad y no como imposición de un saber <a class="cite" href="#ref-levinas2012">(Lévinas, 1961/2012)</a>. Lévinas lo lleva aún más lejos con la responsabilidad asimétrica, esa en la que respondo por el otro incluso antes de elegirlo <a class="cite" href="#ref-levinas1987">(Lévinas, 1974/1987)</a>.</p>
+          <p>Fíjate en una influencia que no es casual: uno de los propios autores del modelo, Jorge Medina Delgadillo, es estudioso de Lévinas, y por su lectura entra la antropología del rostro a la Pedagogía del Bien Común <a class="cite" href="#ref-medina2010">(Medina Delgadillo, 2010</a>; <a class="cite" href="#ref-medina2017">2017)</a>.</p>
+          <h3>Qué significa pensar desde la otredad</h3>
+          <p>La otredad reconoce al otro como radicalmente distinto e irreductible a mis categorías. En el aula significa acoger al estudiante en su diferencia cultural, social y personal, y rechazar toda pedagogía que lo homogenice. Lo aterrizo con dos ideas cercanas: el encuentro <em>Yo-Tú</em> de Buber, que se opone a tratar al otro como un <em>Ello</em> u objeto <a class="cite" href="#ref-buber2017">(Buber, 1923/2017)</a>, y la tesis de Ricoeur de que mi identidad se construye pasando por el otro <a class="cite" href="#ref-ricoeur1996">(Ricoeur, 1990/1996)</a>.</p>
         </div>
         <div class="pull reveal">
-          <blockquote>Antes de ver un expediente, una boleta o un promedio, el docente se encuentra con un rostro.</blockquote>
-          <cite>Lente filosófico inspirado en Emmanuel Lévinas</cite>
+          <blockquote>Antes de ver un expediente, una boleta o un promedio, me encuentro con un rostro.</blockquote>
+          <cite>Lectura de Lévinas aplicada a la docencia</cite>
         </div>
       </div>
 
+      <!-- neobrutalist philosophers -->
+      <div class="phil">
+        <p class="phil__k">TRES VOCES DE LA ALTERIDAD</p>
+        <div class="phil__row">
+          <div class="phil__card reveal">
+            <p class="phil__name">Emmanuel Lévinas</p>
+            <p class="phil__years">1906-1995</p>
+            <p class="phil__c">Desplazó la filosofía del yo hacia la responsabilidad por el Otro. El rostro me interpela antes de toda elección: enseñar deja de ser imponer un saber y se vuelve acogida.</p>
+          </div>
+          <div class="phil__card reveal">
+            <p class="phil__name">Martin Buber</p>
+            <p class="phil__years">1878-1965</p>
+            <p class="phil__c">Iniciador de la filosofía dialógica. Distingue el <em>Yo-Tú</em> recíproco del <em>Yo-Ello</em> que cosifica. Solo me constituyo en el encuentro con un Tú, base de una pedagogía de la confianza.</p>
+          </div>
+          <div class="phil__card reveal">
+            <p class="phil__name">Enrique Dussel</p>
+            <p class="phil__years">1934-2023</p>
+            <p class="phil__c">Fundador de la Filosofía de la Liberación. Piensa la alteridad desde el pobre y el excluido de la periferia: la educación como encuentro que desenmascara la dominación <a class="cite" href="#ref-dussel1996">(Dussel, 1977/1996)</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- case -->
       <div class="case">
         <div class="case__grid">
           <figure class="fig reveal">
-            <img src="assets/tinta-seis-caso.jpg" alt="Documento del caso «La tinta invisible del seis»" loading="lazy">
-            <figcaption><b>FIG. 2</b> — El caso funciona como laboratorio ético: no es sentimentalismo contra rigor, sino deliberación responsable.</figcaption>
+            <img src="assets/tinta-seis-caso.jpg" alt="Documento del caso «La tinta invisible del seis»">
+            <figcaption><b>FIG. 1</b> · Uso este caso como laboratorio ético: no es sentimentalismo contra rigor, sino deliberación responsable.</figcaption>
           </figure>
           <div>
             <h3>El caso de la maestra Carmen y Gael</h3>
-            <p>Carmen debe decidir si pone o no una calificación aprobatoria. Gael no alcanza formalmente el mínimo, pero vive una situación familiar que afecta su asistencia y desempeño. Dos colegas le ofrecen salidas opuestas: aprobarlo por sensibilidad o reprobarlo por honestidad evaluativa.</p>
-            <p>Lévinas ayuda a no reducir a Gael a una cifra. Pero la responsabilidad por Gael no autoriza a destruir la verdad de la evaluación. La salida madura exige <strong>comunidad de cuestionamiento</strong>.</p>
+            <p>Carmen debe decidir si pone o no una calificación aprobatoria. Gael no alcanza formalmente el mínimo, pero vive una situación familiar que afecta su asistencia y su desempeño. Dos colegas le ofrecen salidas opuestas: aprobarlo por sensibilidad o reprobarlo por honestidad evaluativa.</p>
+            <p>Lévinas me ayuda a no reducir a Gael a una cifra. Pero la responsabilidad por Gael no me autoriza a destruir la verdad de la evaluación. La salida madura me exige una <strong>comunidad de cuestionamiento</strong>. Elige una ruta y mira lo que pone en juego.</p>
 
             <div class="routes" role="group" aria-label="Rutas de decisión del caso">
               <div class="routes__tabs">
-                <button type="button" class="route" data-route="six" aria-pressed="true">Poner el 6 sin más</button>
-                <button type="button" class="route" data-route="fail" aria-pressed="false">No poner el 6</button>
-                <button type="button" class="route" data-route="deliberate" aria-pressed="false">Deliberar</button>
+                <button type="button" class="route" aria-controls="routePanel" data-route="six" aria-pressed="true">Poner el 6 sin más</button>
+                <button type="button" class="route" aria-controls="routePanel" data-route="fail" aria-pressed="false">No poner el 6</button>
+                <button type="button" class="route" aria-controls="routePanel" data-route="deliberate" aria-pressed="false">Deliberar</button>
               </div>
               <div class="route-panel" id="routePanel" aria-live="polite">
                 <div class="route-swap" id="routeSwap">
@@ -436,11 +472,11 @@
           </div>
         </div>
 
-        <h3 class="cq-head">Comunidad de cuestionamiento: preguntas que sostienen la decisión</h3>
+        <h3 class="cq-head">Comunidad de cuestionamiento: las preguntas que sostienen mi decisión</h3>
         <ul class="cq reveal">
           <li><span class="lbl">Dilema</span><span class="qq">¿Qué valor está chocando aquí: verdad, cuidado, justicia, permanencia, confianza institucional?</span></li>
-          <li><span class="lbl">Rostro</span><span class="qq">¿Qué le debemos a Gael como persona concreta, no como indicador?</span></li>
-          <li><span class="lbl">Comunidad</span><span class="qq">¿Qué le debemos al grupo que confía en que la evaluación significa algo?</span></li>
+          <li><span class="lbl">Rostro</span><span class="qq">¿Qué le debo a Gael como persona concreta, no como indicador?</span></li>
+          <li><span class="lbl">Comunidad</span><span class="qq">¿Qué le debo al grupo que confía en que la evaluación significa algo?</span></li>
           <li><span class="lbl">Ruta</span><span class="qq">¿Qué vías institucionales existen antes de aprobar o reprobar en privado?</span></li>
         </ul>
       </div>
@@ -456,45 +492,30 @@
       </div>
 
       <div class="prose">
-        <p class="lede">Sí, la vinculación es directa en las instituciones de educación superior en México: no solo transmiten conocimientos, forman profesionistas que tomarán decisiones con impacto social.</p>
-        <p>Las IES mexicanas trabajan con estudiantes que enfrentan desigualdades económicas, familiares, laborales, emocionales, digitales y culturales. Por eso la pregunta ética no es secundaria: atraviesa la tutoría, la evaluación, las becas, el currículo, el servicio social y la cultura institucional.</p>
+        <p class="lede">Me centro sobre todo en las instituciones de educación superior de México y, en paralelo, en las que damos clase en línea.</p>
+        <p>Elijo ese foco por una razón práctica: es donde trabajo y donde la acogida del rostro se vuelve, al mismo tiempo, un reto humano y técnico. Te explico que el modelo se difunde de manera institucional a través del Instituto Promotor del Bien Común de la UPAEP <a class="cite" href="#ref-ipbc">(Instituto Promotor del Bien Común, s. f.)</a>, y eso importa para tu propia IES porque te da un marco ya probado en la práctica, con procesos concretos y no solo discurso.</p>
+        <p>Muestro que el bien común puede traducirse en dinámicas concretas de desarrollo, y no quedarse en abstracción <a class="cite" href="#ref-nebel2022">(Nebel &amp; Medina Delgadillo, 2022)</a>, y que hay evidencia de cómo lo viven los actores clave, evidencia que puedes usar para justificar su adopción <a class="cite" href="#ref-croda2022">(Croda Borges et al., 2022)</a>. Incluso su fundamentación del cuerpo vivo y la subjetividad sostiene esa integralidad que una universidad dice querer formar <a class="cite" href="#ref-sm2018">(Sánchez Muñoz &amp; Medina Delgadillo, 2018)</a>.</p>
       </div>
 
       <div class="table-scroll reveal">
         <table>
           <thead>
-            <tr>
-              <th scope="col">Área institucional</th>
-              <th scope="col">Aplicación del bien común</th>
-              <th scope="col">Pregunta ética</th>
-            </tr>
+            <tr><th scope="col">Área institucional</th><th scope="col">Aplicación del bien común</th><th scope="col">Pregunta ética</th></tr>
           </thead>
           <tbody>
-            <tr><td>Tutoría</td><td>Acompañar al estudiante como persona completa, no solo como trámite.</td><td>¿Lo estoy viendo como persona o como caso?</td></tr>
-            <tr><td>Evaluación</td><td>Usar criterios claros, evidencias y oportunidades formativas.</td><td>¿Estoy siendo justo o solo rígido?</td></tr>
-            <tr><td>Becas y apoyos</td><td>Reducir barreras reales de permanencia.</td><td>¿Quién queda fuera por condiciones que la institución puede atender?</td></tr>
-            <tr><td>Currículo</td><td>Conectar la profesión con problemas sociales reales.</td><td>¿Para qué sociedad estamos formando?</td></tr>
-            <tr><td>MOOC y online</td><td>Crear comunidad, cuidar datos y acompañar sin vigilar de más.</td><td>¿La plataforma ve personas o solo actividad?</td></tr>
+            <tr><td>Tutoría</td><td>Acompaño al estudiante como persona completa, no como trámite.</td><td>¿Lo veo como persona o como caso?</td></tr>
+            <tr><td>Evaluación</td><td>Uso criterios claros, evidencias y oportunidades formativas.</td><td>¿Estoy siendo justo o solo rígido?</td></tr>
+            <tr><td>Becas y apoyos</td><td>Reduzco barreras reales de permanencia.</td><td>¿Quién queda fuera por condiciones que puedo atender?</td></tr>
+            <tr><td>Currículo</td><td>Conecto la profesión con problemas sociales reales.</td><td>¿Para qué sociedad estoy formando?</td></tr>
+            <tr><td>Clases en línea</td><td>Creo comunidad, cuido los datos y acompaño sin vigilar de más.</td><td>¿La plataforma ve personas o solo actividad?</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="modes reveal">
-        <div>
-          <span class="mk">presencial</span>
-          <h3>En el aula</h3>
-          <p>El bien común se nota en tutorías, criterios transparentes, proyectos sociales y cultura de encuentro.</p>
-        </div>
-        <div>
-          <span class="mk">híbrido</span>
-          <h3>Entre modalidades</h3>
-          <p>La institución debe cuidar que la flexibilidad no se vuelva desorden ni privilegio invisible.</p>
-        </div>
-        <div>
-          <span class="mk">mooc</span>
-          <h3>En línea</h3>
-          <p>También hay rostro aunque no haya cámara: cada entrega tardía o silencio puede esconder una historia.</p>
-        </div>
+        <div><span class="mk">presencial</span><h3>En el aula</h3><p>El bien común se nota en las tutorías, los criterios transparentes, los proyectos sociales y una cultura de encuentro.</p></div>
+        <div><span class="mk">híbrido</span><h3>Entre modalidades</h3><p>Cuido que la flexibilidad no se vuelva desorden ni privilegio invisible para quien tiene menos.</p></div>
+        <div><span class="mk">en línea</span><h3>A distancia</h3><p>También hay rostro aunque no haya cámara: cada entrega tardía o cada silencio puede esconder una historia.</p></div>
       </div>
     </div>
   </section>
@@ -504,35 +525,25 @@
     <div class="wrap">
       <div class="s-head">
         <span class="s-index">[04]</span>
-        <h2>Referencias de la investigación</h2>
+        <h2>Referencias</h2>
       </div>
+      <p class="lede">Todo lo que afirmo arriba se apoya en fuentes verificables. Aquí las dejo en formato APA 7.</p>
 
-      <p class="lede">El contenido está fundamentado. Organizado como mapa de lectura, no como bibliografía plana.</p>
-
-      <div class="ref-groups reveal">
-        <div>
-          <h3>Pedagogía del Bien Común</h3>
-          <p>UPAEP; Merino Fernández; Croda, Bañuelos y Lechuga. Explican pilares, principios, evaluación y experiencia institucional.</p>
-        </div>
-        <div>
-          <h3>Educación como bien común</h3>
-          <p>UNESCO (2015) y Locatelli (2018). Ayudan a distinguir educación como bien público, privado y común.</p>
-        </div>
-        <div>
-          <h3>Ética profesional</h3>
-          <p>Droit; Cortina; Ramos Serpa y López Falcón. Sostienen la deliberación, la profesión y la responsabilidad docente.</p>
-        </div>
-        <div>
-          <h3>Lévinas y educación</h3>
-          <p>Stanford Encyclopedia of Philosophy; Lévinas; Todd; Alexander. Fundamentan rostro, alteridad y responsabilidad.</p>
-        </div>
-      </div>
-
-      <ol class="sources">
-        <li><div><cite>UNESCO.</cite> <em>Replantear la educación: ¿Hacia un bien común mundial?</em> (2015). <a href="https://unesdoc.unesco.org/ark:/48223/pf0000232697" target="_blank" rel="noopener">unesdoc.unesco.org</a></div></li>
-        <li><div><cite>Locatelli, R.</cite> <em>Education as a public and common good.</em> (2018). <a href="https://unesdoc.unesco.org/ark:/48223/pf0000261614" target="_blank" rel="noopener">unesdoc.unesco.org</a></div></li>
-        <li><div><cite>Bergo, B.</cite> <em>Emmanuel Levinas.</em> Stanford Encyclopedia of Philosophy. <a href="https://plato.stanford.edu/entries/levinas/" target="_blank" rel="noopener">plato.stanford.edu</a></div></li>
-        <li><div><cite>Alexander, H.</cite> <em>Education in Nonviolence: Levinas' Talmudic Readings and the Study of Sacred Texts.</em> <a href="https://doi.org/10.1080/17449642.2014.890273" target="_blank" rel="noopener">doi.org</a></div></li>
+      <ol class="refs">
+        <li id="ref-buber2017">Buber, M. (2017). <em>Yo y tú</em> (C. Díaz, Trad.). Herder. (Obra original publicada en 1923)</li>
+        <li id="ref-croda2022">Croda Borges, G., Bañuelos Hernández, F. M., &amp; Lechuga Blázquez, G. (2022). Principios de la pedagogía del bien común: Experiencia de actores clave de la comunidad educativa. <em>A&amp;H, Revista de Artes, Humanidades y Ciencias Sociales</em>, (Número especial Pedagogía del bien común), 177-204. <a href="https://revistas.upaep.mx/index.php/ayh/article/view/341" target="_blank" rel="noopener">https://revistas.upaep.mx/index.php/ayh/article/view/341</a></li>
+        <li id="ref-dussel1996">Dussel, E. (1996). <em>Filosofía de la liberación</em> (5.ª ed.). Nueva América. (Obra original publicada en 1977)</li>
+        <li id="ref-ipbc">Instituto Promotor del Bien Común. (s. f.). <em>Bien común IPBC</em>. Universidad Popular Autónoma del Estado de Puebla. Recuperado el 4 de julio de 2026, de <a href="https://upaep.mx/biencomun/" target="_blank" rel="noopener">https://upaep.mx/biencomun/</a></li>
+        <li id="ref-levinas1987">Lévinas, E. (1987). <em>De otro modo que ser, o más allá de la esencia</em> (A. Pintor-Ramos, Trad.). Ediciones Sígueme. (Obra original publicada en 1974)</li>
+        <li id="ref-levinas2012">Lévinas, E. (2012). <em>Totalidad e infinito: Ensayo sobre la exterioridad</em> (M. García-Baró, Trad.; 2.ª ed.). Ediciones Sígueme. (Obra original publicada en 1961) <a href="https://www.sigueme.es/docs/libros/totalidad-e-infinito-2012.pdf" target="_blank" rel="noopener">https://www.sigueme.es/docs/libros/totalidad-e-infinito-2012.pdf</a></li>
+        <li id="ref-medina2010">Medina Delgadillo, J. (2010). <em>¿El mesías soy yo? Introducción al pensamiento de Emmanuel Lévinas</em>. Editorial Jus.</li>
+        <li id="ref-medina2017">Medina Delgadillo, J. (2017). Cuatro claves antropológicas en <em>Humanismo del otro hombre</em> de Emmanuel Lévinas. <em>Veritas</em>, (37), 93-114.</li>
+        <li id="ref-nebel2022">Nebel, M., &amp; Medina Delgadillo, J. (2022). From theory to practice: A matrix of common good dynamics. En M. Nebel, O. Garza-Vázquez, &amp; C. Sedmak (Eds.), <em>A common good approach to development: Collective dynamics of development processes</em> (pp. 47-86). Open Book Publishers. <a href="https://doi.org/10.11647/OBP.0290.03" target="_blank" rel="noopener">https://doi.org/10.11647/OBP.0290.03</a></li>
+        <li id="ref-ricoeur1996">Ricoeur, P. (1996). <em>Sí mismo como otro</em> (A. Neira Calvo, Trad.). Siglo XXI Editores. (Obra original publicada en 1990)</li>
+        <li id="ref-scmd2021">Sánchez Cuevas, M., &amp; Medina Delgadillo, J. (Eds.). (2021). <em>Pedagogía del bien común: Principios y pilares</em>. Universidad Popular Autónoma del Estado de Puebla. <a href="https://investigacion.upaep.mx/images/img/editorial_upaep/biblioteca_virtual/pdf/PeBiCom_final.pdf" target="_blank" rel="noopener">https://investigacion.upaep.mx/images/img/editorial_upaep/biblioteca_virtual/pdf/PeBiCom_final.pdf</a></li>
+        <li id="ref-scmd2024">Sánchez Cuevas, M., &amp; Medina Delgadillo, J. (2024). <em>La pedagogía del bien común</em>. Universidad Popular Autónoma del Estado de Puebla. <a href="https://investigacion.upaep.mx/images/img/editorial_upaep/biblioteca_virtual/pdf/PBC2024.pdf" target="_blank" rel="noopener">https://investigacion.upaep.mx/images/img/editorial_upaep/biblioteca_virtual/pdf/PBC2024.pdf</a></li>
+        <li id="ref-sc2019">Sánchez Cuevas, M., Rentería Montemayor, G. G., &amp; Roldán de la Tejera, L. F. (2019). Tutoría entre pares: una experiencia de asesoramiento entre iguales. En M. L. Sein-Echaluce Lacleta, Á. Fidalgo Blanco, &amp; F. J. García Peñalvo (Eds.), <em>Aprendizaje, innovación y cooperación como impulsores del cambio metodológico: Actas del V Congreso Internacional sobre Aprendizaje, Innovación y Cooperación (CINAIC 2019)</em> (pp. 156-159). Servicio de Publicaciones, Universidad de Zaragoza. <a href="https://doi.org/10.26754/CINAIC.2019.0035" target="_blank" rel="noopener">https://doi.org/10.26754/CINAIC.2019.0035</a></li>
+        <li id="ref-sm2018">Sánchez Muñoz, R., &amp; Medina Delgadillo, J. (2018). El cuerpo vivo y la subjetividad trascendental en la fenomenología de Edmund Husserl. <em>Veritas</em>, (41), 91-113.</li>
       </ol>
     </div>
   </section>
@@ -541,7 +552,12 @@
 <section class="closing">
   <div class="wrap">
     <span class="tag">Aprendizaje central</span>
-    <p>La Pedagogía del Bien Común da el horizonte; la ética da el método de decisión; la comunidad de cuestionamiento ayuda a pensar con otros; y Lévinas recuerda que ninguna política educativa debe olvidar el <em>rostro concreto</em> del estudiante.</p>
+    <div class="triad">
+      <div><span class="prep">desde</span><h3>el bien común</h3><p>Reconozco la dignidad de cada persona como un bien en sí.</p></div>
+      <div><span class="prep">por</span><h3>el bien común</h3><p>Hago de la relación educativa el medio del crecimiento.</p></div>
+      <div><span class="prep">para</span><h3>el bien común</h3><p>Formo a alguien que lo construya en su familia, su barrio y su país.</p></div>
+    </div>
+    <p class="closing__q">¿Qué haré distinto el próximo lunes en mi aula, presencial o en línea, para pasar de <em>contemplar</em> el bien común a <em>acrecentarlo</em>?</p>
   </div>
 </section>
 
@@ -558,59 +574,59 @@
 
 <script>
 (function(){
-  /* ---- case route widget ---- */
+  var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  /* case route widget */
   var data={
-    six:{
-      title:"Parece proteger a Gael",
-      body:"Evita una reprobación inmediata, pero puede falsear la evaluación y dañar la confianza del grupo.",
-      bullets:["Riesgo: convertir la compasión en arbitrariedad.","Pregunta ética: ¿puedo explicar esta decisión sin esconder información?"]
-    },
-    fail:{
-      title:"Parece proteger la regla",
-      body:"Defiende la formalidad de la evaluación, pero puede ignorar una desigualdad real que la institución debería atender.",
-      bullets:["Riesgo: confundir justicia con rigidez.","Pregunta ética: ¿estoy castigando una condición de vida que impidió aprender?"]
-    },
-    deliberate:{
-      title:"Busca justicia con verdad",
-      body:"Activa apoyos, documenta criterios, revisa evidencias, abre una ruta de recuperación y evita decidir en soledad.",
-      bullets:["Riesgo: exige más trabajo institucional.","Pregunta ética: ¿qué decisión cuida a Gael sin romper la confianza común?"]
-    }
+    six:{title:"Parece proteger a Gael",body:"Evita una reprobación inmediata, pero puede falsear la evaluación y dañar la confianza del grupo.",bullets:["Riesgo: convertir la compasión en arbitrariedad.","Pregunta ética: ¿puedo explicar esta decisión sin esconder información?"]},
+    fail:{title:"Parece proteger la regla",body:"Defiende la formalidad de la evaluación, pero puede ignorar una desigualdad real que la institución debería atender.",bullets:["Riesgo: confundir justicia con rigidez.","Pregunta ética: ¿estoy castigando una condición de vida que impidió aprender?"]},
+    deliberate:{title:"Busca justicia con verdad",body:"Activa apoyos, documenta criterios, revisa evidencias, abre una ruta de recuperación y evita decidir en soledad.",bullets:["Riesgo: exige más trabajo institucional.","Pregunta ética: ¿qué decisión cuida a Gael sin romper la confianza común?"]}
   };
   var buttons=[].slice.call(document.querySelectorAll(".route"));
   var panel=document.getElementById("routePanel");
-  var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-
   function build(item){
-    var wrap=document.createElement("div");
-    wrap.className="route-swap";
+    var w=document.createElement("div");w.className="route-swap";
     var h=document.createElement("h4");h.textContent=item.title;
     var p=document.createElement("p");p.textContent=item.body;
     var ul=document.createElement("ul");
     item.bullets.forEach(function(t){var li=document.createElement("li");li.textContent=t;ul.appendChild(li);});
-    wrap.appendChild(h);wrap.appendChild(p);wrap.appendChild(ul);
-    return wrap;
+    w.appendChild(h);w.appendChild(p);w.appendChild(ul);return w;
   }
   function render(key){
     var item=data[key];if(!item)return;
     buttons.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-route")===key?"true":"false");});
-    var current=panel.querySelector(".route-swap");
-    var next=build(item);
-    if(reduce||!current){panel.innerHTML="";panel.appendChild(next);return;}
-    current.classList.add("is-swapping");
-    var done=false;
+    var cur=panel.querySelector(".route-swap"),next=build(item);
+    if(reduce||!cur){panel.innerHTML="";panel.appendChild(next);return;}
+    cur.classList.add("is-swapping");var done=false;
     var swap=function(){if(done)return;done=true;panel.innerHTML="";panel.appendChild(next);};
-    current.addEventListener("transitionend",swap,{once:true});
-    setTimeout(swap,260);
+    cur.addEventListener("transitionend",swap,{once:true});setTimeout(swap,260);
   }
   buttons.forEach(function(b){b.addEventListener("click",function(){render(b.getAttribute("data-route"));});});
 
-  /* ---- scroll reveal: content is visible by default; is-in only adds a one-shot entrance ---- */
+  /* scrollytelling: pillars (sticky + steps via IntersectionObserver) */
+  var steps=[].slice.call(document.querySelectorAll(".step"));
+  var layers=[].slice.call(document.querySelectorAll(".layer"));
+  if(steps.length && "IntersectionObserver" in window && window.innerWidth>760){
+    document.documentElement.classList.add("scrolly-on");
+    var setActive=function(i){
+      steps.forEach(function(s,n){s.classList.toggle("is-active",n===i);});
+      layers.forEach(function(l,n){l.classList.toggle("is-active",n===i);});
+    };
+    var sio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){var i=parseInt(e.target.getAttribute("data-step"),10);if(!isNaN(i))setActive(i);}
+      });
+    },{rootMargin:"-45% 0px -45% 0px",threshold:0});
+    steps.forEach(function(s){sio.observe(s);});
+  }
+
+  /* reveal (visible by default; is-in adds one-shot entrance) */
   if(!reduce && "IntersectionObserver" in window){
-    var reveals=[].slice.call(document.querySelectorAll(".reveal"));
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target);}});
+    var rev=[].slice.call(document.querySelectorAll(".reveal"));
+    var rio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("is-in");rio.unobserve(e.target);}});
     },{rootMargin:"0px 0px -8% 0px",threshold:.08});
-    reveals.forEach(function(el){io.observe(el);});
+    rev.forEach(function(el){rio.observe(el);});
   }
 })();
 </script>

@@ -1,8 +1,26 @@
 # Design — Pedagogía del Bien Común
 
 Visual system for `docs/bien-comun/index.html`. Deliberately departs from the parent
-*Ser tutor* warm-serif book system; art-directed per page toward a calm humanist-editorial
-register modeled on academias.dev. Self-contained (no external CSS/JS/fonts).
+*Ser tutor* warm-serif book system; art-directed per page toward a bold humanist-editorial
+register with **sober neobrutalism**, modeled on academias.dev + pudding.cool scrollytelling.
+Self-contained (no external CSS/JS/fonts).
+
+## v2 additions (research-driven rebuild)
+
+- **Voice:** first person, explanatory, andragogical (activate experience, real problem,
+  closing application question). No em-dashes, no en-dashes (hyphen only in reference page
+  ranges), no arrows.
+- **Citations:** inline APA 7 author-date links (`.cite`) to a hanging-indent reference list
+  (`#ref-*`); 14 sources, all web-verified in a prior research workflow.
+- **Author cards:** B&W circle portraits (grayscale filter) of Sánchez Cuevas & Medina
+  Delgadillo in hard-bordered cards with hard shadow.
+- **Scrollytelling:** the four pillars as a sticky stage + IntersectionObserver steps
+  (rootMargin center trigger); collapses to static single-column below 760px; content fully
+  readable without JS.
+- **Neobrutalism (sober):** 2px ink borders, hard offset shadows (`--shadow-hard`), no radius,
+  mono labels; used on author/philosopher/mode cards, table, route widget, doc callout.
+- **Reading progress:** scroll-driven `animation-timeline: scroll()` bar, hidden on
+  reduced-motion / unsupported.
 
 ## Theme
 

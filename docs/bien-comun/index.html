@@ -204,6 +204,13 @@
   .cq .qq{color:var(--ink);font-size:1.02rem;line-height:1.42}
   @media (max-width:560px){.cq li{grid-template-columns:1fr;gap:.25rem}}
 
+  /* remate / decisión del caso */
+  .verdict{margin-top:clamp(2.4rem,5vw,3.4rem);border:2px solid var(--ink);background:var(--accent-wash);box-shadow:var(--shadow-hard);padding:clamp(1.5rem,3.5vw,2.2rem)}
+  .verdict__k{font-family:var(--mono);font-size:.75rem;color:var(--accent-strong);letter-spacing:.04em;font-weight:700;margin:0 0 .7rem}
+  .verdict h3{font-size:clamp(1.35rem,1rem + 1.5vw,1.85rem);letter-spacing:-.025em;line-height:1.12;margin:0 0 .9rem;max-width:26ch}
+  .verdict p{color:var(--ink);line-height:1.6;max-width:64ch}
+  .verdict p + p{margin-top:.8rem}
+
   /* table */
   .table-scroll{overflow-x:auto;margin-top:2rem;border:2px solid var(--ink);box-shadow:var(--shadow-hard-sm)}
   table{border-collapse:collapse;width:100%;min-width:640px;font-size:.95rem;background:var(--surface)}
@@ -463,6 +470,13 @@
           <li><span class="lbl">Comunidad</span><span class="qq">¿Qué le debo al grupo que confía en que la evaluación significa algo?</span></li>
           <li><span class="lbl">Ruta</span><span class="qq">¿Qué vías institucionales existen antes de aprobar o reprobar en privado?</span></li>
         </ul>
+
+        <div class="verdict reveal">
+          <p class="verdict__k">Cómo lo resolvería</p>
+          <h3>Acompañar a Gael hasta que la boleta diga la verdad</h3>
+          <p>Llevaría la decisión más allá de esa tarde y de esa pluma. Registraría con honestidad lo que hay: Gael todavía no logra los aprendizajes clave. Con eso sobre la mesa, abriría el caso en el Consejo Técnico, con trabajo social y con su familia, para atender la raíz, que es el tiempo que Gael pasa cuidando a sus hermanos mientras su madre trabaja.</p>
+          <p>Después le abriría una ruta real de recuperación, con acompañamiento y evidencias, para que pueda ganarse el 6 en lugar de recibirlo por lástima. Un número honesto al final de ese proceso cuida su dignidad y la verdad de su boleta a la vez. Esa es la decisión que me pide el bien común: una que se construye con la comunidad y con el tiempo a favor de Gael.</p>
+        </div>
       </div>
     </div>
   </section>

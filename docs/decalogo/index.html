@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Decálogo de ética profesional docente · Ser tutor</title>
-<meta name="description" content="Decálogo de ética profesional docente: cinco valores y cinco normas, cada uno anclado con Chroma (similitud coseno) a su fuente académica de acceso abierto. Las definiciones de valor y de norma citan fuentes verificables y descargables.">
+<meta name="description" content="Decálogo de ética profesional docente: cinco valores y cinco normas. Cada punto se apoya en una fuente académica de acceso abierto y descargable; al pulsar la cita se despliega el pasaje que lo respalda.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,12 +20,11 @@
 html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--body);color:var(--ink);line-height:1.62;
   background:var(--peach);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-/* soft blobs behind the poster */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(38vw 38vw at 82% 8%, rgba(232,98,60,.10), transparent 60%),
-    radial-gradient(34vw 34vw at 12% 32%, rgba(42,167,157,.10), transparent 60%),
-    radial-gradient(40vw 40vw at 88% 78%, rgba(62,158,114,.10), transparent 62%)}
+    radial-gradient(38vw 38vw at 82% 6%, rgba(232,98,60,.10), transparent 60%),
+    radial-gradient(34vw 34vw at 12% 28%, rgba(42,167,157,.10), transparent 60%),
+    radial-gradient(40vw 40vw at 88% 76%, rgba(62,158,114,.10), transparent 62%)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 a{color:var(--teal);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -33,22 +32,13 @@ h1,h2,h3{font-family:var(--disp);color:var(--teal);line-height:1.06;letter-spaci
 strong{font-weight:700;color:var(--teal-deep)}
 em{font-style:italic}
 
-/* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
-  background:color-mix(in srgb,var(--peach) 82%,transparent);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-.brand{display:flex;align-items:center;gap:.5rem;font-family:var(--disp);font-weight:600;color:var(--teal-deep)}
-.brand .dot{width:13px;height:13px;border-radius:50%;background:var(--coral)}
-.nav a{font-family:var(--disp);font-weight:500}
-.nav .back{color:var(--muted)}
-
 /* ---------- hero ---------- */
-.hero{text-align:center;padding:clamp(2.6rem,7vw,4.6rem) 0 1.4rem}
+.hero{text-align:center;padding:clamp(2.8rem,8vw,5rem) 0 1.4rem}
 .hero .eyebrow{font-family:var(--disp);font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   font-size:.8rem;color:var(--coral);margin-bottom:.7rem}
 .hero h1{font-weight:700;font-size:clamp(2.7rem,8.5vw,5rem);color:var(--teal-deep)}
 .hero .sub{font-family:var(--disp);font-weight:500;color:var(--teal);font-size:clamp(1.1rem,2.6vw,1.5rem);margin-top:.5rem}
-.hero .lede{max-width:44ch;margin:1.1rem auto 0;color:var(--ink);font-size:1.06rem}
+.hero .lede{max-width:46ch;margin:1.1rem auto 0;color:var(--ink);font-size:1.06rem}
 .hero .meta{margin-top:1.1rem;color:var(--muted);font-size:.92rem}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.3rem}
 .chip{display:inline-flex;align-items:center;gap:.42rem;background:var(--paper);border:1px solid var(--line);
@@ -73,47 +63,44 @@ section{padding:1.5rem 0}
 
 /* ---------- definitions (valor / norma) ---------- */
 .defs{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.def{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:1.5rem 1.5rem 1.3rem;
+.def{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:1.6rem 1.6rem 1.4rem;
   box-shadow:0 12px 30px rgba(120,80,40,.08);position:relative;overflow:hidden}
 .def::before{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border-radius:50%;
   background:var(--acc);opacity:.10}
-.def .ic{width:66px;height:66px;margin-bottom:.6rem}
-.def .tag{font-family:var(--disp);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.76rem;color:var(--acc)}
-.def h3{font-size:1.7rem;font-weight:600;margin:.1rem 0 .5rem}
-.def p{margin:0;color:var(--ink)}
-.def .q{margin-top:.7rem;font-size:.9rem;color:var(--muted);font-style:italic}
-.src{margin-top:1rem;background:var(--paper-2);border:1px dashed var(--line);border-radius:16px;padding:.75rem .85rem}
-.src .lbl{font-family:var(--disp);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.35rem}
-.src .cite{font-size:.86rem;margin:.25rem 0 .5rem;color:var(--ink)}
-.src .row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
-.dl{display:inline-flex;align-items:center;gap:.35rem;background:var(--teal);color:#fff;font-weight:700;font-size:.8rem;
-  padding:.36rem .7rem;border-radius:999px}
-.dl:hover{background:var(--teal-deep);text-decoration:none}
-.dl svg{width:13px;height:13px}
-.score{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;color:var(--teal-deep)}
-.score .bar{width:52px;height:7px;border-radius:4px;background:#e7ded3;overflow:hidden}
-.score .bar i{display:block;height:100%;background:var(--green);border-radius:4px}
+.def .ic{width:70px;height:70px;margin-bottom:.6rem}
+.def .tag{font-family:var(--disp);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;color:var(--acc)}
+.def h3{font-size:1.9rem;font-weight:600;margin:.1rem 0 .55rem}
+.def p{margin:0;color:var(--ink);font-size:1.2rem;line-height:1.6}
+.def p .q{color:var(--teal-deep);font-weight:600}
+
+/* ---------- reveal (pasaje de la fuente) ---------- */
+.reveal{border-top:1px solid var(--line);margin-top:1.1rem;padding-top:.9rem}
+.reveal>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--disp);font-weight:600;color:var(--teal);font-size:.95rem;user-select:none}
+.reveal>summary::-webkit-details-marker{display:none}
+.reveal>summary:hover{color:var(--teal-deep)}
+.reveal .chev{display:inline-block;color:var(--acc);font-weight:700;transition:transform .2s}
+.reveal[open] .chev{transform:rotate(90deg)}
+.reveal .body{margin-top:.8rem;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;
+  padding:.95rem 1.1rem;font-size:.96rem;line-height:1.64;color:var(--ink)}
+.reveal .body p{margin:0}
+.reveal .body cite{display:block;margin-top:.65rem;font-style:normal;font-weight:700;color:var(--muted);font-size:.82rem}
 
 /* ---------- decalogo cards ---------- */
-.row{display:flex;align-items:center;gap:1.6rem;margin:1.35rem 0}
+.row{display:flex;align-items:center;gap:1.6rem;margin:1.7rem 0}
 .row:nth-child(even){flex-direction:row-reverse}
 .illus{flex:0 0 168px;display:grid;place-items:center}
 .illus svg{width:158px;height:158px;filter:drop-shadow(0 10px 16px rgba(120,80,40,.14))}
 .card{flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);
-  padding:1.35rem 1.5rem;box-shadow:0 12px 30px rgba(120,80,40,.08);position:relative}
-.card .n{position:absolute;top:-14px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--acc);color:#fff;
-  font-family:var(--disp);font-weight:700;display:grid;place-items:center;font-size:.95rem;box-shadow:0 4px 10px rgba(0,0,0,.12)}
-.row:nth-child(even) .card .n{left:auto;right:22px}
-.card h3{font-size:1.4rem;font-weight:600;margin:.1rem 0 .35rem;color:var(--teal-deep)}
-.card .kind{font-family:var(--disp);font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
-.card p{margin:0;color:var(--ink);font-size:1.02rem}
+  padding:1.5rem 1.5rem 1.35rem;box-shadow:0 12px 30px rgba(120,80,40,.08);position:relative}
+.card .n{position:absolute;top:-24px;left:24px;width:60px;height:60px;border-radius:50%;background:var(--acc);color:#fff;
+  font-family:var(--disp);font-weight:700;display:grid;place-items:center;font-size:2rem;line-height:1;z-index:2;
+  border:4px solid var(--paper);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.row:nth-child(even) .card .n{left:auto;right:24px}
+.card h3{font-size:1.42rem;font-weight:600;margin:.35rem 0 .35rem;color:var(--teal-deep)}
+.card .kind{font-family:var(--disp);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.card p.txt{margin:0;color:var(--ink);font-size:1.04rem}
 .card .why{margin-top:.55rem;font-size:.9rem;color:var(--muted)}
-.foot{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--line)}
-.foot .src-link{font-size:.82rem;font-weight:700;color:var(--teal)}
-.foot .mini{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:700;color:var(--teal-deep)}
-.foot .mini .bar{width:46px;height:6px;border-radius:4px;background:#e7ded3;overflow:hidden}
-.foot .mini .bar i{display:block;height:100%;background:var(--acc);border-radius:4px}
-.foot .mini .tag{font-weight:800;color:var(--muted);font-size:.72rem;letter-spacing:.03em}
 
 /* ---------- referencias ---------- */
 .refs{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:1.6rem 1.6rem;box-shadow:0 10px 26px rgba(120,80,40,.07)}
@@ -124,37 +111,37 @@ section{padding:1.5rem 0}
 .reflist .r{font-size:.92rem;color:var(--ink)}
 .reflist .r b{color:var(--teal-deep);font-weight:800}
 .reflist .dl{margin-top:.5rem}
+.dl{display:inline-flex;align-items:center;gap:.35rem;background:var(--teal);color:#fff;font-weight:700;font-size:.8rem;
+  padding:.36rem .7rem;border-radius:999px}
+.dl:hover{background:var(--teal-deep);text-decoration:none}
+.dl svg{width:13px;height:13px}
 
 /* ---------- footer ---------- */
 .foota{text-align:center;color:var(--muted);font-size:.86rem;padding:2.4rem 0 3rem}
+.foota a{color:var(--teal-deep);font-weight:700}
 .foota .dot{color:var(--peach-2)}
 
 @media(max-width:720px){
   .defs{grid-template-columns:1fr}
   .row,.row:nth-child(even){flex-direction:column;text-align:center}
   .illus{flex-basis:auto}
-  .card .n,.row:nth-child(even) .card .n{left:50%;transform:translateX(-50%)}
-  .foot,.card .kind{justify-content:center}
-  .card{width:100%}
+  .card{width:100%;padding-top:2.4rem}
+  .card .n,.row:nth-child(even) .card .n{left:50%;right:auto;transform:translateX(-50%)}
+  .card .kind{display:block}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav"><div class="wrap">
-  <a class="brand" href="../index.html"><span class="dot"></span> Ser tutor</a>
-  <a class="back" href="../index.html">← Volver al libro</a>
-</div></nav>
-
 <header class="hero"><div class="wrap">
   <p class="eyebrow">Decálogo</p>
   <h1>Ética Profesional Docente</h1>
   <p class="sub">Cinco valores y cinco normas</p>
-  <p class="lede">Diez enunciados que orientan el oficio de enseñar. Cada punto se contrasta con el texto completo de su fuente mediante un índice vectorial local (Chroma, similitud coseno).</p>
+  <p class="lede">Diez enunciados que orientan el oficio de enseñar. Cada punto se apoya en una fuente académica de acceso abierto; pulsa la cita para leer el pasaje que lo respalda.</p>
   <div class="chips">
     <span class="chip" style="--acc:var(--gold)"><span class="sq"></span> 5 valores · lo bueno y deseable</span>
     <span class="chip" style="--acc:var(--teal)"><span class="sq"></span> 5 normas · lo que se debe hacer</span>
-    <span class="chip" style="--acc:var(--green)"><span class="sq"></span> Fuentes verificables y descargables</span>
+    <span class="chip" style="--acc:var(--green)"><span class="sq"></span> Fuentes de acceso abierto y descargables</span>
   </div>
   <p class="meta">Jesús G. · Temas Selectos de Educación (UPAEP) · 18 de julio de 2026</p>
 </div></header>
@@ -170,7 +157,7 @@ section{padding:1.5rem 0}
     </div>
   </section>
 
-  <!-- Definiciones: valor y norma, con fuente verificable -->
+  <!-- Definiciones: valor y norma -->
   <section>
     <div class="slabel"><h2>¿Qué es un valor y qué es una norma?</h2><span class="ln"></span></div>
     <div class="defs">
@@ -179,7 +166,6 @@ section{padding:1.5rem 0}
       <article class="def" style="--acc:var(--gold)">
         <svg class="ic" viewBox="0 0 100 100" aria-hidden="true">
           <circle cx="50" cy="50" r="46" fill="#F6E4C6"/>
-          <path d="M30 30h40l14 16-34 40-34-40z" fill="none"/>
           <path d="M30 30h40l13 15-33 39-33-39z" fill="var(--gold)"/>
           <path d="M30 30h40l13 15H17z" fill="#F2C066"/>
           <path d="M50 84 17 45h66z" fill="#D98F2E" opacity=".55"/>
@@ -187,16 +173,14 @@ section{padding:1.5rem 0}
         </svg>
         <div class="tag">Valor · esfera axiológica</div>
         <h3>Valor</h3>
-        <p>Cualidad o ideal que se considera <strong>bueno y deseable</strong> y que, por serlo, orienta la conducta. Responde a la pregunta <em>¿qué es digno de aprecio?</em> Un valor no manda una acción concreta; señala el horizonte de bien que las normas después traducen en deberes.</p>
-        <p class="q">En la axiología, los valores son «cualidades […] independientes de las cosas y los actos humanos», cualidades valiosas que guían la conducta hacia el bien.</p>
-        <div class="src">
-          <div class="lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Fuente verificable</div>
-          <div class="cite">Seijo Suárez, C. (2009). <em>Los valores desde las principales teorías axiológicas</em>. Economía, (28), 145–160.</div>
-          <div class="row">
-            <a class="dl" href="https://www.redalyc.org/pdf/1956/195617795007.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar PDF</a>
-            <span class="score" title="Similitud coseno de la definición con el chunk que la respalda (Chroma)">Chroma <span class="bar"><i style="width:72%"></i></span> 0.720</span>
+        <p>Cualidad o ideal que se considera <span class="q">bueno y deseable</span> y que, por serlo, orienta la conducta. Responde a la pregunta <em>¿qué es digno de aprecio?</em> Un valor no manda una acción concreta: señala el horizonte de bien que las normas después traducen en deberes.</p>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Seijo Suárez (2009)</summary>
+          <div class="body">
+            <p>Desde la axiología, un valor es una de esas «cualidades apriorísticas e independientes de las cosas y los actos humanos» con las que juzgamos lo bueno y lo deseable. En su lectura subjetivista, «es el sujeto quien otorga valor a las cosas»: las cosas no son valiosas en sí mismas, sino que «es el ser humano quien crea el valor con su valoración». Por eso un valor no ordena una conducta concreta; fija el horizonte de aprecio desde el cual, después, las normas dictan deberes.</p>
+            <cite>Seijo Suárez, C. (2009). Los valores desde las principales teorías axiológicas. Economía, (28), 145–160.</cite>
           </div>
-        </div>
+        </details>
       </article>
 
       <!-- NORMA -->
@@ -213,16 +197,14 @@ section{padding:1.5rem 0}
         </svg>
         <div class="tag">Norma · esfera deóntica</div>
         <h3>Norma</h3>
-        <p><strong>Prescripción vinculante</strong> que manda, prohíbe o permite una acción determinada. Responde a la pregunta <em>¿qué debo hacer?</em> La norma concreta y hace exigible el valor del que deriva: el valor dice qué es bueno; la norma, qué hacer para realizarlo.</p>
-        <p class="q">«El deber hacer es una condición de las normas deontológicas, en la medida [en] que son obligatorias, coactivas y sancionatorias.»</p>
-        <div class="src">
-          <div class="lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Fuente verificable</div>
-          <div class="cite">Torres Vásquez, H., y Díaz-Navarro, D. E. (2024). <em>Deontología y axiología de la cognición moral</em>. Derecho Global, 9(26), 319–342.</div>
-          <div class="row">
-            <a class="dl" href="https://www.scielo.org.mx/pdf/dgedj/v9n26/2448-5136-dgedj-9-26-319.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar PDF</a>
-            <span class="score" title="Similitud coseno de la definición con el chunk que la respalda (Chroma)">Chroma <span class="bar"><i style="width:71%"></i></span> 0.713</span>
+        <p><span class="q">Prescripción vinculante</span> que manda, prohíbe o permite una acción determinada. Responde a la pregunta <em>¿qué debo hacer?</em> La norma concreta y hace exigible el valor del que deriva: el valor dice qué es bueno; la norma, qué hacer para realizarlo.</p>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Torres Vásquez y Díaz-Navarro (2024)</summary>
+          <div class="body">
+            <p>Estos autores distinguen dos planos. El «querer hacer» pertenece a las virtudes morales que, como en Aristóteles, nacen del deseo y la libre elección de la persona y se enlazan con los principios y valores (la axiología). Frente a él, «el deber hacer es una condición de las normas deontológicas, en la medida [en] que son obligatorias, coactivas y sancionatorias». Ahí está la norma: no describe lo deseable, prescribe lo exigible.</p>
+            <cite>Torres Vásquez, H., y Díaz-Navarro, D. E. (2024). Deontología y axiología de la cognición moral. Derecho Global, 9(26), 319–342.</cite>
           </div>
-        </div>
+        </details>
       </article>
 
     </div>
@@ -245,12 +227,15 @@ section{padding:1.5rem 0}
         <span class="n">1</span>
         <div class="kind">Valor</div>
         <h3>Beneficencia</h3>
-        <p>El bien intrínseco de la docencia: que los alumnos aprendan. Enseñar es, ante todo, ayudar a aprender.</p>
+        <p class="txt">El bien intrínseco de la docencia: que los alumnos aprendan. Enseñar es, ante todo, ayudar a aprender.</p>
         <p class="why">Nombra un bien deseable (el aprendizaje del otro) que orienta la práctica; no es una regla concreta de conducta.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:70%"></i></span> 0.702</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Hirsch Adler (2013)</summary>
+          <div class="body">
+            <p>Al llevar el principio de beneficencia a la docencia, Hirsch retoma a Hortal: «el bien intrínseco de la práctica de la docencia es que los alumnos aprendan». De ahí que el primer deber sea «enseñar, entendiendo la enseñanza como ayudar a aprender», lo que a su vez «presupone saber, haber aprendido lo que se enseña y estar al día en la materia». Su bien propio no es un beneficio personal, sino el aprendizaje del otro y, con él, «la formación de personas críticas».</p>
+            <cite>Hirsch Adler (2013), p. 106, retomando a Hortal (2000).</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -268,12 +253,15 @@ section{padding:1.5rem 0}
         <span class="n">2</span>
         <div class="kind">Valor</div>
         <h3>Autonomía</h3>
-        <p>Reconocer al estudiante como sujeto capaz de darse sus propias normas, no como un ente pasivo.</p>
+        <p class="txt">Reconocer al estudiante como sujeto capaz de darse sus propias normas, no como un ente pasivo.</p>
         <p class="why">Designa una cualidad estimable de la persona (su libertad y capacidad de autogobierno) que se considera digna de respeto.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:67%"></i></span> 0.670</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Hirsch Adler (2013)</summary>
+          <div class="body">
+            <p>Hirsch explica que «el principio de autonomía busca corregir la falta de simetría entre quien ofrece el servicio y el beneficiario». El docente, por su preparación y acreditación, «tiene un ascendente sobre sus clientes y usuarios», y esa desigualdad «puede producir abusos, entre ellos el paternalismo». Reconocer la autonomía es, entonces, considerar «que el receptor de los servicios no es un ente pasivo, sino un sujeto protagonista»: alguien capaz de darse sus propias normas.</p>
+            <cite>Hirsch Adler (2013), p. 108, «Autonomía del beneficiario».</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -293,12 +281,15 @@ section{padding:1.5rem 0}
         <span class="n">3</span>
         <div class="kind">Valor</div>
         <h3>Justicia</h3>
-        <p>La equidad como cualidad deseable en el reparto de los beneficios y las cargas de la relación educativa.</p>
+        <p class="txt">La equidad como cualidad deseable en el reparto de los beneficios y las cargas de la relación educativa.</p>
         <p class="why">Expresa un ideal de lo bueno, la equidad, que sirve de horizonte antes de traducirse en reglas de reparto.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:70%"></i></span> 0.701</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Hirsch Adler (2013)</summary>
+          <div class="body">
+            <p>Entre los principios que Hirsch retoma del National Statement australiano, la justicia se enuncia con nitidez: «se refiere a que los beneficios y [las] obligaciones... se distribuyan de manera equitativa». Aparece junto al mérito y a la beneficencia como cualidad que debe presidir toda relación entre profesional y beneficiario. Como valor, nombra ese ideal de equidad, un reparto sin privilegios ni cargas indebidas, antes de convertirse en reglas concretas de distribución.</p>
+            <cite>Hirsch Adler (2013), citando Australia’s National Statement on Human Research Ethics (2007).</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -316,12 +307,15 @@ section{padding:1.5rem 0}
         <span class="n">4</span>
         <div class="kind">Valor</div>
         <h3>Humanización</h3>
-        <p>Educar es humanizar: la finalidad es la formación integral (cognitiva, afectiva y moral) de la persona, no acumular datos ni sólo capacitar en una técnica.</p>
+        <p class="txt">Educar es humanizar: la finalidad es la formación integral (cognitiva, afectiva y moral) de la persona, no acumular datos ni sólo capacitar en una técnica.</p>
         <p class="why">Señala el fin bueno y deseable de la educación, la cualidad hacia la que se orienta toda la acción docente.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:76%"></i></span> 0.759</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Rojas Artavia (2011)</summary>
+          <div class="body">
+            <p>Rojas cita a Bazarra, Casanova y García para fijar la meta: estar dispuestos «a engrandecer en todos, y en cada uno de nuestros alumnos... el potencial de inteligencia, de sensibilidad y solidaridad que late en su humanidad». Y concluye: «si educar es humanizar, los educadores somos, en realidad, creadores de humanidad». Por eso critica la «visión chata» que dicotomiza al sujeto y antepone la formación técnica a la humanista. La humanización es el fin bueno que orienta toda la acción docente.</p>
+            <cite>Rojas Artavia (2011), citando a Bazarra, Casanova y García (2005).</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -337,12 +331,15 @@ section{padding:1.5rem 0}
         <span class="n">5</span>
         <div class="kind">Valor</div>
         <h3>Cuidado del otro <span style="font-weight:500;color:var(--muted);font-size:.85em">(ethos)</span></h3>
-        <p>La responsabilidad y el cuidado ante el rostro del otro; el o la docente se vuelve modelo por la integridad que manifiesta.</p>
+        <p class="txt">La responsabilidad y el cuidado ante el rostro del otro; el o la docente se vuelve modelo por la integridad que manifiesta.</p>
         <p class="why">Nombra una disposición estimable del carácter (el cuidado responsable) que da sentido al hacer.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:66%"></i></span> 0.664</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Rojas Artavia (2011)</summary>
+          <div class="body">
+            <p>Para Rojas, el ser humano «no es un simple individuo al que se debe proveer de un conjunto de capacidades técnico-procedimentales»; al afinar esas capacidades hay que fomentar «el compromiso con su entorno y con la responsabilidad histórica que le compete», porque «necesita del otro... no sólo para sobrevivir, sino para convivir». Así, el compromiso docente «no es para con una idea abstracta, sino para con el otro, para con ese ser concreto que existe y me interpela como rostro», como diría Lévinas, «y al que hay que escuchar y cuidar». Ese cuidado responsable es la disposición que da sentido al oficio.</p>
+            <cite>Rojas Artavia (2011), con referencia a Lévinas.</cite>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -363,12 +360,15 @@ section{padding:1.5rem 0}
         <span class="n">6</span>
         <div class="kind">Norma</div>
         <h3>No maleficencia</h3>
-        <p>Por sobre todo, no hacer daño: no infligir daño físico, emocional o a la autoestima del estudiante.</p>
+        <p class="txt">Por sobre todo, no hacer daño: no infligir daño físico, emocional o a la autoestima del estudiante.</p>
         <p class="why">Prohibición concreta de acción (no dañar) que obliga siempre, con independencia de las circunstancias.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:55%"></i></span> 0.552</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Hirsch Adler (2013)</summary>
+          <div class="body">
+            <p>El principio «enfatiza la obligación de no infligir daño a otros: por sobre todo, no hacer daño», y «consiste en actuar de manera que no se ponga en riesgo o se lastime a las personas». Hirsch recuerda que el juramento hipocrático ya obligaba a «nunca [usar el tratamiento] para perjudicar[los]». Aunque nace en la medicina, ella lo considera «relevante en el marco de todas las profesiones, incluida la profesión docente», donde la protección abarca tanto el daño físico como el emocional. Como norma, es una prohibición que obliga siempre.</p>
+            <cite>Hirsch Adler (2013), pp. 106–107, «Principio de no maleficencia».</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -387,12 +387,15 @@ section{padding:1.5rem 0}
         <span class="n">7</span>
         <div class="kind">Norma</div>
         <h3>Respetar la autonomía del estudiante</h3>
-        <p>Informar, no manipular y garantizar el consentimiento: reconocer al estudiante el derecho a ser informado y a que se respeten sus derechos.</p>
+        <p class="txt">Informar, no manipular y garantizar el consentimiento: reconocer al estudiante el derecho a ser informado y a que se respeten sus derechos.</p>
         <p class="why">Prescribe deberes de acción determinados (informar, obtener consentimiento) que operacionalizan el valor de la autonomía.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:68.5%"></i></span> 0.685</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Hirsch Adler (2013)</summary>
+          <div class="body">
+            <p>Como el estudiante «no es un ente pasivo, sino un sujeto protagonista», Hirsch deriva de ahí una obligación concreta: «garantizar a todos los individuos... el derecho de ser informados, de que se respeten sus derechos y de consentir antes de que se tomen decisiones con respecto a ellos». Es el consentimiento informado, «claramente estipulado en el Código de Núremberg», cuya «principal justificación consiste en proteger la elección autónoma». La norma traduce el valor de la autonomía en deberes de informar y no manipular.</p>
+            <cite>Hirsch Adler (2013), p. 108, sobre el consentimiento informado.</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -413,12 +416,15 @@ section{padding:1.5rem 0}
         <span class="n">8</span>
         <div class="kind">Norma</div>
         <h3>Repartir con equidad</h3>
-        <p>Distribuir los beneficios y las obligaciones con procedimientos razonables y no explotadores.</p>
+        <p class="txt">Distribuir los beneficios y las obligaciones con procedimientos razonables y no explotadores.</p>
         <p class="why">Manda una conducta concreta (repartir mediante procedimientos equitativos) que realiza el valor de la justicia.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:52%"></i></span> 0.520</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Hirsch Adler (2013)</summary>
+          <div class="body">
+            <p>Hirsch remite al Reporte Belmont (1978), que fijó tres principios para el trato a las personas: respeto, beneficencia y justicia. Esta última se define «consistente en usar procedimientos razonables, no explotadores y bien considerados para asegurarse [de] que se administran correctamente». Trasladada al aula, es la norma que exige repartir beneficios y obligaciones mediante procedimientos equitativos, la puesta en práctica del valor de la justicia.</p>
+            <cite>Hirsch Adler (2013), citando el Reporte Belmont (1978).</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -436,12 +442,15 @@ section{padding:1.5rem 0}
         <span class="n">9</span>
         <div class="kind">Norma</div>
         <h3>Ir más allá de la norma escrita</h3>
-        <p>No reducir la ética al cumplimiento del código: el compromiso vivencial obliga más allá de la norma escrita.</p>
+        <p class="txt">No reducir la ética al cumplimiento del código: el compromiso vivencial obliga más allá de la norma escrita.</p>
         <p class="why">Norma de segundo orden: prescribe cómo relacionarse con las demás normas (no limitarse a ellas), así que pertenece a la esfera del deber.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:76.2%"></i></span> 0.762</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Rojas Artavia (2011)</summary>
+          <div class="body">
+            <p>Rojas parte de que la ética profesional no se agota en «una normativa codificada que compete al gremio»: la profesión «guarda un fundamento eminentemente iluminado por el bien común». Citando a Muñoz, precisa que «el código de moral profesional, inmerso en el código moral más amplio de la sociedad, crea como expectativa más importante la de un ejercicio profesional óptimo y responsable en beneficio del bien común». El código escrito es el piso, no el techo: la norma manda no reducir la ética a su mero cumplimiento.</p>
+            <cite>Rojas Artavia (2011), citando a Muñoz.</cite>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -460,12 +469,15 @@ section{padding:1.5rem 0}
         <span class="n">10</span>
         <div class="kind">Norma</div>
         <h3>Formarse y actualizarse</h3>
-        <p>Desarrollar de forma continua las propias competencias prácticas, intelectivas y morales, y mantenerse al día para ponerlas al servicio del alumno.</p>
+        <p class="txt">Desarrollar de forma continua las propias competencias prácticas, intelectivas y morales, y mantenerse al día para ponerlas al servicio del alumno.</p>
         <p class="why">Enuncia un deber de acción sostenido (formarse y actualizarse) exigible al docente para cumplir su función.</p>
-        <div class="foot">
-          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
-          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:63.4%"></i></span> 0.634</span>
-        </div>
+        <details class="reveal">
+          <summary><span class="chev">›</span> Fuente: Rojas Artavia (2011)</summary>
+          <div class="body">
+            <p>Quien inicia una carrera, dice Rojas, «establece un compromiso consigo mismo y con el grupo social», y ese compromiso «implica la búsqueda constante de superación y excelencia en la labor..., una constante actualización de los conocimientos y una dignificación permanente de su práctica». En su buen ejercicio «hallará la autorrealización», pero también beneficiará «[a] todos aquellos y aquellas que acudan a la prestación de sus servicios». Formarse y actualizarse es, por eso, un deber sostenido y exigible al docente.</p>
+            <cite>Rojas Artavia (2011), sobre el compromiso profesional.</cite>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -474,7 +486,7 @@ section{padding:1.5rem 0}
   <section>
     <div class="refs">
       <h2>Referencias</h2>
-      <p class="sub">APA 7 · todas de acceso abierto y descargables. Cada punto y cada definición se ancló al texto completo de su fuente con Chroma (similitud coseno, chunks de 110 palabras).</p>
+      <p class="sub">APA 7 · todas de acceso abierto y descargables. El pasaje que respalda cada punto y cada definición puede desplegarse en su tarjeta.</p>
       <ul class="reflist">
         <li>
           <div class="r"><b>Hirsch Adler, A. (2013).</b> La ética profesional basada en principios y su relación con la docencia. <em>Edetania, (43)</em>, 97–111.</div>
@@ -499,7 +511,7 @@ section{padding:1.5rem 0}
 </main>
 
 <footer class="foota">
-  Ser tutor <span class="dot">·</span> Decálogo de ética profesional docente <span class="dot">·</span> Hesus García Cobos
+  <a href="../index.html">Ser tutor</a> <span class="dot">·</span> Decálogo de ética profesional docente <span class="dot">·</span> Hesus García Cobos
 </footer>
 
 </body>

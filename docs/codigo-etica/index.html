@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Código de Ética · Los pilares del Olimpo</title>
+<meta name="description" content="Guía visual, estilo del Olimpo, de todo lo que debe contener un código de ética profesional docente: preámbulo, objeto y alcance, principios, deberes por ámbito, confidencialidad, conflictos de interés, cumplimiento, compromiso y referencias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-1:#a9cdea; --sky-2:#cfe6f6; --sky-3:#eef7fd; --cloud:#ffffff;
+  --marble:#faf7ef; --marble-2:#f1ebdb; --line:#e4dcc6;
+  --gold:#B8860B; --gold-2:#caa23f; --gold-soft:#e7d5a2; --ink:#2c3e50; --ink-2:#3f5568; --muted:#8a94a0;
+  --laurel:#6f8358;
+  --disp:"Cinzel",Georgia,serif; --body:"Cormorant Garamond",Georgia,serif;
+  --maxw:1000px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);font-size:1.18rem;line-height:1.55;
+  background:linear-gradient(180deg,var(--sky-1) 0%,var(--sky-2) 26%,var(--sky-3) 55%,#f7fbfe 100%);
+  min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* floating clouds */
+.sky{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.cloud{position:absolute;opacity:.9;filter:drop-shadow(0 12px 18px rgba(120,150,180,.18))}
+.c1{top:8%;left:-6%;width:260px;animation:drift 60s linear infinite}
+.c2{top:20%;right:-8%;width:340px;opacity:.8;animation:drift2 80s linear infinite}
+.c3{top:46%;left:-10%;width:300px;opacity:.55;animation:drift 95s linear infinite}
+.c4{top:64%;right:-6%;width:230px;opacity:.5;animation:drift2 70s linear infinite}
+.c5{top:82%;left:4%;width:200px;opacity:.4;animation:drift 110s linear infinite}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(120vw)}}
+@keyframes drift2{from{transform:translateX(0)}to{transform:translateX(-120vw)}}
+@media(prefers-reduced-motion:reduce){.cloud{animation:none!important}}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:var(--disp);margin:0;color:var(--ink);letter-spacing:.02em}
+
+/* ---------- hero / templo ---------- */
+.hero{text-align:center;padding:2.4rem 0 1rem;position:relative}
+.pediment{width:min(560px,92%);margin:0 auto;display:block}
+.eyebrow{font-family:var(--disp);font-weight:600;letter-spacing:.32em;text-transform:uppercase;font-size:.72rem;color:var(--gold);margin:.4rem 0 .2rem}
+.hero h1{font-weight:700;font-size:clamp(2.6rem,7vw,4.4rem);color:#243b52;text-shadow:0 1px 0 #fff;letter-spacing:.04em}
+.hero .sub{font-family:var(--body);font-style:italic;font-size:clamp(1.2rem,3vw,1.7rem);color:var(--ink-2);margin-top:.2rem}
+.hero .intro{max-width:52ch;margin:1.1rem auto 0;font-size:1.22rem;color:var(--ink-2)}
+
+/* laurel/gold divider */
+.divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.6rem 0 .4rem}
+.divider .rule{height:2px;width:min(120px,22vw);background:linear-gradient(90deg,transparent,var(--gold-2))}
+.divider .rule.r{background:linear-gradient(90deg,var(--gold-2),transparent)}
+.divider svg{width:54px;height:54px;color:var(--gold)}
+
+/* greek key band */
+.meander{height:26px;background:
+  repeating-linear-gradient(90deg,var(--gold) 0 3px,transparent 3px 20px) 0 0/20px 26px,
+  linear-gradient(var(--gold),var(--gold)) 0 0/100% 3px no-repeat,
+  linear-gradient(var(--gold),var(--gold)) 0 100%/100% 3px no-repeat;
+  opacity:.0}
+/* (meander via SVG below instead) */
+.keyband{width:100%;height:22px;display:block;margin:.2rem 0 .6rem;color:var(--gold);opacity:.85}
+
+/* ---------- pilares ---------- */
+.lead{text-align:center;max-width:60ch;margin:1.4rem auto 2rem;font-size:1.3rem;color:var(--ink)}
+.lead b{font-family:var(--disp);font-weight:600;font-size:.9em;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.pillar{position:relative;background:linear-gradient(180deg,var(--marble),var(--marble-2));
+  border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:0 0 10px 10px;
+  padding:2.4rem 1.3rem 1.4rem;text-align:center;box-shadow:0 14px 30px rgba(90,120,150,.16)}
+.pillar .num{position:absolute;top:.7rem;right:1rem;font-family:var(--disp);font-weight:600;font-size:.8rem;color:var(--gold-2);letter-spacing:.08em}
+.medal{width:78px;height:78px;margin:-3.2rem auto .6rem;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fffdf7,#f3ecd9);
+  border:2px solid var(--gold);display:grid;place-items:center;box-shadow:0 8px 18px rgba(120,100,40,.22),inset 0 0 0 5px #fff}
+.medal svg{width:40px;height:40px;color:var(--gold)}
+.pillar h3{font-family:var(--disp);font-weight:600;font-size:1.12rem;color:#2b4258;letter-spacing:.03em;margin:.1rem 0 .35rem}
+.pillar p{margin:0;font-size:1.12rem;color:var(--ink-2);line-height:1.4}
+
+/* ---------- colonnade band ---------- */
+.colonnade{display:flex;justify-content:center;align-items:flex-end;gap:min(3.5vw,42px);margin:3rem 0 0;opacity:.9}
+.colonnade svg{width:clamp(34px,7vw,64px);height:auto;color:#efe9db;filter:drop-shadow(0 6px 8px rgba(80,110,140,.2))}
+
+/* ---------- footer / stele ---------- */
+.foot{text-align:center;padding:1.4rem 0 3rem;color:var(--ink-2)}
+.foot .quote{font-style:italic;font-size:1.25rem;max-width:44ch;margin:0 auto 1rem;color:#33506a}
+.foot .quote span{font-family:var(--disp);color:var(--gold);font-style:normal;font-size:.8em;letter-spacing:.06em}
+.foot .links{font-family:var(--disp);font-size:.8rem;letter-spacing:.06em;color:var(--muted)}
+.foot .links a{color:var(--gold)}
+
+@media(max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.grid{grid-template-columns:1fr;gap:2.4rem}.pillar{margin-top:1.4rem}}
+</style>
+</head>
+<body>
+
+<div class="sky" aria-hidden="true">
+  <svg class="cloud c1" viewBox="0 0 200 90"><g fill="#fff"><ellipse cx="60" cy="60" rx="55" ry="28"/><ellipse cx="110" cy="50" rx="48" ry="34"/><ellipse cx="150" cy="62" rx="42" ry="24"/><rect x="40" y="58" width="130" height="26" rx="13"/></g></svg>
+  <svg class="cloud c2" viewBox="0 0 200 90"><g fill="#fff"><ellipse cx="60" cy="60" rx="55" ry="28"/><ellipse cx="110" cy="50" rx="48" ry="34"/><ellipse cx="150" cy="62" rx="42" ry="24"/><rect x="40" y="58" width="130" height="26" rx="13"/></g></svg>
+  <svg class="cloud c3" viewBox="0 0 200 90"><g fill="#fff"><ellipse cx="60" cy="60" rx="55" ry="28"/><ellipse cx="110" cy="50" rx="48" ry="34"/><ellipse cx="150" cy="62" rx="42" ry="24"/><rect x="40" y="58" width="130" height="26" rx="13"/></g></svg>
+  <svg class="cloud c4" viewBox="0 0 200 90"><g fill="#fff"><ellipse cx="60" cy="60" rx="55" ry="28"/><ellipse cx="110" cy="50" rx="48" ry="34"/><ellipse cx="150" cy="62" rx="42" ry="24"/><rect x="40" y="58" width="130" height="26" rx="13"/></g></svg>
+  <svg class="cloud c5" viewBox="0 0 200 90"><g fill="#fff"><ellipse cx="60" cy="60" rx="55" ry="28"/><ellipse cx="110" cy="50" rx="48" ry="34"/><ellipse cx="150" cy="62" rx="42" ry="24"/><rect x="40" y="58" width="130" height="26" rx="13"/></g></svg>
+</div>
+
+<header class="hero"><div class="wrap">
+  <!-- templo / frontón -->
+  <svg class="pediment" viewBox="0 0 560 150" aria-hidden="true">
+    <polygon points="280,8 545,74 15,74" fill="#faf7ef" stroke="#B8860B" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="280,26 500,74 60,74" fill="none" stroke="#caa23f" stroke-width="1.5"/>
+    <circle cx="280" cy="52" r="7" fill="#B8860B"/>
+    <rect x="34" y="74" width="492" height="10" fill="#efe9db" stroke="#e4dcc6"/>
+    <g fill="#faf7ef" stroke="#d9cfb4" stroke-width="1.5">
+      <rect x="60" y="86" width="30" height="58" rx="2"/><rect x="150" y="86" width="30" height="58" rx="2"/>
+      <rect x="265" y="86" width="30" height="58" rx="2"/><rect x="380" y="86" width="30" height="58" rx="2"/>
+      <rect x="470" y="86" width="30" height="58" rx="2"/>
+    </g>
+    <g stroke="#e4dcc6" stroke-width="1"><path d="M68 88v54M76 88v54M84 88v54"/><path d="M158 88v54M166 88v54M174 88v54"/><path d="M273 88v54M281 88v54M289 88v54"/><path d="M388 88v54M396 88v54M404 88v54"/><path d="M478 88v54M486 88v54M494 88v54"/></g>
+  </svg>
+  <p class="eyebrow">Guía del Olimpo</p>
+  <h1>Código de Ética</h1>
+  <p class="sub">Los pilares que todo código debe sostener</p>
+  <p class="intro">Investigué qué debe contener un código de ética profesional. No basta con una lista de buenas intenciones: para sostenerse necesita nueve pilares.</p>
+</div></header>
+
+<div class="wrap">
+  <!-- greek key band -->
+  <svg class="keyband" viewBox="0 0 480 22" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <defs><pattern id="key" width="40" height="22" patternUnits="userSpaceOnUse">
+      <path d="M2 20 V6 H30 V16 H14 V12 H22 V10" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    </pattern></defs>
+    <rect width="480" height="22" fill="url(#key)"/>
+  </svg>
+
+  <p class="lead">Un código de ética no es una lista de buenos deseos. Para tener fuerza necesita estos <b>nueve pilares</b>:</p>
+
+  <div class="grid">
+
+    <article class="pillar"><span class="num">I</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8h16a3 3 0 0 1 3 3v18a3 3 0 0 0 3 3H12a3 3 0 0 1-3-3V10a2 2 0 0 0-2-2 2 2 0 0 0-2 2v3h4"/><path d="M13 15h11M13 20h11M13 25h7"/></svg></div>
+      <h3>Preámbulo</h3><p>Por qué existe el código y en qué se funda.</p>
+    </article>
+
+    <article class="pillar"><span class="num">II</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5l14 6H6z"/><path d="M9 11v18M31 11v18M15 11v18M25 11v18"/><path d="M5 32h30"/></svg></div>
+      <h3>Objeto y alcance</h3><p>A quién obliga y para qué sirve.</p>
+    </article>
+
+    <article class="pillar"><span class="num">III</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 34c-8-5-12-10-12-16 0-4 3-6 6-5"/><path d="M20 34c8-5 12-10 12-16 0-4-3-6-6-5"/><path d="M12 14c1 3 3 5 6 6M28 14c-1 3-3 5-6 6M20 10v8"/></svg></div>
+      <h3>Principios rectores</h3><p>Los valores de los que nacen los deberes.</p>
+    </article>
+
+    <article class="pillar"><span class="num">IV</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="13" r="4"/><circle cx="26" cy="13" r="4"/><path d="M7 31v-3a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v3M21 31v-3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v3"/></svg></div>
+      <h3>Deberes por ámbito</h3><p>Con estudiantes, colegas, institución, comunidad y uno mismo.</p>
+    </article>
+
+    <article class="pillar"><span class="num">V</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="15" r="6"/><path d="M19 19l11 11M27 27l3-3 3 3-3 3zM24 30l3 3"/></svg></div>
+      <h3>Confidencialidad</h3><p>Reserva y buen uso de la información.</p>
+    </article>
+
+    <article class="pillar"><span class="num">VI</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6v28M10 34h20M8 12h24"/><path d="M8 12l-4 9h8zM32 12l-4 9h8z"/></svg></div>
+      <h3>Conflictos de interés</h3><p>Cómo cuidar la imparcialidad.</p>
+    </article>
+
+    <article class="pillar"><span class="num">VII</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5l12 4v9c0 8-5 13-12 16-7-3-12-8-12-16V9z"/><path d="M15 20l4 4 7-8"/></svg></div>
+      <h3>Cumplimiento y faltas</h3><p>Consecuencias, con debido proceso.</p>
+    </article>
+
+    <article class="pillar"><span class="num">VIII</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M30 7l3 3-16 16-5 2 2-5z"/><path d="M6 33h16"/></svg></div>
+      <h3>Compromiso y firma</h3><p>La adhesión libre de quien lo suscribe.</p>
+    </article>
+
+    <article class="pillar"><span class="num">IX</span>
+      <div class="medal"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12a5 5 0 0 1 9-3 5 5 0 0 1 9 3v18a6 6 0 0 0-9-2 6 6 0 0 0-9 2z"/><path d="M20 9v19"/></svg></div>
+      <h3>Referencias</h3><p>Las fuentes que lo fundamentan (APA 7).</p>
+    </article>
+
+  </div>
+
+  <!-- colonnade -->
+  <div class="colonnade" aria-hidden="true">
+    <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor" stroke="#e0d8c2"/><rect x="10" y="8" width="20" height="100" fill="currentColor" stroke="#e0d8c2"/><g stroke="#ddd3ba" stroke-width="1"><path d="M14 8v100M20 8v100M26 8v100"/></g><rect x="4" y="108" width="32" height="12" rx="2" fill="currentColor" stroke="#e0d8c2"/></svg>
+    <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor" stroke="#e0d8c2"/><rect x="10" y="8" width="20" height="100" fill="currentColor" stroke="#e0d8c2"/><g stroke="#ddd3ba" stroke-width="1"><path d="M14 8v100M20 8v100M26 8v100"/></g><rect x="4" y="108" width="32" height="12" rx="2" fill="currentColor" stroke="#e0d8c2"/></svg>
+    <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor" stroke="#e0d8c2"/><rect x="10" y="8" width="20" height="100" fill="currentColor" stroke="#e0d8c2"/><g stroke="#ddd3ba" stroke-width="1"><path d="M14 8v100M20 8v100M26 8v100"/></g><rect x="4" y="108" width="32" height="12" rx="2" fill="currentColor" stroke="#e0d8c2"/></svg>
+    <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor" stroke="#e0d8c2"/><rect x="10" y="8" width="20" height="100" fill="currentColor" stroke="#e0d8c2"/><g stroke="#ddd3ba" stroke-width="1"><path d="M14 8v100M20 8v100M26 8v100"/></g><rect x="4" y="108" width="32" height="12" rx="2" fill="currentColor" stroke="#e0d8c2"/></svg>
+    <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor" stroke="#e0d8c2"/><rect x="10" y="8" width="20" height="100" fill="currentColor" stroke="#e0d8c2"/><g stroke="#ddd3ba" stroke-width="1"><path d="M14 8v100M20 8v100M26 8v100"/></g><rect x="4" y="108" width="32" height="12" rx="2" fill="currentColor" stroke="#e0d8c2"/></svg>
+  </div>
+</div>
+
+<footer class="foot"><div class="wrap">
+  <p class="quote">«El código escrito es el piso, no el techo: el compromiso obliga más allá de la norma.» <span>— del decálogo</span></p>
+  <p class="links"><a href="../decalogo/">Ver el Decálogo</a> · <a href="../index.html">Ser tutor</a></p>
+</div></footer>
+
+</body>
+</html>

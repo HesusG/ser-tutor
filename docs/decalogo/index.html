@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decálogo de ética profesional docente · Ser tutor</title>
+<meta name="description" content="Decálogo de ética profesional docente: cinco valores y cinco normas, cada uno anclado con Chroma (similitud coseno) a su fuente académica de acceso abierto. Las definiciones de valor y de norma citan fuentes verificables y descargables.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --peach:#FBE4D2; --peach-2:#F8D6BF; --paper:#FFFDF9; --paper-2:#FCF4EA;
+  --teal:#12716E; --teal-deep:#0D5654; --ink:#3B4746; --muted:#7C8785; --line:#EAD9C8;
+  --coral:#E8623C; --green:#3E9E72; --gold:#E4A24C; --aqua:#2AA79D; --plum:#B96079;
+  --disp:"Fredoka",system-ui,sans-serif; --body:"Nunito",system-ui,sans-serif;
+  --rad:26px; --maxw:940px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);line-height:1.62;
+  background:var(--peach);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* soft blobs behind the poster */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(38vw 38vw at 82% 8%, rgba(232,98,60,.10), transparent 60%),
+    radial-gradient(34vw 34vw at 12% 32%, rgba(42,167,157,.10), transparent 60%),
+    radial-gradient(40vw 40vw at 88% 78%, rgba(62,158,114,.10), transparent 62%)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:var(--disp);color:var(--teal);line-height:1.06;letter-spacing:-.01em;margin:0}
+strong{font-weight:700;color:var(--teal-deep)}
+em{font-style:italic}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
+  background:color-mix(in srgb,var(--peach) 82%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{display:flex;align-items:center;gap:.5rem;font-family:var(--disp);font-weight:600;color:var(--teal-deep)}
+.brand .dot{width:13px;height:13px;border-radius:50%;background:var(--coral)}
+.nav a{font-family:var(--disp);font-weight:500}
+.nav .back{color:var(--muted)}
+
+/* ---------- hero ---------- */
+.hero{text-align:center;padding:clamp(2.6rem,7vw,4.6rem) 0 1.4rem}
+.hero .eyebrow{font-family:var(--disp);font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  font-size:.8rem;color:var(--coral);margin-bottom:.7rem}
+.hero h1{font-weight:700;font-size:clamp(2.7rem,8.5vw,5rem);color:var(--teal-deep)}
+.hero .sub{font-family:var(--disp);font-weight:500;color:var(--teal);font-size:clamp(1.1rem,2.6vw,1.5rem);margin-top:.5rem}
+.hero .lede{max-width:44ch;margin:1.1rem auto 0;color:var(--ink);font-size:1.06rem}
+.hero .meta{margin-top:1.1rem;color:var(--muted);font-size:.92rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.3rem}
+.chip{display:inline-flex;align-items:center;gap:.42rem;background:var(--paper);border:1px solid var(--line);
+  border-radius:999px;padding:.4rem .8rem;font-size:.82rem;font-weight:700;color:var(--teal-deep);
+  box-shadow:0 2px 0 rgba(13,86,84,.06)}
+.chip .sq{width:9px;height:9px;border-radius:3px;background:var(--acc,var(--teal))}
+
+/* ---------- generic section ---------- */
+section{padding:1.5rem 0}
+.slabel{display:flex;align-items:center;gap:.8rem;margin:2.4rem 0 1.2rem}
+.slabel h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:600;white-space:nowrap}
+.slabel .kind{font-family:var(--disp);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:var(--acc,var(--teal));padding:.28rem .6rem;border-radius:999px}
+.slabel .ln{flex:1;height:2px;background:var(--line);border-radius:2px}
+
+/* ---------- prose card (¿qué es un decálogo?) ---------- */
+.note{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);
+  padding:1.5rem 1.6rem;box-shadow:0 10px 26px rgba(120,80,40,.07)}
+.note h2{font-size:1.5rem;font-weight:600;margin-bottom:.5rem}
+.note p{margin:.4rem 0 0}
+.note p:first-of-type{margin-top:0}
+
+/* ---------- definitions (valor / norma) ---------- */
+.defs{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.def{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:1.5rem 1.5rem 1.3rem;
+  box-shadow:0 12px 30px rgba(120,80,40,.08);position:relative;overflow:hidden}
+.def::before{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border-radius:50%;
+  background:var(--acc);opacity:.10}
+.def .ic{width:66px;height:66px;margin-bottom:.6rem}
+.def .tag{font-family:var(--disp);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.76rem;color:var(--acc)}
+.def h3{font-size:1.7rem;font-weight:600;margin:.1rem 0 .5rem}
+.def p{margin:0;color:var(--ink)}
+.def .q{margin-top:.7rem;font-size:.9rem;color:var(--muted);font-style:italic}
+.src{margin-top:1rem;background:var(--paper-2);border:1px dashed var(--line);border-radius:16px;padding:.75rem .85rem}
+.src .lbl{font-family:var(--disp);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:.35rem}
+.src .cite{font-size:.86rem;margin:.25rem 0 .5rem;color:var(--ink)}
+.src .row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.dl{display:inline-flex;align-items:center;gap:.35rem;background:var(--teal);color:#fff;font-weight:700;font-size:.8rem;
+  padding:.36rem .7rem;border-radius:999px}
+.dl:hover{background:var(--teal-deep);text-decoration:none}
+.dl svg{width:13px;height:13px}
+.score{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;color:var(--teal-deep)}
+.score .bar{width:52px;height:7px;border-radius:4px;background:#e7ded3;overflow:hidden}
+.score .bar i{display:block;height:100%;background:var(--green);border-radius:4px}
+
+/* ---------- decalogo cards ---------- */
+.row{display:flex;align-items:center;gap:1.6rem;margin:1.35rem 0}
+.row:nth-child(even){flex-direction:row-reverse}
+.illus{flex:0 0 168px;display:grid;place-items:center}
+.illus svg{width:158px;height:158px;filter:drop-shadow(0 10px 16px rgba(120,80,40,.14))}
+.card{flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);
+  padding:1.35rem 1.5rem;box-shadow:0 12px 30px rgba(120,80,40,.08);position:relative}
+.card .n{position:absolute;top:-14px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--acc);color:#fff;
+  font-family:var(--disp);font-weight:700;display:grid;place-items:center;font-size:.95rem;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.row:nth-child(even) .card .n{left:auto;right:22px}
+.card h3{font-size:1.4rem;font-weight:600;margin:.1rem 0 .35rem;color:var(--teal-deep)}
+.card .kind{font-family:var(--disp);font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.card p{margin:0;color:var(--ink);font-size:1.02rem}
+.card .why{margin-top:.55rem;font-size:.9rem;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--line)}
+.foot .src-link{font-size:.82rem;font-weight:700;color:var(--teal)}
+.foot .mini{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:700;color:var(--teal-deep)}
+.foot .mini .bar{width:46px;height:6px;border-radius:4px;background:#e7ded3;overflow:hidden}
+.foot .mini .bar i{display:block;height:100%;background:var(--acc);border-radius:4px}
+.foot .mini .tag{font-weight:800;color:var(--muted);font-size:.72rem;letter-spacing:.03em}
+
+/* ---------- referencias ---------- */
+.refs{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:1.6rem 1.6rem;box-shadow:0 10px 26px rgba(120,80,40,.07)}
+.refs h2{font-size:1.5rem;font-weight:600;margin-bottom:.4rem}
+.refs .sub{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+.reflist{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.reflist li{padding:.85rem 1rem;background:var(--paper-2);border-radius:16px;border:1px solid var(--line)}
+.reflist .r{font-size:.92rem;color:var(--ink)}
+.reflist .r b{color:var(--teal-deep);font-weight:800}
+.reflist .dl{margin-top:.5rem}
+
+/* ---------- footer ---------- */
+.foota{text-align:center;color:var(--muted);font-size:.86rem;padding:2.4rem 0 3rem}
+.foota .dot{color:var(--peach-2)}
+
+@media(max-width:720px){
+  .defs{grid-template-columns:1fr}
+  .row,.row:nth-child(even){flex-direction:column;text-align:center}
+  .illus{flex-basis:auto}
+  .card .n,.row:nth-child(even) .card .n{left:50%;transform:translateX(-50%)}
+  .foot,.card .kind{justify-content:center}
+  .card{width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="../index.html"><span class="dot"></span> Ser tutor</a>
+  <a class="back" href="../index.html">← Volver al libro</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">Decálogo</p>
+  <h1>Ética Profesional Docente</h1>
+  <p class="sub">Cinco valores y cinco normas</p>
+  <p class="lede">Diez enunciados que orientan el oficio de enseñar. Cada punto se contrasta con el texto completo de su fuente mediante un índice vectorial local (Chroma, similitud coseno).</p>
+  <div class="chips">
+    <span class="chip" style="--acc:var(--gold)"><span class="sq"></span> 5 valores · lo bueno y deseable</span>
+    <span class="chip" style="--acc:var(--teal)"><span class="sq"></span> 5 normas · lo que se debe hacer</span>
+    <span class="chip" style="--acc:var(--green)"><span class="sq"></span> Fuentes verificables y descargables</span>
+  </div>
+  <p class="meta">Jesús G. · Temas Selectos de Educación (UPAEP) · 18 de julio de 2026</p>
+</div></header>
+
+<main class="wrap">
+
+  <!-- ¿Qué es un decálogo? -->
+  <section>
+    <div class="note">
+      <h2>¿Qué es un decálogo?</h2>
+      <p>Un <strong>decálogo</strong> es un conjunto breve de diez enunciados que sintetiza los principios rectores de una práctica y sirve de guía para la conducta. El término viene de los diez mandamientos, pero hoy nombra cualquier lista corta y memorizable de criterios que orientan un oficio.</p>
+      <p>Aquí reúne cinco <strong>valores</strong> (lo que se considera bueno y deseable) y cinco <strong>normas</strong> (lo que en consecuencia se debe hacer) de la ética profesional docente.</p>
+    </div>
+  </section>
+
+  <!-- Definiciones: valor y norma, con fuente verificable -->
+  <section>
+    <div class="slabel"><h2>¿Qué es un valor y qué es una norma?</h2><span class="ln"></span></div>
+    <div class="defs">
+
+      <!-- VALOR -->
+      <article class="def" style="--acc:var(--gold)">
+        <svg class="ic" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="#F6E4C6"/>
+          <path d="M30 30h40l14 16-34 40-34-40z" fill="none"/>
+          <path d="M30 30h40l13 15-33 39-33-39z" fill="var(--gold)"/>
+          <path d="M30 30h40l13 15H17z" fill="#F2C066"/>
+          <path d="M50 84 17 45h66z" fill="#D98F2E" opacity=".55"/>
+          <path d="M30 30l7 15 13 39M70 30l-7 15-13 39M17 45h66" stroke="#fff" stroke-width="2.4" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <div class="tag">Valor · esfera axiológica</div>
+        <h3>Valor</h3>
+        <p>Cualidad o ideal que se considera <strong>bueno y deseable</strong> y que, por serlo, orienta la conducta. Responde a la pregunta <em>¿qué es digno de aprecio?</em> Un valor no manda una acción concreta; señala el horizonte de bien que las normas después traducen en deberes.</p>
+        <p class="q">En la axiología, los valores son «cualidades […] independientes de las cosas y los actos humanos», cualidades valiosas que guían la conducta hacia el bien.</p>
+        <div class="src">
+          <div class="lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Fuente verificable</div>
+          <div class="cite">Seijo Suárez, C. (2009). <em>Los valores desde las principales teorías axiológicas</em>. Economía, (28), 145–160.</div>
+          <div class="row">
+            <a class="dl" href="https://www.redalyc.org/pdf/1956/195617795007.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar PDF</a>
+            <span class="score" title="Similitud coseno de la definición con el chunk que la respalda (Chroma)">Chroma <span class="bar"><i style="width:72%"></i></span> 0.720</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- NORMA -->
+      <article class="def" style="--acc:var(--teal)">
+        <svg class="ic" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="#CDE7E4"/>
+          <rect x="28" y="20" width="44" height="60" rx="8" fill="var(--teal)"/>
+          <rect x="34" y="26" width="32" height="48" rx="4" fill="#EAF6F4"/>
+          <rect x="39" y="34" width="22" height="3.4" rx="1.7" fill="var(--teal)"/>
+          <rect x="39" y="42" width="22" height="3.4" rx="1.7" fill="var(--teal)"/>
+          <rect x="39" y="50" width="14" height="3.4" rx="1.7" fill="var(--teal)"/>
+          <circle cx="62" cy="66" r="13" fill="var(--coral)"/>
+          <path d="M56 66l4 4 8-8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="tag">Norma · esfera deóntica</div>
+        <h3>Norma</h3>
+        <p><strong>Prescripción vinculante</strong> que manda, prohíbe o permite una acción determinada. Responde a la pregunta <em>¿qué debo hacer?</em> La norma concreta y hace exigible el valor del que deriva: el valor dice qué es bueno; la norma, qué hacer para realizarlo.</p>
+        <p class="q">«El deber hacer es una condición de las normas deontológicas, en la medida [en] que son obligatorias, coactivas y sancionatorias.»</p>
+        <div class="src">
+          <div class="lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Fuente verificable</div>
+          <div class="cite">Torres Vásquez, H., y Díaz-Navarro, D. E. (2024). <em>Deontología y axiología de la cognición moral</em>. Derecho Global, 9(26), 319–342.</div>
+          <div class="row">
+            <a class="dl" href="https://www.scielo.org.mx/pdf/dgedj/v9n26/2448-5136-dgedj-9-26-319.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar PDF</a>
+            <span class="score" title="Similitud coseno de la definición con el chunk que la respalda (Chroma)">Chroma <span class="bar"><i style="width:71%"></i></span> 0.713</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section>
+    <div class="slabel"><span class="kind" style="--acc:var(--gold)">Valores 1–5</span><h2>Lo bueno y deseable</h2><span class="ln"></span></div>
+
+    <!-- 1 Beneficencia -->
+    <div class="row" style="--acc:var(--coral)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#FAD9CB"/>
+        <path d="M60 40c-9-9-30-6-30 8v34c14-8 24-6 30 2 6-8 16-10 30-2V48c0-14-21-17-30-8z" fill="#fff"/>
+        <path d="M60 40v46" stroke="#F0C3B2" stroke-width="2.5"/>
+        <path d="M34 50c10-5 18-3 24 2M34 62c10-5 18-3 24 2M62 52c6-5 14-7 24-2M62 64c6-5 14-7 24-2" stroke="#E8623C" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M60 30c3-6 12-5 12 1 0 5-7 8-12 12-5-4-12-7-12-12 0-6 9-7 12-1z" fill="#E8623C"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">1</span>
+        <div class="kind">Valor</div>
+        <h3>Beneficencia</h3>
+        <p>El bien intrínseco de la docencia: que los alumnos aprendan. Enseñar es, ante todo, ayudar a aprender.</p>
+        <p class="why">Nombra un bien deseable (el aprendizaje del otro) que orienta la práctica; no es una regla concreta de conducta.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:70%"></i></span> 0.702</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 Autonomía -->
+    <div class="row" style="--acc:var(--aqua)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#C9EAE6"/>
+        <circle cx="60" cy="42" r="11" fill="#2AA79D"/>
+        <path d="M60 55c-10 0-17 7-17 18v10h34V73c0-11-7-18-17-18z" fill="#fff"/>
+        <path d="M46 66C36 60 30 50 32 40M74 66c10-6 16-16 14-26" stroke="#2AA79D" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="31" cy="37" r="5" fill="#E4A24C"/><circle cx="89" cy="37" r="5" fill="#E4A24C"/>
+        <path d="M60 20l2.5 5.5L68 27l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z" fill="#E4A24C"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">2</span>
+        <div class="kind">Valor</div>
+        <h3>Autonomía</h3>
+        <p>Reconocer al estudiante como sujeto capaz de darse sus propias normas, no como un ente pasivo.</p>
+        <p class="why">Designa una cualidad estimable de la persona (su libertad y capacidad de autogobierno) que se considera digna de respeto.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:67%"></i></span> 0.670</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Justicia -->
+    <div class="row" style="--acc:var(--gold)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#F6E4C6"/>
+        <rect x="57" y="30" width="6" height="58" rx="3" fill="#E4A24C"/>
+        <circle cx="60" cy="30" r="6" fill="#E4A24C"/>
+        <path d="M30 40h60" stroke="#E4A24C" stroke-width="5" stroke-linecap="round"/>
+        <path d="M30 40l-10 22h20zM90 40l-10 22h20z" fill="#fff" stroke="#E4A24C" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M30 40v3M90 40v3" stroke="#E4A24C" stroke-width="2"/>
+        <rect x="44" y="88" width="32" height="7" rx="3.5" fill="#E4A24C"/>
+        <rect x="52" y="82" width="16" height="8" rx="3" fill="#D98F2E"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">3</span>
+        <div class="kind">Valor</div>
+        <h3>Justicia</h3>
+        <p>La equidad como cualidad deseable en el reparto de los beneficios y las cargas de la relación educativa.</p>
+        <p class="why">Expresa un ideal de lo bueno, la equidad, que sirve de horizonte antes de traducirse en reglas de reparto.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:70%"></i></span> 0.701</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Humanización -->
+    <div class="row" style="--acc:var(--green)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#CDE9D9"/>
+        <path d="M60 92V54" stroke="#3E9E72" stroke-width="5" stroke-linecap="round"/>
+        <path d="M60 60C50 60 40 54 38 42c14-3 22 3 24 14zM60 54c9-2 18-8 20-19-13-3-21 4-22 15z" fill="#3E9E72"/>
+        <path d="M60 66c6-2 13-6 15-14M60 60c-7-2-13-6-15-13" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M46 92c0-8 6-12 14-12s14 4 14 12z" fill="#fff"/>
+        <path d="M60 34c2-5 10-4 10 1 0 4-6 7-10 10-4-3-10-6-10-10 0-5 8-6 10-1z" fill="#E8623C"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">4</span>
+        <div class="kind">Valor</div>
+        <h3>Humanización</h3>
+        <p>Educar es humanizar: la finalidad es la formación integral (cognitiva, afectiva y moral) de la persona, no acumular datos ni sólo capacitar en una técnica.</p>
+        <p class="why">Señala el fin bueno y deseable de la educación, la cualidad hacia la que se orienta toda la acción docente.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:76%"></i></span> 0.759</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Cuidado del otro -->
+    <div class="row" style="--acc:var(--plum)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#F0D7DE"/>
+        <path d="M45 44c6-11 22-8 22 4 0 10-14 18-22 27-8-9-22-17-22-27 0-12 16-15 22-4z" fill="#B96079"/>
+        <path d="M75 40c5-9 19-7 19 4 0 9-12 16-19 24-3-3-7-6-11-10 6-6 11-12 11-18z" fill="#E8623C"/>
+        <path d="M40 48c3-4 8-3 8 1" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">5</span>
+        <div class="kind">Valor</div>
+        <h3>Cuidado del otro <span style="font-weight:500;color:var(--muted);font-size:.85em">(ethos)</span></h3>
+        <p>La responsabilidad y el cuidado ante el rostro del otro; el o la docente se vuelve modelo por la integridad que manifiesta.</p>
+        <p class="why">Nombra una disposición estimable del carácter (el cuidado responsable) que da sentido al hacer.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:66%"></i></span> 0.664</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NORMAS -->
+  <section>
+    <div class="slabel"><span class="kind" style="--acc:var(--teal)">Normas 6–10</span><h2>Lo que se debe hacer</h2><span class="ln"></span></div>
+
+    <!-- 6 No maleficencia -->
+    <div class="row" style="--acc:var(--teal)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#CDE7E4"/>
+        <path d="M60 26l26 9v20c0 18-12 30-26 37-14-7-26-19-26-37V35z" fill="#12716E"/>
+        <path d="M60 34l19 6.5V55c0 13-9 22-19 27-10-5-19-14-19-27V40.5z" fill="#EAF6F4"/>
+        <path d="M50 60l7 7 14-15" stroke="#12716E" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">6</span>
+        <div class="kind">Norma</div>
+        <h3>No maleficencia</h3>
+        <p>Por sobre todo, no hacer daño: no infligir daño físico, emocional o a la autoestima del estudiante.</p>
+        <p class="why">Prohibición concreta de acción (no dañar) que obliga siempre, con independencia de las circunstancias.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:55%"></i></span> 0.552</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 Respetar la autonomía -->
+    <div class="row" style="--acc:var(--coral)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#FAD9CB"/>
+        <rect x="34" y="30" width="42" height="52" rx="7" fill="#fff"/>
+        <rect x="41" y="40" width="28" height="3.6" rx="1.8" fill="#F1C3B3"/>
+        <rect x="41" y="49" width="28" height="3.6" rx="1.8" fill="#F1C3B3"/>
+        <rect x="41" y="58" width="18" height="3.6" rx="1.8" fill="#F1C3B3"/>
+        <circle cx="74" cy="72" r="16" fill="#E8623C"/>
+        <path d="M67 72l5 5 9-10" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">7</span>
+        <div class="kind">Norma</div>
+        <h3>Respetar la autonomía del estudiante</h3>
+        <p>Informar, no manipular y garantizar el consentimiento: reconocer al estudiante el derecho a ser informado y a que se respeten sus derechos.</p>
+        <p class="why">Prescribe deberes de acción determinados (informar, obtener consentimiento) que operacionalizan el valor de la autonomía.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:68.5%"></i></span> 0.685</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 Repartir con equidad -->
+    <div class="row" style="--acc:var(--gold)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#F6E4C6"/>
+        <rect x="30" y="58" width="24" height="30" rx="5" fill="#E4A24C"/>
+        <rect x="66" y="58" width="24" height="30" rx="5" fill="#3E9E72"/>
+        <rect x="30" y="48" width="24" height="10" rx="4" fill="#D98F2E"/>
+        <rect x="66" y="48" width="24" height="10" rx="4" fill="#2F855A"/>
+        <path d="M42 44V34M78 44V34" stroke="#8A7B5F" stroke-width="3" stroke-linecap="round"/>
+        <path d="M30 34h60" stroke="#8A7B5F" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="60" cy="34" r="6" fill="#8A7B5F"/>
+        <path d="M54 34h12" stroke="#fff" stroke-width="2"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">8</span>
+        <div class="kind">Norma</div>
+        <h3>Repartir con equidad</h3>
+        <p>Distribuir los beneficios y las obligaciones con procedimientos razonables y no explotadores.</p>
+        <p class="why">Manda una conducta concreta (repartir mediante procedimientos equitativos) que realiza el valor de la justicia.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener">Hirsch Adler (2013) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:52%"></i></span> 0.520</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 Ir más allá de la norma escrita -->
+    <div class="row" style="--acc:var(--green)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#CDE9D9"/>
+        <path d="M60 72c-8-7-24-5-24-5V44s16-2 24 5c8-7 24-5 24-5v23s-16-2-24 5z" fill="#fff"/>
+        <path d="M60 77V50" stroke="#CFE6D8" stroke-width="2.5"/>
+        <path d="M60 88c-9-7-24-6-24-6M60 88c9-7 24-6 24-6" stroke="#3E9E72" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M60 40V20" stroke="#3E9E72" stroke-width="5" stroke-linecap="round"/>
+        <path d="M50 30l10-11 10 11" stroke="#3E9E72" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">9</span>
+        <div class="kind">Norma</div>
+        <h3>Ir más allá de la norma escrita</h3>
+        <p>No reducir la ética al cumplimiento del código: el compromiso vivencial obliga más allá de la norma escrita.</p>
+        <p class="why">Norma de segundo orden: prescribe cómo relacionarse con las demás normas (no limitarse a ellas), así que pertenece a la esfera del deber.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:76.2%"></i></span> 0.762</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Formarse y actualizarse -->
+    <div class="row" style="--acc:var(--aqua)">
+      <div class="illus"><svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="#C9EAE6"/>
+        <rect x="34" y="76" width="52" height="11" rx="4" fill="#2AA79D"/>
+        <rect x="38" y="64" width="44" height="11" rx="4" fill="#E4A24C"/>
+        <rect x="42" y="52" width="36" height="11" rx="4" fill="#E8623C"/>
+        <path d="M60 48V26" stroke="#2AA79D" stroke-width="5" stroke-linecap="round"/>
+        <path d="M50 36l10-11 10 11" stroke="#2AA79D" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="60" cy="24" r="4" fill="#E4A24C"/>
+      </svg></div>
+      <div class="card">
+        <span class="n">10</span>
+        <div class="kind">Norma</div>
+        <h3>Formarse y actualizarse</h3>
+        <p>Desarrollar de forma continua las propias competencias prácticas, intelectivas y morales, y mantenerse al día para ponerlas al servicio del alumno.</p>
+        <p class="why">Enuncia un deber de acción sostenido (formarse y actualizarse) exigible al docente para cumplir su función.</p>
+        <div class="foot">
+          <a class="src-link" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener">Rojas Artavia (2011) ↓</a>
+          <span class="mini"><span class="tag">Chroma</span><span class="bar"><i style="width:63.4%"></i></span> 0.634</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referencias -->
+  <section>
+    <div class="refs">
+      <h2>Referencias</h2>
+      <p class="sub">APA 7 · todas de acceso abierto y descargables. Cada punto y cada definición se ancló al texto completo de su fuente con Chroma (similitud coseno, chunks de 110 palabras).</p>
+      <ul class="reflist">
+        <li>
+          <div class="r"><b>Hirsch Adler, A. (2013).</b> La ética profesional basada en principios y su relación con la docencia. <em>Edetania, (43)</em>, 97–111.</div>
+          <a class="dl" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4406374" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar</a>
+        </li>
+        <li>
+          <div class="r"><b>Rojas Artavia, C. E. (2011).</b> Ética profesional docente: un compromiso pedagógico humanístico. <em>Revista Humanidades, 1</em>, 1–22.</div>
+          <a class="dl" href="https://dialnet.unirioja.es/servlet/articulo?codigo=4920530" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar</a>
+        </li>
+        <li>
+          <div class="r"><b>Seijo Suárez, C. (2009).</b> Los valores desde las principales teorías axiológicas: Cualidades apriorísticas e independientes de las cosas y los actos humanos. <em>Economía, (28)</em>, 145–160. <span style="color:var(--muted)">Define el término <em>valor</em>.</span></div>
+          <a class="dl" href="https://www.redalyc.org/pdf/1956/195617795007.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar PDF</a>
+        </li>
+        <li>
+          <div class="r"><b>Torres Vásquez, H., y Díaz-Navarro, D. E. (2024).</b> Deontología y axiología de la cognición moral: Los fundamentos éticos de la norma jurídica. <em>Derecho Global. Estudios sobre Derecho y Justicia, 9</em>(26), 319–342. <a href="https://doi.org/10.32870/dgedj.v9i26.723" target="_blank" rel="noopener">https://doi.org/10.32870/dgedj.v9i26.723</a> <span style="color:var(--muted)">Define el término <em>norma</em>.</span></div>
+          <a class="dl" href="https://www.scielo.org.mx/pdf/dgedj/v9n26/2448-5136-dgedj-9-26-319.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Descargar PDF</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foota">
+  Ser tutor <span class="dot">·</span> Decálogo de ética profesional docente <span class="dot">·</span> Hesus García Cobos
+</footer>
+
+</body>
+</html>

@@ -128,6 +128,21 @@ ol.arts li::before{content:counter(art);position:absolute;left:0;top:.32rem;widt
 .nav{text-align:center;margin-top:1.5rem;font-family:var(--disp);font-size:.86rem;letter-spacing:.06em;color:var(--ink-soft)}
 .nav a{color:var(--rubric);text-decoration:none}.nav a:hover{text-decoration:underline}
 
+/* ---- efecto tinta / escritura ---- */
+.sig-wrap{position:relative;display:inline-block}
+.nib{position:absolute;top:-.15em;left:0;opacity:0;color:#243154;font-size:1.05rem;pointer-events:none}
+@keyframes inkreveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes nibrun{0%{opacity:1;left:0}88%{opacity:1}100%{opacity:0;left:100%}}
+@media (prefers-reduced-motion:no-preference){
+  .head h1{clip-path:inset(0 100% 0 0);animation:inkreveal 1.7s .35s ease forwards}
+  .sig-wrap .sig{clip-path:inset(0 100% 0 0)}
+  .sig-wrap.go .sig{animation:inkreveal 2.2s ease forwards}
+  .sig-wrap.go .nib{animation:nibrun 2.2s ease forwards}
+  .inkin{opacity:0;transform:translateY(14px);filter:blur(3px);
+    transition:opacity .7s ease,transform .7s ease,filter .7s ease}
+  .inkin.in{opacity:1;transform:none;filter:none}
+}
+
 @media(max-width:560px){.principios,.guards{grid-template-columns:1fr}}
 </style>
 </head>
@@ -243,7 +258,10 @@ ol.arts li::before{content:counter(art);position:absolute;left:0;top:.32rem;widt
           <ellipse cx="34" cy="66" rx="10" ry="3" fill="#141c30"/>
         </svg>
         <div class="line">
-          <div class="ink sig">Hesus García Cobos</div>
+          <div class="sig-wrap">
+            <div class="ink sig">Hesus García Cobos</div>
+            <i class="fa-solid fa-pen-nib nib" aria-hidden="true"></i>
+          </div>
           <div class="ln"></div>
           <small>Nombre y firma</small>
         </div>
@@ -267,6 +285,26 @@ ol.arts li::before{content:counter(art);position:absolute;left:0;top:.32rem;widt
   </div>
   <div class="roller bottom"></div>
 </article>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // aparición "en tinta" por sección
+  document.querySelectorAll('h2, .group, .guards .guard, .pledge, .refs').forEach(function(el){ el.classList.add('inkin'); });
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll('.inkin').forEach(function(el){ io.observe(el); });
+  // la firma se dibuja sola al entrar en pantalla
+  var sw = document.querySelector('.sig-wrap');
+  if(sw){
+    var so = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ sw.classList.add('go'); so.unobserve(e.target); } });
+    }, {threshold:.6});
+    so.observe(sw);
+  }
+})();
+</script>
 
 </body>
 </html>

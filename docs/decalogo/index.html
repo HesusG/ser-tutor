@@ -101,6 +101,12 @@ section{padding:1.5rem 0}
 .card .kind{font-family:var(--disp);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
 .card p.txt{margin:0;color:var(--ink);font-size:1.04rem}
 .card .why{margin-top:.55rem;font-size:.9rem;color:var(--muted)}
+/* ---- efecto 3D: inclinación + reflejo metálico ---- */
+.card{transition:transform .12s ease}
+.card .shine{position:absolute;inset:0;border-radius:var(--rad);pointer-events:none;opacity:0;transition:opacity .25s;z-index:1;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.85),rgba(255,240,200,.25) 40%,transparent 62%);mix-blend-mode:soft-light}
+.card.tilt{box-shadow:0 26px 50px rgba(120,80,40,.22)}
+.card.tilt .shine{opacity:1}
 
 /* ---------- referencias ---------- */
 .refs{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:1.6rem 1.6rem;box-shadow:0 10px 26px rgba(120,80,40,.07)}
@@ -507,6 +513,28 @@ section{padding:1.5rem 0}
   </section>
 
 </main>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.card').forEach(function(card){
+    var shine=document.createElement('span'); shine.className='shine'; card.appendChild(shine);
+    card.addEventListener('pointermove', function(e){
+      if(e.pointerType==='touch') return;
+      var r=card.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+      var rx=(0.5-py)*13, ry=(px-0.5)*17;
+      card.style.transform='perspective(760px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-5px) scale(1.025)';
+      card.style.setProperty('--mx', (px*100)+'%');
+      card.style.setProperty('--my', (py*100)+'%');
+      card.classList.add('tilt');
+    });
+    card.addEventListener('pointerleave', function(){
+      card.style.transform=''; card.classList.remove('tilt');
+    });
+  });
+})();
+</script>
 
 <footer class="foota">
   <a href="../index.html">Ser tutor</a> <span class="dot">·</span> Decálogo de ética profesional docente <span class="dot">·</span> Hesus García Cobos

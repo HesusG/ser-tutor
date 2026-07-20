@@ -23,38 +23,8 @@ body{margin:0;font-family:var(--body);color:var(--ink);font-size:1.34rem;line-he
   background:linear-gradient(180deg,var(--sky-1) 0%,var(--sky-2) 34%,#e9f3fb 66%,#eef6fc 100%);
   min-height:100vh;padding:44px 14px 70px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ---------- cielo (shader WebGL) + escena griega ---------- */
-#sky{position:fixed;inset:0;z-index:-3;display:block;pointer-events:none}
-#dust{position:fixed;inset:0;z-index:-2;pointer-events:none}
-.scene{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;will-change:transform}
-.colonnade{position:fixed;left:0;right:0;bottom:0;z-index:-2;pointer-events:none;opacity:.2;
-  display:flex;justify-content:center;align-items:flex-end;gap:min(6vw,72px);filter:blur(.6px)}
-.colonnade svg{width:clamp(28px,6vw,58px);height:auto;color:#b6975a}
-@media(max-width:600px){.colonnade{opacity:.12}}
-/* sol con rayos */
-.sun{position:absolute;top:4vh;right:11vw;width:210px;height:210px}
-.sun .disc{position:absolute;inset:34%;border-radius:50%;
-  background:radial-gradient(circle,#fffaf0,#ffe6a6 52%,rgba(255,210,120,0) 74%);
-  box-shadow:0 0 80px 26px rgba(255,222,140,.55)}
-.sun .rays{position:absolute;inset:0;border-radius:50%;opacity:.55;
-  background:repeating-conic-gradient(rgba(255,232,170,.75) 0deg 1.5deg, transparent 1.5deg 13deg);
-  -webkit-mask:radial-gradient(circle,transparent 33%,#000 35%,#000 50%,transparent 66%);
-  mask:radial-gradient(circle,transparent 33%,#000 35%,#000 50%,transparent 66%);
-  animation:sunspin 130s linear infinite}
-@keyframes sunspin{to{transform:rotate(360deg)}}
-/* templo flotante */
-.temple{position:absolute;top:24vh;left:4vw;width:min(230px,28vw);opacity:.32;filter:blur(.4px);color:#c9b688}
-/* aves / águila */
-.bird{position:absolute;color:#3b3b40;opacity:.5;will-change:transform;animation:fly linear infinite}
-.bird.b1{top:15vh;width:42px;animation-duration:40s}
-.bird.b2{top:23vh;width:26px;opacity:.4;animation-duration:56s;animation-delay:-14s}
-.bird.b3{top:10vh;width:60px;opacity:.55;animation-duration:70s;animation-delay:-34s}
-@keyframes fly{from{transform:translateX(-14vw)}to{transform:translateX(120vw)}}
-/* búho de Atenea */
-.owl{position:absolute;top:-30px;right:22px;width:70px;z-index:3}
-.owl .eyelid{transform-box:fill-box;transform-origin:center;transform:scaleY(0)}
-.owl:hover .eyelid{animation:blink 1.7s ease}
-@keyframes blink{0%,38%,100%{transform:scaleY(0)}46%,54%{transform:scaleY(1)}}
+/* ---------- cielo (shader WebGL): nubes realistas ---------- */
+#sky{position:fixed;inset:0;z-index:-1;display:block;pointer-events:none}
 /* epígrafe de Delfos */
 .epigraph{font-family:var(--disp);text-align:center;color:var(--gold);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;margin:.5rem 0 0}
 .epigraph .gr{display:block;font-family:var(--body);font-style:italic;text-transform:none;color:var(--ink-soft);letter-spacing:.04em;font-size:1rem;margin-top:.1rem}
@@ -69,7 +39,6 @@ body{margin:0;font-family:var(--body);color:var(--ink);font-size:1.34rem;line-he
 .coldiv::before,.coldiv::after{content:"";height:1px;width:min(130px,22vw);background:linear-gradient(90deg,transparent,var(--gold))}
 .coldiv::after{background:linear-gradient(90deg,var(--gold),transparent)}
 .coldiv svg{width:15px;height:32px;color:#c4b487}
-@media(prefers-reduced-motion:reduce){.sun .rays,.bird{animation:none!important}}
 
 /* ---------- pergamino ---------- */
 .scroll{max-width:760px;margin:0 auto;position:relative;filter:drop-shadow(0 34px 60px rgba(40,55,75,.5))}
@@ -183,38 +152,11 @@ ol.arts li::before{content:counter(art);position:absolute;left:0;top:.32rem;widt
 </head>
 <body>
 
-<!-- cielo (shader) + horizonte de columnas -->
+<!-- cielo (shader): nubes realistas -->
 <canvas id="sky" aria-hidden="true"></canvas>
-<div class="colonnade" aria-hidden="true">
-  <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor"/><rect x="10" y="8" width="20" height="104" fill="currentColor"/><rect x="4" y="112" width="32" height="8" rx="2" fill="currentColor"/></svg>
-  <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor"/><rect x="10" y="8" width="20" height="104" fill="currentColor"/><rect x="4" y="112" width="32" height="8" rx="2" fill="currentColor"/></svg>
-  <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor"/><rect x="10" y="8" width="20" height="104" fill="currentColor"/><rect x="4" y="112" width="32" height="8" rx="2" fill="currentColor"/></svg>
-  <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor"/><rect x="10" y="8" width="20" height="104" fill="currentColor"/><rect x="4" y="112" width="32" height="8" rx="2" fill="currentColor"/></svg>
-  <svg viewBox="0 0 40 120"><rect x="6" y="0" width="28" height="8" rx="2" fill="currentColor"/><rect x="10" y="8" width="20" height="104" fill="currentColor"/><rect x="4" y="112" width="32" height="8" rx="2" fill="currentColor"/></svg>
-</div>
-
-<canvas id="dust" aria-hidden="true"></canvas>
-<div class="scene" aria-hidden="true">
-  <div class="sun"><div class="rays"></div><div class="disc"></div></div>
-  <svg class="temple" viewBox="0 0 120 90"><g fill="currentColor"><polygon points="60,4 116,30 4,30"/><rect x="8" y="30" width="104" height="7"/><rect x="14" y="37" width="9" height="42"/><rect x="34" y="37" width="9" height="42"/><rect x="55" y="37" width="9" height="42"/><rect x="76" y="37" width="9" height="42"/><rect x="97" y="37" width="9" height="42"/><rect x="6" y="79" width="108" height="8"/></g></svg>
-  <svg class="bird b1" viewBox="0 0 40 16"><path d="M2 12 Q10 3 20 10 Q30 3 38 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-  <svg class="bird b2" viewBox="0 0 40 16"><path d="M2 12 Q10 3 20 10 Q30 3 38 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-  <svg class="bird b3" viewBox="0 0 40 16"><path d="M2 12 Q10 3 20 10 Q30 3 38 12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
-</div>
 
 <article class="scroll">
   <div class="roller top"></div>
-  <svg class="owl" viewBox="0 0 66 78" aria-hidden="true">
-    <path d="M10 6 L20 22 M56 6 L46 22" stroke="#6f5327" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <ellipse cx="33" cy="44" rx="25" ry="29" fill="#8a6a3a"/>
-    <ellipse cx="33" cy="46" rx="17" ry="22" fill="#ad8d58"/>
-    <circle cx="23" cy="36" r="10.5" fill="#fbf4e0"/><circle cx="43" cy="36" r="10.5" fill="#fbf4e0"/>
-    <circle cx="23" cy="36" r="4.6" fill="#26324f"/><circle cx="43" cy="36" r="4.6" fill="#26324f"/>
-    <rect class="eyelid" x="12.5" y="25.5" width="21" height="21" rx="10.5" fill="#8a6a3a"/>
-    <rect class="eyelid" x="32.5" y="25.5" width="21" height="21" rx="10.5" fill="#8a6a3a"/>
-    <path d="M33 42 l-4.5 6 h9 z" fill="#e0a020"/>
-    <path d="M25 70 v6 M41 70 v6" stroke="#e0a020" stroke-width="3" stroke-linecap="round"/>
-  </svg>
   <div class="sheet">
     <svg class="keyband" viewBox="0 0 480 20" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><pattern id="mk" width="40" height="20" patternUnits="userSpaceOnUse"><path d="M2 18 V6 H30 V15 H14 V11 H22 V9" fill="none" stroke="currentColor" stroke-width="2.2"/></pattern></defs><rect width="480" height="20" fill="url(#mk)"/></svg>
 
@@ -370,17 +312,19 @@ ol.arts li::before{content:counter(art);position:absolute;left:0;top:.32rem;widt
   'precision highp float;uniform vec2 uRes;uniform float uTime;',
   'float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
   'float noise(vec2 p){vec2 i=floor(p),f=fract(p);float a=hash(i),b=hash(i+vec2(1.,0.)),c=hash(i+vec2(0.,1.)),d=hash(i+vec2(1.,1.));vec2 u=f*f*(3.-2.*f);return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
-  'float fbm(vec2 p){float v=0.,a=0.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);for(int i=0;i<6;i++){v+=a*noise(p);p=m*p;a*=0.5;}return v;}',
+  'float fbm(vec2 p){float v=0.,a=0.5;mat2 m=mat2(1.7,1.2,-1.2,1.7);for(int i=0;i<7;i++){v+=a*noise(p);p=m*p;a*=0.5;}return v;}',
   'void main(){vec2 uv=gl_FragCoord.xy/uRes.xy;float asp=uRes.x/uRes.y;vec2 p=vec2(uv.x*asp,uv.y);',
-  'vec3 top=vec3(0.24,0.49,0.79);vec3 hor=vec3(0.99,0.92,0.75);vec3 sky=mix(hor,top,pow(clamp(uv.y,0.,1.),0.75));',
-  'vec2 sun=vec2(0.70,0.88);vec2 sunp=vec2(sun.x*asp,sun.y);float sd=distance(p,sunp);vec3 sc=vec3(1.0,0.94,0.78);',
-  'sky+=sc*exp(-sd*5.5)*0.9;',
-  'vec2 wind=vec2(uTime*0.012,uTime*0.002);vec2 cp=p*2.1+wind;float w=fbm(cp*0.5);float d=fbm(cp+w*1.2);d=smoothstep(0.52,1.1,d);',
-  'vec2 ld=normalize(sunp-p);float lit=fbm(cp+ld*0.4+wind);float sh=clamp((d-smoothstep(0.52,1.1,lit))*1.6,0.,1.);',
-  'vec3 cd=vec3(0.52,0.54,0.63);vec3 cl=vec3(1.0,0.98,0.93);vec3 cloud=mix(cd,cl,0.45+0.65*sh);cloud+=sc*exp(-sd*3.2)*0.55*d;',
-  'vec3 col=mix(sky,cloud,d);',
-  'float ray=0.0;vec2 dir=(sunp-p)/10.0;vec2 sp=p;float dec=1.0;for(int i=0;i<10;i++){sp+=dir;float q=smoothstep(0.52,1.1,fbm(sp*2.1+wind));ray+=(1.0-q)*dec;dec*=0.86;}',
-  'col+=sc*ray*0.032;col*=1.0-0.22*pow(distance(uv,vec2(0.5)),2.0);gl_FragColor=vec4(col,1.0);}'
+  'vec3 zen=vec3(0.30,0.55,0.86);vec3 hor=vec3(0.82,0.90,0.97);vec3 sky=mix(hor,zen,pow(clamp(uv.y,0.,1.),0.9));',
+  'vec2 wind=vec2(uTime*0.006,uTime*0.0012);vec2 q=p*1.7;',
+  'float warp=fbm(q*0.5+wind*0.6);',
+  'float dens=fbm(q+warp*0.9+wind);',
+  'float cov=smoothstep(0.47,0.92,dens);',
+  'float hgt=fbm(q+warp*0.9+wind+vec2(0.0,0.07));',
+  'float lit=clamp((dens-hgt)*3.4+0.55,0.0,1.0);',
+  'vec3 ctop=vec3(1.0,1.0,1.0);vec3 cbot=vec3(0.60,0.64,0.72);vec3 cloud=mix(cbot,ctop,lit);',
+  'vec3 col=mix(sky,cloud,cov);',
+  'col=mix(col,vec3(0.93,0.96,0.99),(1.0-smoothstep(0.0,0.4,uv.y))*0.22*(1.0-cov));',
+  'gl_FragColor=vec4(col,1.0);}'
   ].join('\n');
   function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.warn(gl.getShaderInfoLog(o));return o;}
   var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);gl.useProgram(pr);
@@ -392,35 +336,6 @@ ol.arts li::before{content:counter(art);position:absolute;left:0;top:.32rem;widt
   var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function fr(t){gl.uniform2f(uR,c.width,c.height);gl.uniform1f(uT,t*0.001);gl.drawArrays(gl.TRIANGLES,0,3);if(!reduced)requestAnimationFrame(fr);}
   if(reduced){gl.uniform2f(uR,c.width,c.height);gl.uniform1f(uT,12.0);gl.drawArrays(gl.TRIANGLES,0,3);}else requestAnimationFrame(fr);
-})();
-/* Polvo de oro + parallax */
-(function(){
-  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var cv=document.getElementById('dust');
-  if(cv){
-    var x=cv.getContext('2d'), W,H, ps=[];
-    function rz(){ W=cv.width=innerWidth; H=cv.height=innerHeight; }
-    rz(); addEventListener('resize',rz);
-    var N=Math.min(64, Math.max(24, Math.floor(innerWidth/20)));
-    for(var i=0;i<N;i++) ps.push({x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.6+0.5, sp:Math.random()*0.28+0.05, ph:Math.random()*6.28, sw:Math.random()*0.4+0.1});
-    function draw(anim){
-      x.clearRect(0,0,W,H);
-      for(var i=0;i<ps.length;i++){ var p=ps[i];
-        if(anim){ p.y-=p.sp; p.x+=Math.sin(p.ph)*p.sw; p.ph+=0.012; if(p.y<-6){ p.y=H+6; p.x=Math.random()*W; } }
-        var a=0.30+0.35*Math.sin(p.ph*2.3);
-        x.beginPath(); x.arc(p.x,p.y,p.r,0,6.2832); x.fillStyle='rgba(214,176,86,'+a.toFixed(3)+')'; x.fill();
-      }
-      if(anim) requestAnimationFrame(function(){draw(true);});
-    }
-    draw(!reduced);
-  }
-  if(!reduced){
-    var scene=document.querySelector('.scene'); var tick=false;
-    addEventListener('scroll', function(){
-      if(tick) return; tick=true;
-      requestAnimationFrame(function(){ if(scene) scene.style.transform='translateY('+(window.scrollY*0.08)+'px)'; tick=false; });
-    }, {passive:true});
-  }
 })();
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;

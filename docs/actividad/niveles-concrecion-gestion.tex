@@ -1,0 +1,186 @@
+% Organizador gráfico — Niveles de concreción de la gestión educativa
+% Temas selectos de Pedagogía (UPAEP)
+%
+% Todo el contenido está anclado a una cita verbatim del libro; ver
+% refs/gestion_verificacion.md (generado por tools/gestion_verify.py).
+% Las páginas citadas son las del LIBRO IMPRESO, no las del PDF (offset de 4).
+%
+% Compilar:  tectonic docs/actividad/niveles-concrecion-gestion.tex
+
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[letterpaper,landscape,margin=0.85cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{xcolor}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% --- Paleta ---
+\definecolor{tinta}{HTML}{1B2130}
+\definecolor{gris}{HTML}{4A5265}
+\definecolor{raiz}{HTML}{263B6B}
+\definecolor{raizc}{HTML}{E7EBF5}
+\definecolor{inst}{HTML}{2F5D8C}
+\definecolor{instc}{HTML}{E4EDF6}
+\definecolor{esco}{HTML}{2A7A66}
+\definecolor{escoc}{HTML}{E2F1EC}
+\definecolor{peda}{HTML}{B0602A}
+\definecolor{pedac}{HTML}{FAECDF}
+\definecolor{estr}{HTML}{4C3A70}
+\definecolor{estrc}{HTML}{EDE8F5}
+
+% Comillas y separador seguros en T1 (« » y · dan glifos rotos con lmodern)
+\newcommand{\q}[1]{\textquotedblleft #1\textquotedblright}
+\newcommand{\sep}{\;\textbullet\;}
+\newcommand{\vin}[1]{\textcolor{gris}{\scriptsize(p.~#1)}}
+\newcommand{\bul}[2]{\textcolor{#1}{\textbf{\textbullet}}~#2\\[1.6pt]}
+
+% --- Proyección isométrica: la profundidad se desplaza arriba-derecha ---
+\newcommand{\dx}{0.46}
+\newcommand{\dy}{0.30}
+
+% \slab{X}{Y}{ancho}{fondo}{grosor}{color}{rótulo}{ámbito}
+\newcommand{\slab}[8]{%
+  \fill[#6!62!black]
+    (#1+#3,#2) -- (#1+#3+\dx*#4,#2+\dy*#4)
+    -- (#1+#3+\dx*#4,#2+\dy*#4-#5) -- (#1+#3,#2-#5) -- cycle;
+  \fill[#6!78!black]
+    (#1,#2) -- (#1+#3,#2) -- (#1+#3,#2-#5) -- (#1,#2-#5) -- cycle;
+  \fill[#6] (#1,#2) -- (#1+#3,#2)
+    -- (#1+#3+\dx*#4,#2+\dy*#4) -- (#1+\dx*#4,#2+\dy*#4) -- cycle;
+  \draw[#6!50!black,line width=0.4pt] (#1,#2) -- (#1+#3,#2)
+    -- (#1+#3+\dx*#4,#2+\dy*#4) -- (#1+\dx*#4,#2+\dy*#4) -- cycle;
+  \draw[#6!50!black,line width=0.4pt] (#1,#2) -- (#1,#2-#5)
+    -- (#1+#3,#2-#5) -- (#1+#3,#2);
+  \draw[#6!50!black,line width=0.4pt] (#1+#3,#2-#5) -- (#1+#3+\dx*#4,#2+\dy*#4-#5)
+    -- (#1+#3+\dx*#4,#2+\dy*#4);
+  \node[anchor=center,align=center,white]
+    at (#1+#3/2+\dx*#4/2, #2+\dy*#4/2) {%
+      \bfseries\footnotesize #7\\[1pt]\mdseries\scriptsize\itshape ámbito: #8};
+}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\color{tinta} Niveles de concreción de la gestión educativa}\\[2pt]
+  {\small\color{gris} Mapa conceptual \sep Modelo de Gestión Educativa Estratégica (SEP)
+   \sep Temas selectos de Pedagogía}
+\end{center}
+\vspace{-0.15cm}
+
+\begin{tikzpicture}[x=1cm,y=1cm]
+
+% ===================== BANDA RAÍZ =====================
+\fill[raizc,rounded corners=3pt] (0,15.30) rectangle (25.4,18.00);
+\fill[raiz,rounded corners=3pt] (0,17.25) rectangle (25.4,18.00);
+\fill[raiz] (0,17.25) rectangle (25.4,17.45);
+\node[anchor=west,white] at (0.35,17.62)
+  {\bfseries GESTIÓN EDUCATIVA \normalfont\itshape\small\ \sep\ ámbito: el Sistema};
+\node[anchor=north west,text width=24.6cm,align=left,color=tinta] at (0.4,17.12){%
+  \scriptsize
+  \textbf{Gestión:} \q{conjunto de acciones integradas para el logro de un objetivo a
+  cierto plazo}; es el eslabón intermedio entre la planificación y los objetivos concretos
+  \vin{55}. Mintzberg (1984) y Stoner (1996): disposición y organización de los recursos
+  para obtener los resultados esperados \vin{55}. Tiene tres campos:
+  \textbf{la acción}, \textbf{la investigación} y \textbf{la innovación y el desarrollo}
+  \vin{55}.\\[2pt]
+  \textbf{En el campo educativo se clasifica en tres categorías,} \q{\textbf{de acuerdo con
+  el ámbito de su quehacer y con los niveles de concreción en el sistema: institucional,
+  escolar y pedagógica}} \vin{56}.};
+
+% ===================== EJE DE CONCRECIÓN =====================
+\draw[-{Stealth[length=4mm]},line width=1.1pt,gris!70] (0.42,15.05) -- (0.42,3.45);
+\node[rotate=90,anchor=south,color=gris] at (0.16,9.2)
+  {\scriptsize\itshape de lo abstracto y general\, $\longrightarrow$\, a lo concreto y específico};
+
+% ===================== NIVEL 1 =====================
+\slab{1.35}{12.98}{7.4}{3.2}{0.52}{inst}{1. GESTIÓN INSTITUCIONAL}{Estructura}
+\draw[inst,line width=1pt] (10.22,13.46) -- (10.70,13.46);
+\fill[instc,rounded corners=3pt] (10.70,11.45) rectangle (25.4,14.95);
+\fill[inst] (10.70,11.45) rectangle (10.93,14.95);
+\node[anchor=north west,text width=13.9cm,align=left,color=tinta] at (11.20,14.53){%
+  \scriptsize
+  \bul{inst}{\textbf{Qué hace.} Se enfoca en \q{la manera en que cada organización traduce
+    lo establecido en las políticas}; fija las líneas de acción de cada instancia
+    administrativa \vin{58}.}
+  \bul{inst}{\textbf{Dónde opera.} En cuatro ámbitos: nacional, estatal, regional y local
+    \vin{58}.}
+  \bul{inst}{\textbf{Principios.} Autonomía, corresponsabilidad, transparencia y rendición
+    de cuentas \vin{58}.}
+  \bul{inst}{\textbf{Desafío.} Cassasus (2000): lograrla eficaz es \q{uno de los grandes
+    desafíos} de las estructuras administrativas federales y estatales \vin{59}.}
+  \bul{inst}{\textbf{Quién.} Quienes lideran espacios de decisión \q{han de convertirse en
+    gestores de la calidad} \vin{60}.}};
+
+% ===================== NIVEL 2 =====================
+\slab{1.35}{9.16}{6.6}{3.0}{0.52}{esco}{2. GESTIÓN ESCOLAR}{Comunidad educativa}
+\draw[esco,line width=1pt] (9.33,9.61) -- (10.70,9.61);
+\fill[escoc,rounded corners=3pt] (10.70,7.60) rectangle (25.4,11.10);
+\fill[esco] (10.70,7.60) rectangle (10.93,11.10);
+\node[anchor=north west,text width=13.9cm,align=left,color=tinta] at (11.20,10.82){%
+  \scriptsize
+  \bul{esco}{\textbf{Qué es.} SEP (2001): \q{el ámbito de la cultura organizacional,
+    conformada por directivos, el equipo docente, las normas, las instancias de decisión}
+    y la forma peculiar de hacer las cosas en la escuela \vin{60}.}
+  \bul{esco}{\textbf{Quiénes.} Loera (2003): labores de director, maestros, personal de
+    apoyo, padres de familia y alumnos, para generar las condiciones y los ambientes en
+    que los estudiantes aprendan \vin{60}.}
+  \bul{esco}{\textbf{Hacia dónde.} Tapia (2003): \q{convertir a la escuela en una
+    organización centrada en lo pedagógico}, abierta al aprendizaje y a la innovación
+    \vin{60}.}
+  \bul{esco}{\textbf{Enfoque estratégico.} Visión y misión compartidas; \q{privilegia el
+    trabajo en equipo, la apertura al aprendizaje y a la innovación}; remueve prácticas
+    burocráticas \vin{61}.}};
+
+% ===================== NIVEL 3 =====================
+\slab{1.35}{5.24}{5.8}{2.8}{0.52}{peda}{3. GESTIÓN PEDAGÓGICA}{Aula}
+\draw[peda,line width=1pt] (8.44,5.66) -- (10.70,5.66);
+\fill[pedac,rounded corners=3pt] (10.70,3.55) rectangle (25.4,7.25);
+\fill[peda] (10.70,3.55) rectangle (10.93,7.25);
+\node[anchor=north west,text width=13.9cm,align=left,color=tinta] at (11.20,7.04){%
+  \scriptsize
+  \bul{peda}{\textbf{Por qué es la concreción.} \q{Es en este nivel donde se concreta la
+    gestión educativa en su conjunto} \vin{62}.}
+  \bul{peda}{\textbf{Qué abarca.} Cómo el docente enseña, \q{cómo asume el currículo y lo
+    traduce en una planeación didáctica}, cómo evalúa y cómo interactúa con alumnos y
+    padres \vin{62}.}
+  \bul{peda}{\textbf{Idea clave.} Batista, en Rodríguez (2009): \q{la práctica docente se
+    convierte en una gestión para el aprendizaje} \vin{62}.}
+  \bul{peda}{\textbf{De qué depende.} Zubiría (2006): el concepto de enseñanza del maestro
+    \q{determina sus formas o estilos para enseñar} \vin{62}. Harris (2002) y Hopkins
+    (2000): \q{el éxito escolar reside en lo que sucede en el aula} \vin{63}; el clima de
+    aula es \q{un componente clave en el aseguramiento de resultados} \vin{63}.}};
+
+% ===================== BANDA DE CIERRE =====================
+\fill[estrc,rounded corners=3pt] (0,0.10) rectangle (25.4,2.90);
+\fill[estr,rounded corners=3pt] (0,2.15) rectangle (25.4,2.90);
+\fill[estr] (0,2.15) rectangle (25.4,2.35);
+\node[anchor=west,white] at (0.35,2.52)
+  {\bfseries GESTIÓN EDUCATIVA ESTRATÉGICA \normalfont\itshape\small\ \sep\
+   integra y articula los tres niveles};
+\node[anchor=north west,text width=24.6cm,align=left,color=tinta] at (0.4,2.02){%
+  \scriptsize
+  IIPE-UNESCO (2000): \q{conjunto de procesos teórico-prácticos integrados y relacionados,
+  tanto horizontal como verticalmente, dentro del sistema educativo} \vin{64}.
+  \q{Contiene, por lo tanto, a las tres categorías de gestión señaladas: institucional,
+  escolar y pedagógica} \vin{64}. Es una competencia y, a la vez, una
+  \textbf{metacompetencia} \vin{64}; se concreta \q{a partir de ciclos de mejoramiento
+  constante de procesos y de resultados}, mediante ejercicios de
+  \textbf{planeación} $\rightleftharpoons$ \textbf{evaluación} \vin{64}.};
+
+\end{tikzpicture}
+
+\vspace{-0.1cm}
+{\scriptsize\color{gris}\textbf{Referencia:}\ \ Vázquez Herrera, E. (Coord.). (2010).
+\textit{Modelo de gestión educativa estratégica} (2.\textsuperscript{a}~ed.). Secretaría de
+Educación Pública. \sep Elaboración propia a partir de las pp.~55--64
+(numeración del libro impreso).}
+
+\end{document}

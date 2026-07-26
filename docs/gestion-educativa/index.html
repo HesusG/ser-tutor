@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niveles de concreción de la gestión educativa</title>
+<meta name="description" content="Organizador gráfico en 3D sobre los niveles de concreción de la gestión educativa (institucional, escolar y pedagógica) según el Modelo de Gestión Educativa Estratégica (SEP, 2010). Se desciende del sistema al aula.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080b16; --tinta:#f2f5fb; --suave:#a8b3cb; --tenue:#6b778f;
+  --raiz:#7f93d8; --inst:#4f9ee0; --esco:#3fbfa0; --peda:#e79350; --estr:#a98ae0;
+  --disp:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--tinta);font-family:var(--body);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ---------- fondo (shader WebGL): profundidad atmosférica ---------- */
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+
+/* ---------- escenario 3D ---------- */
+.stage{position:fixed;inset:0;z-index:1;perspective:1250px;perspective-origin:50% 42%;
+  pointer-events:none;overflow:hidden}
+.world{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+
+.estrato{position:absolute;left:50%;top:50%;transform-style:preserve-3d;
+  transform:translate(-50%,-50%) translateZ(calc(var(--z) * -1px))}
+.piso{position:absolute;left:50%;top:50%;width:var(--w);height:var(--w);
+  margin-left:calc(var(--w) / -2);margin-top:calc(var(--w) / -2);
+  transform:rotateX(78deg);border-radius:14px;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 78px,color-mix(in srgb,var(--c) 58%,transparent) 78px 80px),
+    repeating-linear-gradient(90deg,transparent 0 78px,color-mix(in srgb,var(--c) 58%,transparent) 78px 80px),
+    radial-gradient(ellipse at 50% 50%,color-mix(in srgb,var(--c) 46%,transparent) 0%,transparent 70%);
+  box-shadow:0 0 150px color-mix(in srgb,var(--c) 40%,transparent);
+  outline:2px solid color-mix(in srgb,var(--c) 80%,transparent);outline-offset:-2px}
+.halo{position:absolute;left:50%;top:50%;width:calc(var(--w) * 0.55);height:calc(var(--w) * 0.55);
+  margin-left:calc(var(--w) * -0.275);margin-top:calc(var(--w) * -0.275);
+  transform:rotateX(78deg);border-radius:50%;
+  border:2px solid color-mix(in srgb,var(--c) 70%,transparent);
+  box-shadow:0 0 70px color-mix(in srgb,var(--c) 45%,transparent) inset}
+.chapa{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateY(-190px);
+  text-align:center;white-space:nowrap;font-family:var(--disp);letter-spacing:.16em;
+  text-transform:uppercase;font-weight:700;font-size:clamp(1rem,2.6vw,1.6rem);
+  color:var(--c);text-shadow:0 0 34px color-mix(in srgb,var(--c) 60%,transparent)}
+.chapa small{display:block;margin-top:.45rem;font-family:var(--body);font-weight:400;
+  text-transform:none;letter-spacing:.02em;font-size:.72em;font-style:italic;color:var(--suave)}
+/* haz de luz que enhebra los estratos */
+.haz{position:absolute;left:50%;top:50%;width:3px;height:1500px;margin-left:-1.5px;
+  transform:translateY(-750px);
+  background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--c) 55%,transparent),transparent)}
+
+/* ---------- paneles de contenido ---------- */
+.scroller{position:relative;z-index:2;height:560vh}
+.panel{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(94vw,720px);padding:2rem 2.1rem;border-radius:18px;
+  background:color-mix(in srgb,#0a0f1e 82%,transparent);
+  border:1px solid color-mix(in srgb,var(--c,var(--raiz)) 34%,transparent);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  box-shadow:0 26px 70px rgba(0,0,0,.55);
+  opacity:0;visibility:hidden;pointer-events:none;will-change:opacity,transform}
+.panel .num{font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--c,var(--raiz))}
+.panel h2{font-family:var(--disp);font-weight:700;margin:.5rem 0 .1rem;
+  font-size:clamp(1.4rem,4.2vw,2.05rem);line-height:1.12;letter-spacing:-.01em}
+.panel .ambito{font-style:italic;color:var(--suave);margin:0 0 1rem;font-size:1rem}
+.panel ul{list-style:none;margin:0;padding:0}
+.panel li{position:relative;padding-left:1.15rem;margin-bottom:.72rem;
+  font-size:clamp(.95rem,2.3vw,1.06rem);line-height:1.52;color:#dee5f2}
+.panel li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;
+  border-radius:50%;background:var(--c,var(--raiz))}
+.panel li b{color:#fff;font-weight:600}
+.panel .cita{color:var(--tenue);font-size:.84em;white-space:nowrap}
+.panel p.lead{font-size:clamp(1rem,2.5vw,1.14rem);line-height:1.6;color:#dee5f2;margin:0 0 1rem}
+.pista{margin-top:1.3rem;font-family:var(--disp);font-size:.78rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--tenue)}
+.pista span{display:inline-block;animation:baja 1.9s ease-in-out infinite}
+@keyframes baja{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ---------- mini-mapa persistente ---------- */
+.minimapa{position:fixed;left:1.1rem;bottom:1.1rem;z-index:5;width:186px;
+  padding:.7rem .75rem;border-radius:13px;
+  background:color-mix(in srgb,#0a0f1e 86%,transparent);
+  border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(8px);
+  font-family:var(--disp);font-size:.63rem;letter-spacing:.05em}
+.minimapa .mm-t{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--tenue);margin-bottom:.5rem}
+.mm{position:relative;display:block;padding:.32rem .5rem .32rem 1.15rem;border-radius:6px;
+  margin-bottom:.24rem;color:var(--suave);
+  background:color-mix(in srgb,var(--c) 9%,transparent);transition:all .35s ease}
+.mm::before{content:"";position:absolute;left:.45rem;top:.62rem;width:6px;height:6px;
+  border-radius:50%;background:var(--c);transition:box-shadow .35s ease}
+.mm.on::before{box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 32%,transparent)}
+.mm b{display:block;font-weight:600;font-size:.68rem;color:#c9d3e6;transition:color .35s}
+.mm.on{background:color-mix(in srgb,var(--c) 26%,transparent);color:#eef2fa}
+.mm.on b{color:#fff}
+.mm.sangria{margin-left:.7rem}
+.minimapa{transition:opacity .4s ease}
+.minimapa.fuera{opacity:0;pointer-events:none}
+
+/* ---------- cierre estático: el mapa completo ---------- */
+.final{position:relative;z-index:3;background:linear-gradient(180deg,#080b16,#0d1222 22%,#0d1222);
+  padding:5rem 1.2rem 4rem}
+.wrap{max-width:1080px;margin:0 auto}
+.final h2{font-family:var(--disp);font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 .4rem;
+  letter-spacing:-.01em}
+.final .sub{color:var(--suave);margin:0 0 2.4rem;font-style:italic}
+.banda{border-radius:14px;padding:1.25rem 1.4rem;margin-bottom:1rem;
+  background:color-mix(in srgb,var(--c) 12%,#0a0f1e);
+  border:1px solid color-mix(in srgb,var(--c) 32%,transparent)}
+.banda h3{font-family:var(--disp);font-size:1.02rem;margin:0 0 .55rem;color:var(--c);
+  letter-spacing:.05em;text-transform:uppercase}
+.banda h3 em{font-family:var(--body);text-transform:none;letter-spacing:0;
+  color:var(--suave);font-weight:400;font-size:.92rem}
+.banda p,.banda li{color:#dde4f1;line-height:1.55;font-size:.99rem;margin:0}
+.banda ul{list-style:none;margin:0;padding:0}
+.banda li{position:relative;padding-left:1.1rem;margin-bottom:.5rem}
+.banda li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;
+  border-radius:50%;background:var(--c)}
+.niveles{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin:1rem 0}
+@media(max-width:820px){.niveles{grid-template-columns:1fr}}
+.ref{margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.12);
+  color:var(--suave);font-size:.94rem;line-height:1.6}
+.ref b{color:#fff}
+.desc{display:inline-block;margin-top:1.1rem;font-family:var(--disp);font-size:.82rem;
+  letter-spacing:.06em;padding:.6rem 1.05rem;border-radius:8px;text-decoration:none;
+  color:#0a0f1e;background:#c9d3e6;font-weight:600}
+.desc:hover{background:#fff}
+.volver{display:inline-block;margin-top:2rem;color:var(--suave);font-family:var(--disp);
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.volver:hover{color:#fff}
+
+/* ---------- sin animación: cae a un mapa vertical plano ---------- */
+body.plano #bg,body.plano .stage{display:none}
+body.plano{background:#0d1222}
+body.plano .scroller{height:auto;padding:3rem 1.2rem 0}
+body.plano .panel{position:relative;left:auto;top:auto;transform:none;opacity:1;
+  visibility:visible;pointer-events:auto;margin:0 auto 1.4rem;backdrop-filter:none}
+body.plano .minimapa{display:none}
+body.plano .pista{display:none}
+</style>
+</head>
+<body>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<!-- ============ escenario: los tres estratos en el espacio ============ -->
+<div class="stage" aria-hidden="true">
+  <div class="world" id="world">
+    <div class="estrato" style="--z:1300;--c:var(--inst);--w:1450px">
+      <div class="haz"></div><div class="piso"></div><div class="halo"></div>
+      <div class="chapa">1 · Gestión institucional<small>ámbito: la Estructura</small></div>
+    </div>
+    <div class="estrato" style="--z:2520;--c:var(--esco);--w:1180px">
+      <div class="haz"></div><div class="piso"></div><div class="halo"></div>
+      <div class="chapa">2 · Gestión escolar<small>ámbito: la Comunidad educativa</small></div>
+    </div>
+    <div class="estrato" style="--z:3670;--c:var(--peda);--w:920px">
+      <div class="haz"></div><div class="piso"></div><div class="halo"></div>
+      <div class="chapa">3 · Gestión pedagógica<small>ámbito: el Aula</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ mini-mapa: el organizador completo, siempre visible ============ -->
+<nav class="minimapa" id="minimapa">
+  <div class="mm-t">Niveles de concreción</div>
+  <div class="mm" data-p="0" style="--c:var(--raiz)"><b>Gestión educativa</b>el Sistema</div>
+  <div class="mm sangria" data-p="1" style="--c:var(--inst)"><b>1 · Institucional</b>la Estructura</div>
+  <div class="mm sangria" data-p="2" style="--c:var(--esco)"><b>2 · Escolar</b>la Comunidad educativa</div>
+  <div class="mm sangria" data-p="3" style="--c:var(--peda)"><b>3 · Pedagógica</b>el Aula</div>
+  <div class="mm" data-p="4" style="--c:var(--estr)"><b>Gestión estratégica</b>integra los tres</div>
+</nav>
+
+<!-- ============ el descenso ============ -->
+<div class="scroller">
+
+  <section class="panel" data-p="0" style="--c:var(--raiz)">
+    <div class="num">Modelo de Gestión Educativa Estratégica · SEP</div>
+    <h2>Niveles de concreción de la gestión educativa</h2>
+    <p class="ambito">Raíz: la gestión educativa · ámbito: el Sistema</p>
+    <p class="lead">La gestión es el «conjunto de acciones integradas para el logro de un
+      objetivo a cierto plazo»: el eslabón intermedio entre la planificación y los objetivos
+      concretos. <span class="cita">(p. 55)</span></p>
+    <ul>
+      <li><b>Tres campos.</b> La acción, la investigación, y la innovación y el desarrollo.
+        <span class="cita">(p. 55)</span></li>
+      <li><b>Tres categorías.</b> En el campo educativo se clasifica «de acuerdo con el ámbito
+        de su quehacer y con los niveles de concreción en el sistema: institucional, escolar y
+        pedagógica». <span class="cita">(p. 56)</span></li>
+    </ul>
+    <div class="pista"><span>↓</span> Desciende del sistema al aula</div>
+  </section>
+
+  <section class="panel" data-p="1" style="--c:var(--inst)">
+    <div class="num">Nivel 1 de concreción</div>
+    <h2>Gestión institucional</h2>
+    <p class="ambito">ámbito: la Estructura</p>
+    <ul>
+      <li><b>Qué hace.</b> Se enfoca en «la manera en que cada organización traduce lo
+        establecido en las políticas»; fija las líneas de acción de cada instancia
+        administrativa. <span class="cita">(p. 58)</span></li>
+      <li><b>Dónde opera.</b> En cuatro ámbitos: nacional, estatal, regional y local.
+        <span class="cita">(p. 58)</span></li>
+      <li><b>Principios.</b> Autonomía, corresponsabilidad, transparencia y rendición de
+        cuentas. <span class="cita">(p. 58)</span></li>
+      <li><b>Desafío.</b> Cassasus (2000): lograrla eficaz es «uno de los grandes desafíos»
+        de las estructuras administrativas federales y estatales. <span class="cita">(p. 59)</span></li>
+      <li><b>Quién.</b> Quienes lideran espacios de decisión «han de convertirse en gestores
+        de la calidad». <span class="cita">(p. 60)</span></li>
+    </ul>
+  </section>
+
+  <section class="panel" data-p="2" style="--c:var(--esco)">
+    <div class="num">Nivel 2 de concreción</div>
+    <h2>Gestión escolar</h2>
+    <p class="ambito">ámbito: la Comunidad educativa</p>
+    <ul>
+      <li><b>Qué es.</b> SEP (2001): «el ámbito de la cultura organizacional, conformada por
+        directivos, el equipo docente, las normas, las instancias de decisión» y la forma
+        peculiar de hacer las cosas en la escuela. <span class="cita">(p. 60)</span></li>
+      <li><b>Quiénes.</b> Loera (2003): labores de director, maestros, personal de apoyo,
+        padres de familia y alumnos, para generar las condiciones y los ambientes en que los
+        estudiantes aprendan. <span class="cita">(p. 60)</span></li>
+      <li><b>Hacia dónde.</b> Tapia (2003): «convertir a la escuela en una organización
+        centrada en lo pedagógico», abierta al aprendizaje y a la innovación.
+        <span class="cita">(p. 60)</span></li>
+      <li><b>Enfoque estratégico.</b> Visión y misión compartidas; «privilegia el trabajo en
+        equipo, la apertura al aprendizaje y a la innovación»; remueve prácticas burocráticas.
+        <span class="cita">(p. 61)</span></li>
+    </ul>
+  </section>
+
+  <section class="panel" data-p="3" style="--c:var(--peda)">
+    <div class="num">Nivel 3 de concreción</div>
+    <h2>Gestión pedagógica</h2>
+    <p class="ambito">ámbito: el Aula</p>
+    <ul>
+      <li><b>Por qué es la concreción.</b> «Es en este nivel donde se concreta la gestión
+        educativa en su conjunto». <span class="cita">(p. 62)</span></li>
+      <li><b>Qué abarca.</b> Cómo el docente enseña, «cómo asume el currículo y lo traduce en
+        una planeación didáctica», cómo evalúa y cómo interactúa con alumnos y padres.
+        <span class="cita">(p. 62)</span></li>
+      <li><b>Idea clave.</b> Batista, en Rodríguez (2009): «la práctica docente se convierte
+        en una gestión para el aprendizaje». <span class="cita">(p. 62)</span></li>
+      <li><b>De qué depende.</b> Zubiría (2006): el concepto de enseñanza del maestro
+        «determina sus formas o estilos para enseñar»; Harris (2002) y Hopkins (2000): «el
+        éxito escolar reside en lo que sucede en el aula». <span class="cita">(pp. 62–63)</span></li>
+      <li><b>Condición.</b> El clima de aula es «un componente clave en el aseguramiento de
+        resultados de la tarea pedagógica». <span class="cita">(p. 63)</span></li>
+    </ul>
+  </section>
+
+  <section class="panel" data-p="4" style="--c:var(--estr)">
+    <div class="num">Lo que integra los tres niveles</div>
+    <h2>Gestión educativa estratégica</h2>
+    <p class="ambito">competencia y, a la vez, metacompetencia</p>
+    <ul>
+      <li><b>Qué es.</b> IIPE-UNESCO (2000): «conjunto de procesos teórico-prácticos
+        integrados y relacionados, tanto horizontal como verticalmente, dentro del sistema
+        educativo». <span class="cita">(p. 64)</span></li>
+      <li><b>Qué contiene.</b> «Contiene, por lo tanto, a las tres categorías de gestión
+        señaladas: institucional, escolar y pedagógica». <span class="cita">(p. 64)</span></li>
+      <li><b>Cómo se vuelve estratégica.</b> «A partir de ciclos de mejoramiento constante de
+        procesos y de resultados», mediante planeación ⇄ evaluación.
+        <span class="cita">(p. 64)</span></li>
+    </ul>
+    <div class="pista"><span>↓</span> El mapa completo</div>
+  </section>
+
+</div>
+
+<!-- ============ cierre: el organizador completo, estático ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2>El organizador completo</h2>
+    <p class="sub">De lo abstracto y general (el sistema) a lo concreto y específico (el aula).</p>
+
+    <div class="banda" style="--c:var(--raiz)">
+      <h3>Gestión educativa <em>· ámbito: el Sistema</em></h3>
+      <p>«Conjunto de acciones integradas para el logro de un objetivo a cierto plazo»;
+      eslabón intermedio entre la planificación y los objetivos concretos (p. 55). Se clasifica
+      en tres categorías «de acuerdo con el ámbito de su quehacer y con los niveles de
+      concreción en el sistema: institucional, escolar y pedagógica» (p. 56).</p>
+    </div>
+
+    <div class="niveles">
+      <div class="banda" style="--c:var(--inst)">
+        <h3>1 · Institucional <em>· la Estructura</em></h3>
+        <ul>
+          <li>Traduce las políticas en líneas de acción de cada instancia administrativa (p. 58).</li>
+          <li>Ámbitos: nacional, estatal, regional y local (p. 58).</li>
+          <li>Principios: autonomía, corresponsabilidad, transparencia y rendición de cuentas (p. 58).</li>
+          <li>Cassasus (2000): gran desafío de las estructuras federales y estatales (p. 59).</li>
+          <li>Quienes lideran «han de convertirse en gestores de la calidad» (p. 60).</li>
+        </ul>
+      </div>
+      <div class="banda" style="--c:var(--esco)">
+        <h3>2 · Escolar <em>· la Comunidad educativa</em></h3>
+        <ul>
+          <li>SEP (2001): ámbito de la cultura organizacional (directivos, equipo docente, normas, instancias de decisión), p. 60.</li>
+          <li>Loera (2003): labores de director, maestros, personal de apoyo, padres y alumnos (p. 60).</li>
+          <li>Tapia (2003): escuela centrada en lo pedagógico, abierta al aprendizaje (p. 60).</li>
+          <li>Enfoque estratégico: visión y misión compartidas; remueve prácticas burocráticas (p. 61).</li>
+        </ul>
+      </div>
+      <div class="banda" style="--c:var(--peda)">
+        <h3>3 · Pedagógica <em>· el Aula</em></h3>
+        <ul>
+          <li>«Es en este nivel donde se concreta la gestión educativa en su conjunto» (p. 62).</li>
+          <li>Enseñanza, currículo, planeación didáctica, evaluación y trato con alumnos y padres (p. 62).</li>
+          <li>Batista, en Rodríguez (2009): la práctica docente es «gestión para el aprendizaje» (p. 62).</li>
+          <li>Harris (2002) y Hopkins (2000): «el éxito escolar reside en lo que sucede en el aula» (p. 63).</li>
+          <li>El clima de aula, componente clave del resultado pedagógico (p. 63).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="banda" style="--c:var(--estr)">
+      <h3>Gestión educativa estratégica <em>· integra y articula los tres niveles</em></h3>
+      <p>IIPE-UNESCO (2000): «conjunto de procesos teórico-prácticos integrados y relacionados,
+      tanto horizontal como verticalmente, dentro del sistema educativo» (p. 64). «Contiene, por
+      lo tanto, a las tres categorías de gestión señaladas» (p. 64). Es competencia y
+      metacompetencia; se concreta en ciclos de mejoramiento constante mediante planeación ⇄
+      evaluación (p. 64).</p>
+    </div>
+
+    <div class="ref">
+      <b>Referencia</b><br>
+      Vázquez Herrera, E. (Coord.). (2010). <i>Modelo de gestión educativa estratégica</i>
+      (2.ª ed.). Secretaría de Educación Pública.<br>
+      <span style="font-size:.88em">Elaboración propia a partir de las pp. 55–64. Las páginas
+      citadas corresponden a la numeración del libro impreso.</span>
+      <br>
+      <a class="desc" href="../actividad/niveles-concrecion-gestion.pdf">Descargar el organizador en PDF</a>
+      <br>
+      <a class="volver" href="../">← Ser tutor</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ document.body.classList.add('plano'); return; }
+
+  var world    = document.getElementById('world');
+  var paneles  = [].slice.call(document.querySelectorAll('.panel'));
+  var marcas   = [].slice.call(document.querySelectorAll('.minimapa .mm'));
+  var scroller = document.querySelector('.scroller');
+  var minimapa = document.getElementById('minimapa');
+
+  /* ventanas de aparición de cada panel, en progreso [0,1] del descenso */
+  var VENTANAS = [[0,.10],[.20,.33],[.42,.55],[.64,.77],[.88,1]];
+  var CAM_MAX  = 5200;
+  var actual = -1, objetivo = 0, suave = 0, corriendo = false;
+
+  function progreso(){
+    var alto = scroller.offsetHeight - window.innerHeight;
+    return alto <= 0 ? 0 : Math.min(1, Math.max(0, window.scrollY / alto));
+  }
+
+  function pesoPanel(p, v){
+    var ini = v[0], fin = v[1], borde = .04;
+    if(p < ini - borde || p > fin + borde) return 0;
+    if(p < ini) return (p - ini + borde) / borde;
+    if(p > fin) return (fin + borde - p) / borde;
+    return 1;
+  }
+
+  function pintar(){
+    suave += (objetivo - suave) * .09;
+    if(Math.abs(objetivo - suave) < .0002) suave = objetivo;
+
+    world.style.transform = 'translateZ(' + (suave * CAM_MAX).toFixed(1) + 'px)';
+
+    var vivo = 0, mejor = 0;
+    paneles.forEach(function(el, i){
+      var w = pesoPanel(suave, VENTANAS[i]);
+      if(w > mejor){ mejor = w; vivo = i; }
+      el.style.opacity    = w.toFixed(3);
+      el.style.visibility = w > .01 ? 'visible' : 'hidden';
+      el.style.transform  = 'translate(-50%,-50%) translateY(' + ((1 - w) * 26).toFixed(1) + 'px) scale(' + (.965 + w * .035).toFixed(4) + ')';
+    });
+
+    if(vivo !== actual){
+      actual = vivo;
+      marcas.forEach(function(m){ m.classList.toggle('on', +m.dataset.p === vivo); });
+    }
+
+    /* se ata al progreso crudo, no al interpolado: al entrar al mapa
+       estático el mini-mapa debe quitarse de inmediato, sin esperar al lerp */
+    minimapa.classList.toggle('fuera', objetivo > .99);
+
+    if(suave !== objetivo){ requestAnimationFrame(pintar); } else { corriendo = false; }
+  }
+
+  function alScroll(){
+    objetivo = progreso();
+    if(!corriendo){ corriendo = true; requestAnimationFrame(pintar); }
+  }
+
+  window.addEventListener('scroll', alScroll, {passive:true});
+  window.addEventListener('resize', alScroll);
+  alScroll(); suave = objetivo; pintar();
+
+  /* ---------- fondo WebGL: bruma de profundidad que vira con el descenso ---------- */
+  (function(){
+    var c = document.getElementById('bg');
+    var gl = c.getContext('webgl') || c.getContext('experimental-webgl');
+    if(!gl){ c.style.background = 'radial-gradient(ellipse at 50% 30%,#16203c,#080b16 70%)'; return; }
+
+    var VS = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
+    var FS = [
+      'precision mediump float;',
+      'uniform vec2 res; uniform float t; uniform float prog;',
+      'float h(vec2 p){return fract(sin(dot(p,vec2(41.3,289.1)))*43758.5453);}',
+      'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);',
+      '  return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}',
+      'float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<5;i++){v+=a*n(p);p*=2.03;a*=0.5;}return v;}',
+      'void main(){',
+      '  vec2 uv=gl_FragCoord.xy/res.xy;',
+      '  vec2 q=vec2(uv.x*res.x/res.y,uv.y);',
+      // el color del ambiente desciende: azul del sistema -> verde -> ámbar del aula
+      '  vec3 c1=vec3(0.09,0.14,0.30), c2=vec3(0.07,0.22,0.21), c3=vec3(0.26,0.15,0.08);',
+      '  vec3 amb = prog<0.5 ? mix(c1,c2,smoothstep(0.10,0.55,prog)) : mix(c2,c3,smoothstep(0.55,0.92,prog));',
+      '  float f=fbm(q*2.4+vec2(t*0.014,-t*0.021-prog*1.6));',
+      '  float g=fbm(q*5.1-vec2(t*0.008,prog*2.4));',
+      '  vec3 col=mix(vec3(0.03,0.04,0.09),amb,0.28+0.72*f);',
+      '  col+=amb*g*0.22;',
+      // vórtice de profundidad hacia el centro
+      '  float d=length(uv-vec2(0.5,0.46));',
+      '  col*=1.0-smoothstep(0.20,0.85,d)*0.72;',
+      '  col+=amb*(1.0-smoothstep(0.0,0.34,d))*0.30;',
+      '  gl_FragColor=vec4(col,1.0);',
+      '}'
+    ].join('\n');
+
+    function sh(tipo, src){
+      var o = gl.createShader(tipo); gl.shaderSource(o, src); gl.compileShader(o);
+      if(!gl.getShaderParameter(o, gl.COMPILE_STATUS)) console.warn(gl.getShaderInfoLog(o));
+      return o;
+    }
+    var pr = gl.createProgram();
+    gl.attachShader(pr, sh(gl.VERTEX_SHADER, VS));
+    gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(pr); gl.useProgram(pr);
+
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(pr, 'p');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+    var uRes = gl.getUniformLocation(pr, 'res');
+    var uT   = gl.getUniformLocation(pr, 't');
+    var uP   = gl.getUniformLocation(pr, 'prog');
+
+    function medir(){
+      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      c.width  = Math.floor(innerWidth  * dpr);
+      c.height = Math.floor(innerHeight * dpr);
+      gl.viewport(0, 0, c.width, c.height);
+      gl.uniform2f(uRes, c.width, c.height);
+    }
+    window.addEventListener('resize', medir);
+    medir();
+
+    var t0 = performance.now();
+    (function bucle(){
+      gl.uniform1f(uT, (performance.now() - t0) / 1000);
+      gl.uniform1f(uP, suave);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      requestAnimationFrame(bucle);
+    })();
+  })();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+%% Niveles de concreción de la gestión educativa
+%% Vázquez Herrera, E. (Coord.). (2010). Modelo de gestión educativa
+%% estratégica (2.ª ed.). SEP. — pp. 55-64 (numeración del libro impreso).
+%% Notas de armado:
+%%  - Una línea con "%%" a secas rompe el parser (la lee como directiva).
+%%  - Sin aristas de retorno: un ciclo haría que dagre pusiera la raíz al
+%%    final y el diagrama se leería al revés.
+%%  - Las aristas externas se anclan al SUBGRAFO, no a un nodo de dentro:
+%%    Mermaid las dibuja desde el borde de la caja y eso falsearía de qué
+%%    nivel sale la relación.
+%% Render: npx @mermaid-js/mermaid-cli -i este.mmd -o salida.png -s 3
+
+flowchart LR
+    GE["<b>GESTIÓN EDUCATIVA</b><br/><i>ámbito: el Sistema</i><br/>p. 56"]
+
+    subgraph NC [" LOS TRES NIVELES DE CONCRECIÓN "]
+        direction TB
+        I["<b>1 · GESTIÓN INSTITUCIONAL</b><br/><i>ámbito: la Estructura</i><br/>traduce las políticas<br/>p. 58"]
+        E["<b>2 · GESTIÓN ESCOLAR</b><br/><i>ámbito: la Comunidad educativa</i><br/>cultura organizacional<br/>p. 60"]
+        P["<b>3 · GESTIÓN PEDAGÓGICA</b><br/><i>ámbito: el Aula</i><br/>«es donde se concreta la gestión<br/>educativa en su conjunto»<br/>p. 62"]
+
+        I -- "fija las líneas de acción para" --> E
+        E -- "genera las condiciones para" --> P
+    end
+
+    S["<b>GESTIÓN EDUCATIVA ESTRATÉGICA</b><br/><i>competencia y metacompetencia</i><br/>planeación ⇄ evaluación<br/>p. 64"]
+
+    GE -- "se clasifica en" --> NC
+    NC -- "se integran y articulan en la" --> S
+
+    classDef raiz fill:#E7EBF5,stroke:#263B6B,stroke-width:2.5px,color:#1B2130
+    classDef inst fill:#E4EDF6,stroke:#2F5D8C,stroke-width:2.5px,color:#1B2130
+    classDef esco fill:#E2F1EC,stroke:#2A7A66,stroke-width:2.5px,color:#1B2130
+    classDef peda fill:#FAECDF,stroke:#B0602A,stroke-width:2.5px,color:#1B2130
+    classDef estr fill:#EDE8F5,stroke:#4C3A70,stroke-width:2.5px,color:#1B2130
+
+    class GE raiz
+    class I inst
+    class E esco
+    class P peda
+    class S estr
+
+    style NC fill:#FBFCFE,stroke:#8A93A8,stroke-width:1.5px,stroke-dasharray:5 4,color:#4A5265

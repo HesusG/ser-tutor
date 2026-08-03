@@ -1,0 +1,45 @@
+% Diagrama Mermaid en hoja carta apaisada.
+% El trazo viene de niveles-concrecion-mermaid.mmd, renderizado a PNG a 322 dpi:
+%   npx @mermaid-js/mermaid-cli -i niveles-concrecion-mermaid.mmd \
+%       -o niveles-concrecion-mermaid.png -b white -s 4
+% Compilar:  tectonic docs/actividad/niveles-concrecion-diagrama.tex
+
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-noindentfirst]{babel}
+\usepackage{lmodern}
+\usepackage[letterpaper,landscape,top=0.9cm,bottom=0.8cm,left=1cm,right=1cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\definecolor{tinta}{HTML}{1B2130}
+\definecolor{gris}{HTML}{4A5265}
+
+\newcommand{\sep}{\;\textbullet\;}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\color{tinta} Niveles de concreción de la gestión educativa}\\[3pt]
+  {\small\color{gris} Diagrama de flujo \sep Modelo de Gestión Educativa Estratégica (SEP)
+   \sep Temas selectos de Pedagogía}
+\end{center}
+
+\vfill
+\begin{center}
+  \includegraphics[width=\textwidth,height=0.80\textheight,keepaspectratio]%
+    {niveles-concrecion-mermaid.png}
+\end{center}
+\vfill
+
+{\scriptsize\color{gris}\textbf{Referencia:}\ \ Vázquez Herrera, E. (Coord.). (2010).
+\textit{Modelo de gestión educativa estratégica} (2.\textsuperscript{a}~ed.). Secretaría de
+Educación Pública. \sep Elaboración propia a partir de las pp.~55--64
+(numeración del libro impreso).}
+
+\end{document}

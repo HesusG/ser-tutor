@@ -13,3 +13,9 @@ tools/.env
 
 # Borrador local del foro (no publicar)
 docs/actividad/foro-critico.html
+
+# Material de terceros descargado en la raíz (no publicar)
+/*.pdf
+
+# Cachés de herramientas
+.impeccable/
